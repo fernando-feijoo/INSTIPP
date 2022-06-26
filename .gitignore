@@ -1,0 +1,24 @@
+# NetBeans specific #
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/FundamentosFernandoFeijoo/nbproject/private/
+/PV_MVC220622/nbproject/private/
+/Platzi-Practicas/nbproject/private/
+/PrimeraLibreria/nbproject/private/
+/PruebaPersonales/nbproject/private/
+/Segundo Semestre/nbproject/private/
+/TareaSemana15/nbproject/private/
+/TercerSemestre/nbproject/private/
