@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/USUARIO%20PC/Documents/NetBeansProjects/PV_MVC220622/src/Modelo/Main.java</file>
+            <file>file:/C:/Users/USUARIO%20PC/Documents/NetBeansProjects/PV_MVC220622/src/Modelo/Modelo_Conexion.java</file>
+        </group>
+>>>>>>> d7ff897b3ef5de448df07d60ffef94c683b119e3
     </open-files>
 </project-private>
