@@ -14,9 +14,9 @@ public class Modelo_Conexion
         String password = "FerDatos95";
         try 
         {
-            System.out.println("Conexion exitosa.");
 //            Conexion a la base de datos.
             Connection conexion = DriverManager.getConnection(baseDatos, user, password);
+            System.out.println("Conexion exitosa.");
             conexion.close();
             return conexion;
         } catch (SQLException ex) 
