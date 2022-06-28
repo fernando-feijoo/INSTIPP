@@ -19,7 +19,6 @@ import java.io.IOException;
  */
 public class TareaPV100622_FeijooFernando 
 {
-    String nombres, apellidos, semestre, jornada, carrera;
     public static void main(String[] args) 
     {
         Scanner tc = new Scanner(System.in);
