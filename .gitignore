@@ -14,14 +14,6 @@ nb-configuration.xml
 *.jar
 *.war
 *.ear
-<<<<<<< HEAD
-/FundamentosFernandoFeijoo/nbproject/private/
-/PV_MVC220622/nbproject/private/
-/Platzi-Practicas/nbproject/private/
-/PrimeraLibreria/nbproject/private/
-/PruebaPersonales/nbproject/private/
-/Segundo Semestre/nbproject/private/
-/TareaSemana15/nbproject/private/
-/TercerSemestre/nbproject/private/
-=======
->>>>>>> 0bbff3e031ff7595ede031e37f5365789fc64bd4
+
+# File or library
+postgresql-42.4.0.jar
