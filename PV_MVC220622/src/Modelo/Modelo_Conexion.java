@@ -17,7 +17,7 @@ public class Modelo_Conexion
 //            Conexion a la base de datos.
             Connection conexion = DriverManager.getConnection(baseDatos, user, password);
             System.out.println("Conexion exitosa.");
-            conexion.close();
+            //conexion.close();
             return conexion;
         } catch (SQLException ex) 
         {

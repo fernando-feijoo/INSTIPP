@@ -80,16 +80,16 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Nombre: *");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Edad:");
+        jLabel2.setText("Edad: *");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Especie:");
+        jLabel3.setText("Especie: *");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Color:");
+        jLabel4.setText("Color: *");
 
         txf_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -101,13 +101,13 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         txf_color.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Sexo:");
+        jLabel5.setText("Sexo: *");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Raza:");
+        jLabel6.setText("Raza: *");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("Fecha de Nac. :");
+        jLabel7.setText("Fecha de Nac. : *");
 
         txf_sexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -260,7 +260,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jp_contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

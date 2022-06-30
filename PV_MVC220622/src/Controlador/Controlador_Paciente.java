@@ -66,21 +66,27 @@ public class Controlador_Paciente implements ActionListener
             String [] datos;
             datos = cadenaDatos();
             String datosTexto = "";
-            String[] titulos = {"Nombre: ", "Edad: ", "Especie: ", "Color: ", "Sexo: ", "Raza: ", "Fecha de Nac. : "};
-            //PC Casa
-            File fichero = new File("C:\\Users\\User\\OneDrive\\ISTJOL\\3.- Tercer Semestre\\2. PROGRAMACIÓN VISUAL\\Clases Diarias\\DatosPaciente.txt");
-            //PC Portatil
-            //File fichero = new File("C:\\Users\\User\\OneDrive\\ISTJOL\\3.- Tercer Semestre\\2. PROGRAMACIÓN VISUAL\\Clases Diarias\\DatosPaciente.txt");
-            for (int i = 0; i < titulos.length; i++) 
+            if(!datos[0].equalsIgnoreCase(""))
             {
-                datosTexto += "\n" + titulos[i] + datos[i];
-            }
-            generarArchivo(fichero, datosTexto);
-//            Preguntar si desea ingresar mas datos. Aunque el corrado estaria por defecto...
-            int opcion = JOptionPane.showConfirmDialog(vista_paciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
-            if (opcion == JOptionPane.OK_OPTION) 
+                String[] titulos = {"Nombre: ", "Edad: ", "Especie: ", "Color: ", "Sexo: ", "Raza: ", "Fecha de Nac. : "};
+                //PC Casa
+                //File fichero = new File("C:\\Users\\User\\OneDrive\\ISTJOL\\3.- Tercer Semestre\\2. PROGRAMACIÓN VISUAL\\Clases Diarias\\DatosPaciente.txt");
+                //PC Portatil
+                File fichero = new File("C:\\Users\\USUARIO PC\\OneDrive\\ISTJOL\\3.- Tercer Semestre\\2. PROGRAMACIÓN VISUAL\\Clases Diarias\\DatosPaciente.txt");
+                for (int i = 0; i < titulos.length; i++) 
+                {
+                    datosTexto += "\n" + titulos[i] + datos[i];
+                }
+                generarArchivo(fichero, datosTexto);
+    //            Preguntar si desea ingresar mas datos. Aunque el corrado estaria por defecto...
+                int opcion = JOptionPane.showConfirmDialog(vista_paciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.OK_OPTION) 
+                {
+                    borrarDatos();
+                }
+            }else
             {
-                borrarDatos();
+                JOptionPane.showMessageDialog(vista_paciente, "No ingreso todos los datos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

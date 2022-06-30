@@ -1,4 +1,5 @@
 package Controlador;
+import Modelo.Modelo_Login;
 import Vista.Vista_Login;
 import Vista.Vista_Principal;
 import java.awt.event.ActionEvent;
@@ -7,6 +8,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 //2. implementar listener.
 public class Controlador_Login implements ActionListener, ComponentListener, KeyListener
@@ -15,6 +17,7 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
     Vista_Login login;
     Vista_Principal principalView = new Vista_Principal();
     Controlador_Principal controlPrincipal = new Controlador_Principal(principalView);
+    Modelo_Login modeloLogin = new Modelo_Login();
     //constructor.
     public Controlador_Login(Vista_Login login) 
     {
@@ -41,15 +44,23 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
         //preguntar si el evento se ha iniciado en el boton iniciar.
         if (e.getSource() == this.login.btn_inicioSesion) 
         {
-            String user = "fernando", password = "123f";
-            if (login.txf_usuario.getText().equalsIgnoreCase(user) && login.txf_contrasena.getText().equals(password))
+            try 
             {
-                login.setVisible(false);
-                principalView.setVisible(true);
-            }
+                modeloLogin.usuario = this.login.txf_usuario.getText();
+                modeloLogin.password = this.login.txf_contrasena.getText();
+                boolean verificacion = modeloLogin.consultaLogin();
+                if (verificacion)
+                {
+                    login.setVisible(false);
+                    principalView.setVisible(true);
+                }
             else
             {
                 JOptionPane.showMessageDialog(login, "Usuario o contraseña incorrectos.", "Error" , JOptionPane.WARNING_MESSAGE);
+            }
+            } catch (SQLException ex) 
+            {
+                JOptionPane.showMessageDialog(principalView, "Error al ejecutar la consulta. " + ex);
             }
         }
         if (e.getSource() == this.login.btn_salir) 

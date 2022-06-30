@@ -46,12 +46,12 @@ public class Vista_Login extends javax.swing.JFrame {
         ico_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/dog_128px.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Usuario:");
+        jLabel2.setText("Usuario: *");
 
         txf_usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Contraseña:");
+        jLabel3.setText("Contraseña: *");
 
         btn_inicioSesion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_inicioSesion.setText("Iniciar Sesión");
