@@ -8,6 +8,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 //2. implementar listener.
@@ -44,20 +45,36 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
         //preguntar si el evento se ha iniciado en el boton iniciar.
         if (e.getSource() == this.login.btn_inicioSesion) 
         {
+            int temp = 0;
             try 
             {
                 modeloLogin.usuario = this.login.txf_usuario.getText();
                 modeloLogin.password = this.login.txf_contrasena.getText();
-                boolean verificacion = modeloLogin.consultaLogin();
+                
+                ResultSet rs = modeloLogin.consultaLogin();
+                
+                while (rs.next()) 
+                {
+                    temp = 1;
+                }
+                if (temp == 1) 
+                {
+                    login.setVisible(false);
+                    principalView.setVisible(true);
+                }else
+                {
+                    JOptionPane.showMessageDialog(login, "ACCESO DENEGADO.", "Error" , JOptionPane.WARNING_MESSAGE);
+                }
+                /*boolean verificacion = modeloLogin.consultaLogin();
                 if (verificacion)
                 {
                     login.setVisible(false);
                     principalView.setVisible(true);
                 }
-            else
-            {
-                JOptionPane.showMessageDialog(login, "Usuario o contraseña incorrectos.", "Error" , JOptionPane.WARNING_MESSAGE);
-            }
+                else
+                {
+                    JOptionPane.showMessageDialog(login, "Usuario o contraseña incorrectos.", "Error" , JOptionPane.WARNING_MESSAGE);
+                }*/
             } catch (SQLException ex) 
             {
                 JOptionPane.showMessageDialog(principalView, "Error al ejecutar la consulta. " + ex);

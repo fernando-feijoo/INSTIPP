@@ -16,7 +16,7 @@ public class Controlador_Paciente implements ActionListener
         this.vista_paciente.btn_salir.addActionListener(this);
         this.vista_paciente.btn_guardar.addActionListener(this);
     }
-    public static void generarArchivo (File fichero, String datos)
+    /*public static void generarArchivo (File fichero, String datos)
     {
         try 
         {
@@ -28,8 +28,8 @@ public class Controlador_Paciente implements ActionListener
         {
             e.getStackTrace();
         }
-    }
-    public  String [] cadenaDatos ()
+    }*/
+    /*public  String [] cadenaDatos ()
     {
         String [] datos = {this.vista_paciente.txf_nombre.getText(), 
                            this.vista_paciente.txf_edad.getText(), 
@@ -39,7 +39,7 @@ public class Controlador_Paciente implements ActionListener
                            this.vista_paciente.txf_raza.getText(),
                            this.vista_paciente.txf_fechaNacimiento.getText()};
         return datos;
-    }
+    }*/
     public void borrarDatos ()
     {
         this.vista_paciente.txf_nombre.setText(null);
@@ -63,7 +63,7 @@ public class Controlador_Paciente implements ActionListener
 //        Guardamos la informacion dentro de los textField de Vista_Paciente y se borra una vez guardado.
         if (ae.getSource() == this.vista_paciente.btn_guardar) 
         {
-            String [] datos;
+            /*String [] datos;
             datos = cadenaDatos();
             String datosTexto = "";
             if(!datos[0].equalsIgnoreCase(""))
@@ -87,7 +87,7 @@ public class Controlador_Paciente implements ActionListener
             }else
             {
                 JOptionPane.showMessageDialog(vista_paciente, "No ingreso todos los datos.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            }*/
         }
     }
 }
