@@ -1,10 +1,14 @@
 package Controlador;
+
 import Modelo.Modelo_Paciente;
 import Vista.Vista_Paciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class Controlador_Paciente implements ActionListener
 {
     Vista_Paciente vista_paciente;
@@ -14,7 +18,7 @@ public class Controlador_Paciente implements ActionListener
         this.vista_paciente = vista_paciente;
         this.vista_paciente.btn_salir.addActionListener(this);
         this.vista_paciente.btn_guardar.addActionListener(this);
-        modeloPaciente.cargar();
+        this.llenar_tabla();
     }
     public void borrarDatos ()
     {
@@ -26,11 +30,46 @@ public class Controlador_Paciente implements ActionListener
         this.vista_paciente.txf_raza.setText(null);
         this.vista_paciente.txf_fechaNacimiento.setText(null);
     }
+    public void llenar_tabla()
+    {
+        try 
+        {
+            DefaultTableModel tablaModelo = (DefaultTableModel) this.vista_paciente.jtb_listaPacientes.getModel();
+            tablaModelo.setColumnCount(0);
+            tablaModelo.setRowCount(0);
+
+            tablaModelo.addColumn("id");
+            tablaModelo.addColumn("Nombre");
+            tablaModelo.addColumn("Edad");
+            tablaModelo.addColumn("Sexo");
+            tablaModelo.addColumn("Especie");
+            tablaModelo.addColumn("Raza");
+            tablaModelo.addColumn("Color");
+            tablaModelo.addColumn("Fecha de Nacimiento");
+        
+            ResultSet rs = modeloPaciente.consultar_pacientes();
+            String[] datos = new String[8];
+            while (rs.next()) 
+            {
+                datos[0] = rs.getString("id_paciente");
+                datos[1] = rs.getString("pac_nombre");
+                datos[2] = rs.getString("pac_edad");
+                datos[3] = rs.getString("pac_sexo");
+                datos[4] = rs.getString("pac_especie");
+                datos[5] = rs.getString("pac_raza");
+                datos[6] = rs.getString("pac_color");
+                datos[7] = rs.getString("pac_fecha_nac");
+                tablaModelo.addRow(datos);  
+            }
+        } catch (SQLException ex) 
+        {
+            System.out.println("Error al llenar la tabla... " + ex);
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
 //        Salimos de la ventana y se oculta sando paso a la palabra bienvenida en Vista_Principal.
-        
         if (ae.getSource() == this.vista_paciente.btn_salir) 
         {
             this.vista_paciente.setVisible(false);
@@ -58,6 +97,7 @@ public class Controlador_Paciente implements ActionListener
             {
                 borrarDatos();
             }
+            llenar_tabla();
         }
     }
 }
