@@ -1,45 +1,21 @@
 package Controlador;
+import Modelo.Modelo_Paciente;
 import Vista.Vista_Paciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 public class Controlador_Paciente implements ActionListener
 {
     Vista_Paciente vista_paciente;
+    Modelo_Paciente modeloPaciente = new Modelo_Paciente();
     public Controlador_Paciente (Vista_Paciente vista_paciente) 
     {
         this.vista_paciente = vista_paciente;
         this.vista_paciente.btn_salir.addActionListener(this);
         this.vista_paciente.btn_guardar.addActionListener(this);
+        modeloPaciente.cargar();
     }
-    /*public static void generarArchivo (File fichero, String datos)
-    {
-        try 
-        {
-            FileWriter fw = new FileWriter(fichero);
-            BufferedWriter salida = new BufferedWriter(fw);
-            salida.write(datos);
-            salida.close();
-        } catch (IOException e) 
-        {
-            e.getStackTrace();
-        }
-    }*/
-    /*public  String [] cadenaDatos ()
-    {
-        String [] datos = {this.vista_paciente.txf_nombre.getText(), 
-                           this.vista_paciente.txf_edad.getText(), 
-                           this.vista_paciente.txf_especie.getText(),
-                           this.vista_paciente.txf_color.getText(),
-                           this.vista_paciente.txf_sexo.getText(),
-                           this.vista_paciente.txf_raza.getText(),
-                           this.vista_paciente.txf_fechaNacimiento.getText()};
-        return datos;
-    }*/
     public void borrarDatos ()
     {
         this.vista_paciente.txf_nombre.setText(null);
@@ -63,31 +39,25 @@ public class Controlador_Paciente implements ActionListener
 //        Guardamos la informacion dentro de los textField de Vista_Paciente y se borra una vez guardado.
         if (ae.getSource() == this.vista_paciente.btn_guardar) 
         {
-            /*String [] datos;
-            datos = cadenaDatos();
-            String datosTexto = "";
-            if(!datos[0].equalsIgnoreCase(""))
+            modeloPaciente.nombre = this.vista_paciente.txf_nombre.getText();
+            modeloPaciente.edad = this.vista_paciente.txf_edad.getText();
+            modeloPaciente.especie = this.vista_paciente.txf_especie.getText();
+            modeloPaciente.color = this.vista_paciente.txf_color.getText();
+            modeloPaciente.sexo = this.vista_paciente.txf_sexo.getText();
+            modeloPaciente.raza = this.vista_paciente.txf_raza.getText();
+            modeloPaciente.fechaNacimiento = this.vista_paciente.txf_fechaNacimiento.getText();
+            try 
             {
-                String[] titulos = {"Nombre: ", "Edad: ", "Especie: ", "Color: ", "Sexo: ", "Raza: ", "Fecha de Nac. : "};
-                //PC Casa
-                //File fichero = new File("C:\\Users\\User\\OneDrive\\ISTJOL\\3.- Tercer Semestre\\2. PROGRAMACIÓN VISUAL\\Clases Diarias\\DatosPaciente.txt");
-                //PC Portatil
-                File fichero = new File("C:\\Users\\USUARIO PC\\OneDrive\\ISTJOL\\3.- Tercer Semestre\\2. PROGRAMACIÓN VISUAL\\Clases Diarias\\DatosPaciente.txt");
-                for (int i = 0; i < titulos.length; i++) 
-                {
-                    datosTexto += "\n" + titulos[i] + datos[i];
-                }
-                generarArchivo(fichero, datosTexto);
-    //            Preguntar si desea ingresar mas datos. Aunque el corrado estaria por defecto...
-                int opcion = JOptionPane.showConfirmDialog(vista_paciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
-                if (opcion == JOptionPane.OK_OPTION) 
-                {
-                    borrarDatos();
-                }
-            }else
+                modeloPaciente.guardarDatosPaciente();
+            } catch (SQLException ex) 
             {
-                JOptionPane.showMessageDialog(vista_paciente, "No ingreso todos los datos.", "Error", JOptionPane.ERROR_MESSAGE);
-            }*/
+                
+            }
+            int opcion = JOptionPane.showConfirmDialog(vista_paciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.OK_OPTION) 
+            {
+                borrarDatos();
+            }
         }
     }
 }

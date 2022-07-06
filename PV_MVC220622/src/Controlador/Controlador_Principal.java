@@ -1,4 +1,5 @@
 package Controlador;
+import Modelo.Modelo_Paciente;
 import Vista.Vista_Cliente;
 import Vista.Vista_Configuracion;
 import Vista.Vista_Medicina;
