@@ -4,26 +4,31 @@ import Modelo.Modelo_Paciente;
 import Vista.Vista_Paciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Controlador_Paciente implements ActionListener
+public class Controlador_Paciente implements ActionListener, KeyListener
 {
     Vista_Paciente vistaPaciente;
     Modelo_Paciente modeloPaciente = new Modelo_Paciente();
-    public Controlador_Paciente (Vista_Paciente vistaPaciente) throws SQLException 
+    public Controlador_Paciente (Vista_Paciente vistaPaciente) 
     {
         this.vistaPaciente = vistaPaciente;
+        //ActionListener para clicks.
         this.vistaPaciente.btn_salir.addActionListener(this);
         this.vistaPaciente.btn_guardar.addActionListener(this);
         this.vistaPaciente.btn_buscar.addActionListener(this);
-        this.llenarComboEspecies();
+        //KeyListener para eventos de teclas.
+        this.vistaPaciente.txf_buscar.addKeyListener(this);
+        this.llenar_combo_especies();
         this.llenar_tabla();
         
     }
-    public void borrarDatos ()
+    public void borrar_datos ()
     {
         this.vistaPaciente.txf_nombre.setText(null);
         this.vistaPaciente.txf_edad.setText(null);
@@ -76,7 +81,9 @@ public class Controlador_Paciente implements ActionListener
         if (ae.getSource() == this.vistaPaciente.btn_salir) 
         {
             this.vistaPaciente.setVisible(false);
-            borrarDatos();
+            this.vistaPaciente.txf_buscar.setText(null);
+            this.vistaPaciente.btn_buscar.doClick();
+            borrar_datos();
         }
 //        Guardamos la informacion dentro de los textField de Vista_Paciente y se borra una vez guardado.
         if (ae.getSource() == this.vistaPaciente.btn_guardar) 
@@ -90,7 +97,7 @@ public class Controlador_Paciente implements ActionListener
             modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
             try 
             {
-                modeloPaciente.guardarDatosPaciente();
+                modeloPaciente.guardar_datos_paciente();
             } catch (SQLException ex) 
             {
                 
@@ -98,7 +105,7 @@ public class Controlador_Paciente implements ActionListener
             int opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.OK_OPTION) 
             {
-                borrarDatos();
+                borrar_datos();
             }
             llenar_tabla();
         }
@@ -140,12 +147,29 @@ public class Controlador_Paciente implements ActionListener
             }
         }
     }
-    public void llenarComboEspecies() throws SQLException
+    public void llenar_combo_especies()
     {
-        ResultSet rs = modeloPaciente.consultar_especie();
-        while (rs.next()) 
+        try {
+            ResultSet rs = modeloPaciente.consultar_especie();
+            while (rs.next()) 
+            {
+                this.vistaPaciente.cb_especie.addItem(rs.getString("especie"));
+            }
+        } catch (SQLException ex) 
         {
-            this.vistaPaciente.cb_especie.addItem(rs.getString("especie"));
+            System.out.println("Error al llenar combo especies: " + ex);
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {    }
+
+    @Override
+    public void keyReleased(KeyEvent e) 
+    {
+        this.vistaPaciente.btn_buscar.doClick();
     }
 }

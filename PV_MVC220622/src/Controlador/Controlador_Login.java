@@ -31,7 +31,7 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
         this.login.btn_salir.addActionListener(this);
     }
     
-    public void centrarElementos()
+    public void centrar_elementos()
     {
         int panelX = (login.getWidth() - login.jp_contenedor.getWidth() - login.getInsets().left - login.getInsets().right) / 2;
 	int panelY = ((login.getHeight() - login.jp_contenedor.getHeight() - login.getInsets().top - login.getInsets().bottom) / 2);
@@ -51,7 +51,7 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
                 modeloLogin.usuario = this.login.txf_usuario.getText();
                 modeloLogin.password = this.login.txf_contrasena.getText();
                 
-                ResultSet rs = modeloLogin.consultaLogin();
+                ResultSet rs = modeloLogin.consulta_login();
                 
                 while (rs.next()) 
                 {
@@ -65,16 +65,6 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
                 {
                     JOptionPane.showMessageDialog(login, "ACCESO DENEGADO.", "Error" , JOptionPane.WARNING_MESSAGE);
                 }
-                /*boolean verificacion = modeloLogin.consultaLogin();
-                if (verificacion)
-                {
-                    login.setVisible(false);
-                    principalView.setVisible(true);
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(login, "Usuario o contraseña incorrectos.", "Error" , JOptionPane.WARNING_MESSAGE);
-                }*/
             } catch (SQLException ex) 
             {
                 JOptionPane.showMessageDialog(principalView, "Error al ejecutar la consulta. " + ex);
@@ -93,13 +83,13 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
     @Override
     public void componentResized(ComponentEvent ce) 
     {
-        centrarElementos();
+        centrar_elementos();
     }
 
     @Override
     public void componentMoved(ComponentEvent ce) 
     {
-        centrarElementos();
+        centrar_elementos();
     }
 
     @Override
@@ -111,8 +101,8 @@ public class Controlador_Login implements ActionListener, ComponentListener, Key
     @Override
     public void keyTyped(KeyEvent ke) 
     {
-        char Teclas = ke.getKeyChar();
-        if (Teclas == KeyEvent.VK_ENTER) 
+        char teclas = ke.getKeyChar();
+        if (teclas == KeyEvent.VK_ENTER) 
         {
             login.btn_inicioSesion.doClick();
         }

@@ -130,8 +130,6 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         btn_salir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        cb_especie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato" }));
-
         cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
