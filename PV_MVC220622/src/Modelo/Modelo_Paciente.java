@@ -34,4 +34,19 @@ public class Modelo_Paciente
         ResultSet rs = st.executeQuery(sql);
         return rs;
     }
+    public ResultSet consultar_especie() throws SQLException
+    {
+        Statement st = modeloConexion.conexionBD().createStatement();
+        String sql = "SELECT especie FROM especies;";
+        ResultSet rs = st.executeQuery(sql);
+        return rs;
+    }
+    public ResultSet buscar_pacientes() throws SQLException
+    {
+        Statement st = modeloConexion.conexionBD().createStatement();
+        String sql = "SELECT id_paciente, pac_nombre, pac_edad, pac_sexo, pac_especie, "
+                   + "pac_raza, pac_color, pac_fecha_nac FROM public.pacientes WHERE pac_nombre LIKE '"+ this.nombre +"%';";
+        ResultSet rs = st.executeQuery(sql);
+        return rs;
+    }
 }
