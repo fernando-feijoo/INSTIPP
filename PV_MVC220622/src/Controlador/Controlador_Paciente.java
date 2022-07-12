@@ -26,15 +26,14 @@ public class Controlador_Paciente implements ActionListener, KeyListener
         this.vistaPaciente.txf_buscar.addKeyListener(this);
         this.llenar_combo_especies();
         this.llenar_tabla();
-        
     }
     public void borrar_datos ()
     {
         this.vistaPaciente.txf_nombre.setText(null);
         this.vistaPaciente.txf_edad.setText(null);
-        this.vistaPaciente.cb_especie.setAction(null);
+        this.vistaPaciente.cb_especie.setSelectedItem(null);//Toca tenere en observacion esto
         this.vistaPaciente.txf_color.setText(null);
-        this.vistaPaciente.cb_sexo.setAction(null);
+        this.vistaPaciente.cb_sexo.setSelectedItem(null);//Toca tenere en observacion esto
         this.vistaPaciente.txf_raza.setText(null);
         this.vistaPaciente.txf_fechaNacimiento.setText(null);
     }
@@ -90,9 +89,9 @@ public class Controlador_Paciente implements ActionListener, KeyListener
         {
             modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText();
             modeloPaciente.edad = this.vistaPaciente.txf_edad.getText();
-            modeloPaciente.especie = this.vistaPaciente.cb_especie.getName();//
+            modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();//
             modeloPaciente.color = this.vistaPaciente.txf_color.getText();
-            modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getName();//
+            modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();//
             modeloPaciente.raza = this.vistaPaciente.txf_raza.getText();
             modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
             try 
