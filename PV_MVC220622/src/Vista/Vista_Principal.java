@@ -50,6 +50,11 @@ public class Vista_Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
 
+        jp_contenedor.setBackground(new java.awt.Color(204, 204, 204));
+
+        jp_contenedorOpciones.setBackground(new java.awt.Color(253, 253, 252));
+
+        jp_textoLogo.setBackground(new java.awt.Color(253, 253, 252));
         jp_textoLogo.setMaximumSize(new java.awt.Dimension(87, 107));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/LogoVeterinaria.png"))); // NOI18N
@@ -69,6 +74,8 @@ public class Vista_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addContainerGap(7, Short.MAX_VALUE))
         );
+
+        jp_contenedorMenu.setBackground(new java.awt.Color(253, 253, 252));
 
         jp_opcionUno.setBackground(new java.awt.Color(204, 204, 204));
         jp_opcionUno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -250,9 +257,9 @@ public class Vista_Principal extends javax.swing.JFrame {
                 .addComponent(jp_contenedorMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jp_resultadoOpcion.setMaximumSize(new java.awt.Dimension(898, 682));
-        jp_resultadoOpcion.setMinimumSize(new java.awt.Dimension(898, 682));
-        jp_resultadoOpcion.setPreferredSize(new java.awt.Dimension(898, 682));
+        jp_resultadoOpcion.setMaximumSize(new java.awt.Dimension(904, 694));
+        jp_resultadoOpcion.setMinimumSize(new java.awt.Dimension(904, 694));
+        jp_resultadoOpcion.setPreferredSize(new java.awt.Dimension(904, 694));
 
         lbl_textoSuperior.setFont(new java.awt.Font("Segoe UI", 1, 80)); // NOI18N
         lbl_textoSuperior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -270,8 +277,8 @@ public class Vista_Principal extends javax.swing.JFrame {
             .addGroup(jp_bienvenidaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_textoInferior, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
-                    .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_textoInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jp_bienvenidaLayout.setVerticalGroup(
@@ -295,8 +302,8 @@ public class Vista_Principal extends javax.swing.JFrame {
         );
         jp_resultadoOpcionLayout.setVerticalGroup(
             jp_resultadoOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_resultadoOpcionLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_resultadoOpcionLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jp_bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -308,16 +315,12 @@ public class Vista_Principal extends javax.swing.JFrame {
             .addGroup(jp_contenedorLayout.createSequentialGroup()
                 .addComponent(jp_contenedorOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jp_contenedorLayout.setVerticalGroup(
             jp_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jp_contenedorOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jp_contenedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

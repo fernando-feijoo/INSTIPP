@@ -54,9 +54,9 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         btn_seleccionarFila = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(851, 655));
-        setMinimumSize(new java.awt.Dimension(851, 655));
-        setPreferredSize(new java.awt.Dimension(851, 655));
+        setMaximumSize(new java.awt.Dimension(904, 694));
+        setMinimumSize(new java.awt.Dimension(904, 694));
+        setPreferredSize(new java.awt.Dimension(904, 694));
 
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -112,25 +112,35 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Tipo de identificación: *");
 
+        cb_tipoIdentificacion.setBackground(new java.awt.Color(255, 255, 255));
         cb_tipoIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_tipoIdentificacion.setForeground(new java.awt.Color(0, 0, 0));
         cb_tipoIdentificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
 
+        cb_tipoCliente.setBackground(new java.awt.Color(255, 255, 255));
         cb_tipoCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_tipoCliente.setForeground(new java.awt.Color(0, 0, 0));
         cb_tipoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
 
+        cb_estadoCivil.setBackground(new java.awt.Color(255, 255, 255));
         cb_estadoCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_estadoCivil.setForeground(new java.awt.Color(0, 0, 0));
         cb_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Sexo:");
 
+        cb_sexo.setBackground(new java.awt.Color(255, 255, 255));
         cb_sexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_sexo.setForeground(new java.awt.Color(0, 0, 0));
         cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Estado: *");
 
+        cb_estado.setBackground(new java.awt.Color(255, 255, 255));
         cb_estado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_estado.setForeground(new java.awt.Color(0, 0, 0));
         cb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
 
         javax.swing.GroupLayout jp_contenedorOpcionesLayout = new javax.swing.GroupLayout(jp_contenedorOpciones);
@@ -250,7 +260,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_seleccionarFila))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jp_contenedorLayout = new javax.swing.GroupLayout(jp_contenedor);

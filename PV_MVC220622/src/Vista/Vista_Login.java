@@ -42,12 +42,17 @@ public class Vista_Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jp_contenedor.setBackground(new java.awt.Color(253, 253, 252));
+
         ico_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ico_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/dog_128px.png"))); // NOI18N
+
+        jp_datos.setBackground(new java.awt.Color(253, 253, 252));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Usuario: *");
 
+        txf_usuario.setBackground(new java.awt.Color(255, 255, 255));
         txf_usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -60,6 +65,8 @@ public class Vista_Login extends javax.swing.JFrame {
         btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salir.setText("Salir");
         btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        txf_contrasena.setBackground(new java.awt.Color(255, 255, 255));
 
         ico_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/iniciar-sesion_16px.png"))); // NOI18N
 
