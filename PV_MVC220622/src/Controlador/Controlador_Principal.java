@@ -1,5 +1,4 @@
 package Controlador;
-import Modelo.Modelo_Paciente;
 import Vista.Vista_Cliente;
 import Vista.Vista_Configuracion;
 import Vista.Vista_Medicina;
@@ -15,144 +14,144 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 public class Controlador_Principal implements MouseListener, ComponentListener, ActionListener
 {
-    Vista_Paciente vista_paciente = new Vista_Paciente();
-    Controlador_Paciente controlPaciente = new Controlador_Paciente(vista_paciente);
-    Vista_Cliente vista_cliente = new Vista_Cliente();
-    Controlador_Cliente controlCliente = new Controlador_Cliente(vista_cliente);
-    Vista_Medicina vista_medicina = new Vista_Medicina();
-    Controlador_Medicina controlMedicina =  new Controlador_Medicina(vista_medicina);
-    Vista_Reporte vista_reporte = new Vista_Reporte();
-    Controlador_Reporte controlReporte = new Controlador_Reporte(vista_reporte);
-    Vista_Configuracion vista_configuracion = new Vista_Configuracion();
-    Controlador_Configuracion controlConfiguracion = new Controlador_Configuracion(vista_configuracion);
+    Vista_Paciente vistaPaciente = new Vista_Paciente();
+    Controlador_Paciente controlPaciente = new Controlador_Paciente(vistaPaciente);
+    Vista_Cliente vistaCliente = new Vista_Cliente();
+    Controlador_Cliente controlCliente = new Controlador_Cliente(vistaCliente);
+    Vista_Medicina vistaMedicina = new Vista_Medicina();
+    Controlador_Medicina controlMedicina =  new Controlador_Medicina(vistaMedicina);
+    Vista_Reporte vistaReporte = new Vista_Reporte();
+    Controlador_Reporte controlReporte = new Controlador_Reporte(vistaReporte);
+    Vista_Configuracion vistaConfiguracion = new Vista_Configuracion();
+    Controlador_Configuracion controlConfiguracion = new Controlador_Configuracion(vistaConfiguracion);
     Color colorOscuro1 = new Color(213,245,227);
     Color colorOscuro2 = new Color(204,204,204);
     Color colorOpcion = new Color(65, 204, 0);
-    int opcion_click, contador;
-    Vista_Principal principal;
-    public Controlador_Principal(Vista_Principal principal) 
+    int opcionClick, contador;
+    Vista_Principal vistaPrincipal;
+    public Controlador_Principal(Vista_Principal vistaPrincipal) 
     {
-        this.principal = principal;
-        this.principal.addComponentListener(this);
+        this.vistaPrincipal = vistaPrincipal;
+        this.vistaPrincipal.addComponentListener(this);
 //        Control de opciones de menu.
-        this.principal.jp_contenedor.addComponentListener(this);
-        this.principal.jp_opcionUno.addMouseListener(this);
-        this.principal.jp_opcionDos.addMouseListener(this);
-        this.principal.jp_opcionTres.addMouseListener(this);
-        this.principal.jp_opcionCuatro.addMouseListener(this);
-        this.principal.jp_opcionCinco.addMouseListener(this);
+        this.vistaPrincipal.jp_contenedor.addComponentListener(this);
+        this.vistaPrincipal.jp_opcionUno.addMouseListener(this);
+        this.vistaPrincipal.jp_opcionDos.addMouseListener(this);
+        this.vistaPrincipal.jp_opcionTres.addMouseListener(this);
+        this.vistaPrincipal.jp_opcionCuatro.addMouseListener(this);
+        this.vistaPrincipal.jp_opcionCinco.addMouseListener(this);
 //        Control de ventana subMenus
-        this.vista_paciente.addComponentListener(this);
-        this.vista_cliente.addComponentListener(this);
-        this.vista_medicina.addComponentListener(this);
-        this.vista_reporte.addComponentListener(this);
-        this.vista_configuracion.addComponentListener(this);
+        this.vistaPaciente.addComponentListener(this);
+        this.vistaCliente.addComponentListener(this);
+        this.vistaMedicina.addComponentListener(this);
+        this.vistaReporte.addComponentListener(this);
+        this.vistaConfiguracion.addComponentListener(this);
 //        Control de salida de subMenus, para restablecer color base de botones y pantalla Bienvenida.
-        this.vista_paciente.btn_salir.addActionListener(this);
-        this.vista_cliente.btn_salir.addActionListener(this);
-        this.vista_medicina.btn_salir.addActionListener(this);
-        this.vista_reporte.btn_salir.addActionListener(this);
-        this.vista_configuracion.btn_salir.addActionListener(this);
+        this.vistaPaciente.btn_salir.addActionListener(this);
+        this.vistaCliente.btn_salir.addActionListener(this);
+        this.vistaMedicina.btn_salir.addActionListener(this);
+        this.vistaReporte.btn_salir.addActionListener(this);
+        this.vistaConfiguracion.btn_salir.addActionListener(this);
     }
     public void centrarElementos()
     {
-        int panelX = (principal.getWidth() - principal.jp_contenedor.getWidth() - principal.getInsets().left - principal.getInsets().right) / 2;
-	int panelY = ((principal.getHeight() - principal.jp_contenedor.getHeight() - principal.getInsets().top - principal.getInsets().bottom) / 2);
-        this.principal.jp_contenedor.setLocation(panelX, panelY);
+        int panelX = (vistaPrincipal.getWidth() - vistaPrincipal.jp_contenedor.getWidth() - vistaPrincipal.getInsets().left - vistaPrincipal.getInsets().right) / 2;
+	int panelY = ((vistaPrincipal.getHeight() - vistaPrincipal.jp_contenedor.getHeight() - vistaPrincipal.getInsets().top - vistaPrincipal.getInsets().bottom) / 2);
+        this.vistaPrincipal.jp_contenedor.setLocation(panelX, panelY);
     }
     @Override
     public void mouseClicked(MouseEvent me) 
     {
 //        Opcion 1 Pacientes
-        if (me.getSource() == this.principal.jp_opcionUno) 
+        if (me.getSource() == this.vistaPrincipal.jp_opcionUno) 
         {
 //            Coloco el nuevo color del boton seleccionado.
-            this.principal.jp_opcionUno.setBackground(colorOpcion);
+            this.vistaPrincipal.jp_opcionUno.setBackground(colorOpcion);
 //            Ocultamos las ventanas que no usaremos.
-            this.principal.jp_bienvenida.setVisible(false);
-            this.vista_cliente.setVisible(false);
-            this.vista_medicina.setVisible(false);
-            this.vista_reporte.setVisible(false);
-            this.vista_configuracion.setVisible(false);
+            this.vistaPrincipal.jp_bienvenida.setVisible(false);
+            this.vistaCliente.setVisible(false);
+            this.vistaMedicina.setVisible(false);
+            this.vistaReporte.setVisible(false);
+            this.vistaConfiguracion.setVisible(false);
 //            Muestro la que necesito.
-            this.principal.jp_resultadoOpcion.add(vista_paciente);
-            this.vista_paciente.setBorder(null);
-            this.vista_paciente.setVisible(true);
+            this.vistaPrincipal.jp_resultadoOpcion.add(vistaPaciente);
+            this.vistaPaciente.setBorder(null);
+            this.vistaPaciente.setVisible(true);
 //            Valido cada click en la opcion para su animacion MouseListener.
-            opcion_click = 1;
+            opcionClick = 1;
 //            Valido cuando se hace mas de un click entre menus, pero no sale aun, si sale retorna el color base.
             contador++;
         }
 //        Opcion 2 Clientes
-        if (me.getSource() == this.principal.jp_opcionDos) 
+        if (me.getSource() == this.vistaPrincipal.jp_opcionDos) 
         {
-            this.principal.jp_opcionDos.setBackground(colorOpcion);
+            this.vistaPrincipal.jp_opcionDos.setBackground(colorOpcion);
             
-            this.principal.jp_bienvenida.setVisible(false);
-            this.vista_paciente.setVisible(false);
-            this.vista_medicina.setVisible(false);
-            this.vista_reporte.setVisible(false);
-            this.vista_configuracion.setVisible(false);
+            this.vistaPrincipal.jp_bienvenida.setVisible(false);
+            this.vistaPaciente.setVisible(false);
+            this.vistaMedicina.setVisible(false);
+            this.vistaReporte.setVisible(false);
+            this.vistaConfiguracion.setVisible(false);
             
-            this.principal.jp_resultadoOpcion.add(vista_cliente);
-            this.vista_cliente.setBorder(null);
-            this.vista_cliente.setVisible(true);
+            this.vistaPrincipal.jp_resultadoOpcion.add(vistaCliente);
+            this.vistaCliente.setBorder(null);
+            this.vistaCliente.setVisible(true);
             
-            opcion_click = 2;
+            opcionClick = 2;
             contador++;
         }
 //        Opcion 3 Medicinas 
-        if (me.getSource() == this.principal.jp_opcionTres) 
+        if (me.getSource() == this.vistaPrincipal.jp_opcionTres) 
         {
-            this.principal.jp_opcionTres.setBackground(colorOpcion);
+            this.vistaPrincipal.jp_opcionTres.setBackground(colorOpcion);
             
-            this.principal.jp_bienvenida.setVisible(false);
-            this.vista_paciente.setVisible(false);
-            this.vista_cliente.setVisible(false);
-            this.vista_reporte.setVisible(false);
-            this.vista_configuracion.setVisible(false);
+            this.vistaPrincipal.jp_bienvenida.setVisible(false);
+            this.vistaPaciente.setVisible(false);
+            this.vistaCliente.setVisible(false);
+            this.vistaReporte.setVisible(false);
+            this.vistaConfiguracion.setVisible(false);
             
-            this.principal.jp_resultadoOpcion.add(vista_medicina);
-            this.vista_medicina.setBorder(null);
-            this.vista_medicina.setVisible(true);
+            this.vistaPrincipal.jp_resultadoOpcion.add(vistaMedicina);
+            this.vistaMedicina.setBorder(null);
+            this.vistaMedicina.setVisible(true);
             
-            opcion_click = 3;
+            opcionClick = 3;
             contador++;
         }
 //        Opcion 4 Reporte
-        if (me.getSource() == this.principal.jp_opcionCuatro) 
+        if (me.getSource() == this.vistaPrincipal.jp_opcionCuatro) 
         {
-            this.principal.jp_opcionCuatro.setBackground(colorOpcion);
+            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorOpcion);
             
-            this.principal.jp_bienvenida.setVisible(false);
-            this.vista_paciente.setVisible(false);
-            this.vista_cliente.setVisible(false);
-            this.vista_medicina.setVisible(false);
-            this.vista_configuracion.setVisible(false);
+            this.vistaPrincipal.jp_bienvenida.setVisible(false);
+            this.vistaPaciente.setVisible(false);
+            this.vistaCliente.setVisible(false);
+            this.vistaMedicina.setVisible(false);
+            this.vistaConfiguracion.setVisible(false);
             
-            this.principal.jp_resultadoOpcion.add(vista_reporte);
-            this.vista_reporte.setBorder(null);
-            this.vista_reporte.setVisible(true);
+            this.vistaPrincipal.jp_resultadoOpcion.add(vistaReporte);
+            this.vistaReporte.setBorder(null);
+            this.vistaReporte.setVisible(true);
             
-            opcion_click = 4;
+            opcionClick = 4;
             contador++;
         }
 //        Opcion 5 Configuracion
-        if (me.getSource() == this.principal.jp_opcionCinco) 
+        if (me.getSource() == this.vistaPrincipal.jp_opcionCinco) 
         {
-            this.principal.jp_opcionCinco.setBackground(colorOpcion);
+            this.vistaPrincipal.jp_opcionCinco.setBackground(colorOpcion);
             
-            this.principal.jp_bienvenida.setVisible(false);
-            this.vista_paciente.setVisible(false);
-            this.vista_cliente.setVisible(false);
-            this.vista_medicina.setVisible(false);
-            this.vista_reporte.setVisible(false);
+            this.vistaPrincipal.jp_bienvenida.setVisible(false);
+            this.vistaPaciente.setVisible(false);
+            this.vistaCliente.setVisible(false);
+            this.vistaMedicina.setVisible(false);
+            this.vistaReporte.setVisible(false);
             
-            this.principal.jp_resultadoOpcion.add(vista_configuracion);
-            this.vista_configuracion.setBorder(null);
-            this.vista_configuracion.setVisible(true);
+            this.vistaPrincipal.jp_resultadoOpcion.add(vistaConfiguracion);
+            this.vistaConfiguracion.setBorder(null);
+            this.vistaConfiguracion.setVisible(true);
             
-            opcion_click = 5;
+            opcionClick = 5;
             contador++;
         }
     }
@@ -164,50 +163,50 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     public void mouseEntered(MouseEvent me) 
     {
 //        Asigno color al jPanel donde se encuentre el mouse.
-        if (me.getSource() == this.principal.jp_opcionUno && (opcion_click != 1)) 
+        if (me.getSource() == this.vistaPrincipal.jp_opcionUno && (opcionClick != 1)) 
         {
-            this.principal.jp_opcionUno.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionUno.setBackground(colorOscuro1);
         }
-        else if (me.getSource() == this.principal.jp_opcionDos && (opcion_click != 2)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionDos && (opcionClick != 2)) 
         {
-            this.principal.jp_opcionDos.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionDos.setBackground(colorOscuro1);
         }
-        else if (me.getSource() == this.principal.jp_opcionTres && (opcion_click != 3)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionTres && (opcionClick != 3)) 
         {
-            this.principal.jp_opcionTres.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionTres.setBackground(colorOscuro1);
         }
-        else if (me.getSource() == this.principal.jp_opcionCuatro && (opcion_click != 4)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionCuatro && (opcionClick != 4)) 
         {
-            this.principal.jp_opcionCuatro.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorOscuro1);
         }
-        else if (me.getSource() == this.principal.jp_opcionCinco && (opcion_click != 5)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionCinco && (opcionClick != 5)) 
         {
-            this.principal.jp_opcionCinco.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionCinco.setBackground(colorOscuro1);
         }
     }
     @Override
     public void mouseExited(MouseEvent me) 
     {
 //        Asigno nuevo color, que es el base cuando sale el mouse del jPanel.
-        if (me.getSource() == this.principal.jp_opcionUno && (opcion_click != 1)) 
+        if (me.getSource() == this.vistaPrincipal.jp_opcionUno && (opcionClick != 1)) 
         {
-            this.principal.jp_opcionUno.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionUno.setBackground(colorOscuro2);
         }
-        else if (me.getSource() == this.principal.jp_opcionDos && (opcion_click != 2)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionDos && (opcionClick != 2)) 
         {
-            this.principal.jp_opcionDos.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionDos.setBackground(colorOscuro2);
         }
-        else if (me.getSource() == this.principal.jp_opcionTres && (opcion_click != 3)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionTres && (opcionClick != 3)) 
         {
-            this.principal.jp_opcionTres.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionTres.setBackground(colorOscuro2);
         }
-        else if (me.getSource() == this.principal.jp_opcionCuatro && (opcion_click != 4)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionCuatro && (opcionClick != 4)) 
         {
-            this.principal.jp_opcionCuatro.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorOscuro2);
         }
-        else if (me.getSource() == this.principal.jp_opcionCinco && (opcion_click != 5)) 
+        else if (me.getSource() == this.vistaPrincipal.jp_opcionCinco && (opcionClick != 5)) 
         {
-            this.principal.jp_opcionCinco.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCinco.setBackground(colorOscuro2);
         }
     }
     @Override
@@ -227,35 +226,35 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     @Override
     public void componentHidden(ComponentEvent ce) 
     {
-        //coloca el color base del boton. El problema era con la opcion_click.
-        if (ce.getSource() == this.vista_paciente) 
+        //coloca el color base del boton. El problema era con la opcionClick.
+        if (ce.getSource() == this.vistaPaciente) 
         {
-            this.principal.jp_opcionUno.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionUno.setBackground(colorOscuro2);
         }
-        if (ce.getSource() == this.vista_cliente) 
+        if (ce.getSource() == this.vistaCliente) 
         {
-            this.principal.jp_opcionDos.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionDos.setBackground(colorOscuro2);
         }
-        if (ce.getSource() == this.vista_medicina) 
+        if (ce.getSource() == this.vistaMedicina) 
         {
-            this.principal.jp_opcionTres.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionTres.setBackground(colorOscuro2);
         }
-        if (ce.getSource() == this.vista_reporte) 
+        if (ce.getSource() == this.vistaReporte) 
         {
-            this.principal.jp_opcionCuatro.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorOscuro2);
         }
-        if (ce.getSource() == this.vista_configuracion) 
+        if (ce.getSource() == this.vistaConfiguracion) 
         {
-            this.principal.jp_opcionCinco.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCinco.setBackground(colorOscuro2);
         }
     }
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-//        Controlo si se alterna entre menus, cuando se sale de cada 1 el valor de opcion_click regresa a 0.
+//        Controlo si se alterna entre menus, cuando se sale de cada 1 el valor de opcionClick regresa a 0.
 //        Control para subMenus
-        this.principal.jp_bienvenida.setVisible(true);
-        opcion_click = 0;
+        this.vistaPrincipal.jp_bienvenida.setVisible(true);
+        opcionClick = 0;
         contador = 0;
     }
 }

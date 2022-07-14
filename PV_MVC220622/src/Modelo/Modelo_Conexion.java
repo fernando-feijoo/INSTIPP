@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class Modelo_Conexion 
 {
-    public Connection conexionBD()
+    public Connection conexion_bd()
     {
         String baseDatos = "jdbc:postgresql://localhost:5432/veterinaria_pv_270622";
         String user = "postgres";
@@ -17,7 +17,6 @@ public class Modelo_Conexion
 //            Conexion a la base de datos.
             Connection conexion = DriverManager.getConnection(baseDatos, user, password);
             System.out.println("Conexion exitosa.");
-            //conexion.close();
             return conexion;
         } catch (SQLException ex) 
         {

@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/User/Documents/NetBeansProjects/PV_MVC220622/src/Modelo/Modelo_Paciente.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/PV_MVC220622/src/Controlador/Controlador_Paciente.java</file>
+=======
+            <file>file:/C:/Users/USUARIO%20PC/Documents/NetBeansProjects/PV_MVC220622/src/Modelo/Modelo_Paciente.java</file>
+            <file>file:/C:/Users/USUARIO%20PC/Documents/NetBeansProjects/PV_MVC220622/src/Vista/Vista_Cliente.java</file>
+            <file>file:/C:/Users/USUARIO%20PC/Documents/NetBeansProjects/PV_MVC220622/src/Controlador/Controlador_Cliente.java</file>
+            <file>file:/C:/Users/USUARIO%20PC/Documents/NetBeansProjects/PV_MVC220622/src/Vista/Vista_Paciente.java</file>
+            <file>file:/C:/Users/USUARIO%20PC/Documents/NetBeansProjects/PV_MVC220622/src/Controlador/Controlador_Paciente.java</file>
+>>>>>>> 5142481eb1e951982c3c7de1e131f76824f01d74
         </group>
     </open-files>
 </project-private>
