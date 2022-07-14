@@ -256,7 +256,7 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         lbl_textoSuperior.setFont(new java.awt.Font("Segoe UI", 1, 80)); // NOI18N
         lbl_textoSuperior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_textoSuperior.setText("Pantalla Principal");
+        lbl_textoSuperior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/BannerMascotas.png"))); // NOI18N
 
         lbl_textoInferior.setFont(new java.awt.Font("Segoe UI", 1, 80)); // NOI18N
         lbl_textoInferior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -270,18 +270,18 @@ public class Vista_Principal extends javax.swing.JFrame {
             .addGroup(jp_bienvenidaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
-                    .addComponent(lbl_textoInferior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_textoInferior, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+                    .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jp_bienvenidaLayout.setVerticalGroup(
             jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_bienvenidaLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lbl_textoSuperior)
-                .addGap(113, 113, 113)
+                .addGap(232, 232, 232)
                 .addComponent(lbl_textoInferior)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_textoSuperior)
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout jp_resultadoOpcionLayout = new javax.swing.GroupLayout(jp_resultadoOpcion);
@@ -297,8 +297,8 @@ public class Vista_Principal extends javax.swing.JFrame {
             jp_resultadoOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_resultadoOpcionLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jp_bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jp_bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jp_contenedorLayout = new javax.swing.GroupLayout(jp_contenedor);

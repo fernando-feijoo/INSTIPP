@@ -467,10 +467,10 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Component id="jp_bienvenida" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jp_bienvenida" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -484,8 +484,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_textoSuperior" pref="874" max="32767" attributes="0"/>
-                              <Component id="lbl_textoInferior" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lbl_textoInferior" pref="874" max="32767" attributes="0"/>
+                              <Component id="lbl_textoSuperior" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -494,11 +494,11 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="lbl_textoSuperior" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                           <Component id="lbl_textoInferior" max="-2" attributes="0"/>
-                          <EmptySpace pref="185" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lbl_textoSuperior" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -510,7 +510,9 @@
                       <Font name="Segoe UI" size="80" style="1"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Pantalla Principal"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/ico/BannerMascotas.png"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_textoInferior">

@@ -51,6 +51,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+        btn_seleccionarFila = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(851, 655));
@@ -93,13 +94,13 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Nombres:");
+        jLabel1.setText("Nombres: *");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("N° identifiación:");
+        jLabel2.setText("N° identifiación: *");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Tpo de cliente:");
+        jLabel3.setText("Tpo de cliente: *");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Estado Civil:");
@@ -109,7 +110,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         txf_numeroIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Tipo de identificación:");
+        jLabel5.setText("Tipo de identificación: *");
 
         cb_tipoIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_tipoIdentificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
@@ -127,7 +128,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("Estado:");
+        jLabel7.setText("Estado: *");
 
         cb_estado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
@@ -174,7 +175,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cb_estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(cb_tipoIdentificacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jp_contenedorOpcionesLayout.setVerticalGroup(
             jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,13 +211,13 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -225,20 +226,29 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Listado de Clientes");
 
+        btn_seleccionarFila.setBackground(new java.awt.Color(204, 204, 204));
+        btn_seleccionarFila.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_seleccionarFila.setForeground(new java.awt.Color(102, 102, 102));
+        btn_seleccionarFila.setText("Seleccionar Fila");
+        btn_seleccionarFila.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jp_contenedorTablaLayout = new javax.swing.GroupLayout(jp_contenedorTabla);
         jp_contenedorTabla.setLayout(jp_contenedorTablaLayout);
         jp_contenedorTablaLayout.setHorizontalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(252, 252, 252))
         );
         jp_contenedorTablaLayout.setVerticalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_seleccionarFila))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -285,6 +295,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_guardar;
     public javax.swing.JButton btn_salir;
+    public javax.swing.JButton btn_seleccionarFila;
     public javax.swing.JComboBox<String> cb_estado;
     public javax.swing.JComboBox<String> cb_estadoCivil;
     public javax.swing.JComboBox<String> cb_sexo;

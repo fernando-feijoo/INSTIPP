@@ -1,6 +1,5 @@
 package Modelo;
 
-import Vista.Vista_Paciente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,7 +13,6 @@ public class Modelo_Paciente
     public String sexo;
     public String raza;
     public String fechaNacimiento;
-    Vista_Paciente vistaPaciente = new Vista_Paciente();//Analizar si esta de mas este objeto, no hace nada aqui al parecer.
     Modelo_Conexion modeloConexion = new Modelo_Conexion();
     public boolean guardar_datos_paciente() throws SQLException
     {
