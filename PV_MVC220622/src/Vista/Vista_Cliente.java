@@ -54,9 +54,9 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         btn_seleccionarFila = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(904, 694));
-        setMinimumSize(new java.awt.Dimension(904, 694));
-        setPreferredSize(new java.awt.Dimension(904, 694));
+        setMaximumSize(new java.awt.Dimension(904, 715));
+        setMinimumSize(new java.awt.Dimension(904, 715));
+        setPreferredSize(new java.awt.Dimension(904, 715));
 
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -260,8 +260,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_seleccionarFila))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jp_contenedorLayout = new javax.swing.GroupLayout(jp_contenedor);

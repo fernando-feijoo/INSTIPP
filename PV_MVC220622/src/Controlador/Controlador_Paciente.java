@@ -32,9 +32,9 @@ public class Controlador_Paciente implements ActionListener, KeyListener
     {
         this.vistaPaciente.txf_nombre.setText(null);
         this.vistaPaciente.txf_edad.setText(null);
-        this.vistaPaciente.cb_especie.setSelectedIndex(0);//Toca tenere en observacion esto
+        this.vistaPaciente.cb_especie.setSelectedIndex(0);//Selecciona la opcion por defecto inicial.
         this.vistaPaciente.txf_color.setText(null);
-        this.vistaPaciente.cb_sexo.setSelectedIndex(0);//Toca tenere en observacion esto
+        this.vistaPaciente.cb_sexo.setSelectedIndex(0);//Selecciona la opcion por defecto inicial.
         this.vistaPaciente.txf_raza.setText(null);
         this.vistaPaciente.txf_fechaNacimiento.setText(null);
     }
