@@ -125,7 +125,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         cb_estadoCivil.setBackground(new java.awt.Color(255, 255, 255));
         cb_estadoCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_estadoCivil.setForeground(new java.awt.Color(0, 0, 0));
-        cb_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
+        cb_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "SOLTERO/A", "CADO/A", "DIVORCIADO/A", "UNION LIBRE" }));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Sexo:");

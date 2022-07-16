@@ -363,8 +363,12 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
+                  <StringArray count="5">
                     <StringItem index="0" value="&#x2193; Opci&#xf3;n &#x2193;"/>
+                    <StringItem index="1" value="SOLTERO/A"/>
+                    <StringItem index="2" value="CADO/A"/>
+                    <StringItem index="3" value="DIVORCIADO/A"/>
+                    <StringItem index="4" value="UNION LIBRE"/>
                   </StringArray>
                 </Property>
               </Properties>

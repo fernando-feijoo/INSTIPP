@@ -11,14 +11,23 @@ public class Controlador_Cliente implements ActionListener
     {
         this.vista_cliente = vista_cliente;
         this.vista_cliente.btn_salir.addActionListener(this);
+        this.vista_cliente.btn_guardar.addActionListener(this);
+        this.vista_cliente.btn_seleccionarFila.addActionListener(this);
     }
-
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
         if (ae.getSource() == this.vista_cliente.btn_salir) 
         {
             this.vista_cliente.setVisible(false);
+        }
+        if (ae.getSource() == this.vista_cliente.btn_guardar) 
+        {
+            
+        }
+        if (ae.getSource() == this.vista_cliente.btn_seleccionarFila) 
+        {
+            
         }
     }
     

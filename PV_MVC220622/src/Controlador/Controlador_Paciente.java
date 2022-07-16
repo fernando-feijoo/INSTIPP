@@ -148,7 +148,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener
         }
         if (ae.getSource() == this.vistaPaciente.btn_seleccionarFila) 
         {
-            if (this.vistaPaciente.jtb_listaPacientes.getSelectedRowCount()== 1) 
+            if (this.vistaPaciente.jtb_listaPacientes.getSelectedRowCount() == 1) 
             {
                 int filaSeleccionada = this.vistaPaciente.jtb_listaPacientes.getSelectedRow();
                 this.vistaPaciente.txf_nombre.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 1).toString());
@@ -158,7 +158,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener
                 this.vistaPaciente.txf_raza.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 5).toString());
                 this.vistaPaciente.txf_color.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 6).toString());
                 this.vistaPaciente.txf_fechaNacimiento.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 7).toString());
-            }else if (this.vistaPaciente.jtb_listaPacientes.getSelectedRowCount()== 0)
+            }else if (this.vistaPaciente.jtb_listaPacientes.getSelectedRowCount() == 0)
             {
                 JOptionPane.showMessageDialog(vistaPaciente, "Aún no seleciona 1 opción.", "Información", JOptionPane.INFORMATION_MESSAGE);
             }else
