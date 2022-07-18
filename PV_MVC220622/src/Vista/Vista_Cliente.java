@@ -49,9 +49,13 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         cb_estado = new javax.swing.JComboBox<>();
         jp_contenedorTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtb_tablaClientes = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         btn_seleccionarFila = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txf_buscar = new javax.swing.JTextField();
+        btn_buscar = new javax.swing.JButton();
+        cb_opcionBusqueda = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(904, 715));
@@ -125,7 +129,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         cb_estadoCivil.setBackground(new java.awt.Color(255, 255, 255));
         cb_estadoCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_estadoCivil.setForeground(new java.awt.Color(0, 0, 0));
-        cb_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "SOLTERO/A", "CADO/A", "DIVORCIADO/A", "UNION LIBRE" }));
+        cb_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "SOLTERO/A", "CASADO/A", "DIVORCIADO/A", "UNION LIBRE" }));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Sexo:");
@@ -133,7 +137,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         cb_sexo.setBackground(new java.awt.Color(255, 255, 255));
         cb_sexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_sexo.setForeground(new java.awt.Color(0, 0, 0));
-        cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
+        cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "H", "M" }));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Estado: *");
@@ -141,7 +145,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         cb_estado.setBackground(new java.awt.Color(255, 255, 255));
         cb_estado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_estado.setForeground(new java.awt.Color(0, 0, 0));
-        cb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
+        cb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "A", "I" }));
 
         javax.swing.GroupLayout jp_contenedorOpcionesLayout = new javax.swing.GroupLayout(jp_contenedorOpciones);
         jp_contenedorOpciones.setLayout(jp_contenedorOpcionesLayout);
@@ -219,7 +223,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtb_tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -230,7 +234,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtb_tablaClientes);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -242,23 +246,41 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         btn_seleccionarFila.setText("Seleccionar Fila");
         btn_seleccionarFila.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel9.setText("Buscar:");
+
+        btn_buscar.setText("Buscar");
+
+        cb_opcionBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "Nombres", "N° identificación" }));
+
         javax.swing.GroupLayout jp_contenedorTablaLayout = new javax.swing.GroupLayout(jp_contenedorTabla);
         jp_contenedorTabla.setLayout(jp_contenedorTablaLayout);
         jp_contenedorTablaLayout.setHorizontalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
             .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
                 .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(252, 252, 252))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_opcionBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_buscar)
+                .addGap(22, 22, 22))
         );
         jp_contenedorTablaLayout.setVerticalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
                 .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_seleccionarFila))
+                    .addComponent(btn_seleccionarFila)
+                    .addComponent(btn_buscar)
+                    .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(cb_opcionBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -303,11 +325,13 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_buscar;
     public javax.swing.JButton btn_guardar;
     public javax.swing.JButton btn_salir;
     public javax.swing.JButton btn_seleccionarFila;
     public javax.swing.JComboBox<String> cb_estado;
     public javax.swing.JComboBox<String> cb_estadoCivil;
+    public javax.swing.JComboBox<String> cb_opcionBusqueda;
     public javax.swing.JComboBox<String> cb_sexo;
     public javax.swing.JComboBox<String> cb_tipoCliente;
     public javax.swing.JComboBox<String> cb_tipoIdentificacion;
@@ -319,13 +343,15 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     public javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel jLabel9;
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable1;
     public javax.swing.JPanel jp_contenedor;
     public javax.swing.JPanel jp_contenedorOpciones;
     public javax.swing.JPanel jp_contenedorTabla;
     public javax.swing.JPanel jp_titulo;
+    public javax.swing.JTable jtb_tablaClientes;
     public javax.swing.JLabel lbl_titulo;
+    public javax.swing.JTextField txf_buscar;
     public javax.swing.JTextField txf_nombresCliente;
     public javax.swing.JTextField txf_numeroIdentificacion;
     // End of variables declaration//GEN-END:variables

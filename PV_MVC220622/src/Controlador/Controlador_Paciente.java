@@ -26,8 +26,9 @@ public class Controlador_Paciente implements ActionListener, KeyListener
         //KeyListener para eventos de teclas.
         this.vistaPaciente.txf_buscar.addKeyListener(this);
         this.llenar_combo_especies();
-        this.llenar_tabla();
+        this.llenar_tabla_pacientes();
     }
+    
     public void borrar_datos ()
     {
         this.vistaPaciente.txf_nombre.setText(null);
@@ -38,11 +39,12 @@ public class Controlador_Paciente implements ActionListener, KeyListener
         this.vistaPaciente.txf_raza.setText(null);
         this.vistaPaciente.txf_fechaNacimiento.setText(null);
     }
-    public void llenar_tabla()
+    
+    public void llenar_tabla_pacientes()
     {
         try 
         {
-            DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaPaciente.jtb_listaPacientes.getModel();
+            DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaPaciente.jtb_tablaPacientes.getModel();
             tablaModelo.setColumnCount(0);
             tablaModelo.setRowCount(0);
 
@@ -74,6 +76,21 @@ public class Controlador_Paciente implements ActionListener, KeyListener
             System.out.println("Error al llenar la tabla... " + ex);
         }
     }
+    
+    public void llenar_combo_especies()
+    {
+        try {
+            ResultSet rs = modeloPaciente.consultar_especie();
+            while (rs.next()) 
+            {
+                this.vistaPaciente.cb_especie.addItem(rs.getString("especie"));
+            }
+        } catch (SQLException ex) 
+        {
+            System.out.println("Error al llenar combo especies: " + ex);
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
@@ -88,12 +105,12 @@ public class Controlador_Paciente implements ActionListener, KeyListener
 //        Guardamos la informacion dentro de los textField de Vista_Paciente y se borra una vez guardado.
         if (ae.getSource() == this.vistaPaciente.btn_guardar) 
         {
-            modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText();
-            modeloPaciente.edad = this.vistaPaciente.txf_edad.getText();
+            modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText().toUpperCase();
+            modeloPaciente.edad = this.vistaPaciente.txf_edad.getText().toUpperCase();
             modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();
-            modeloPaciente.color = this.vistaPaciente.txf_color.getText();
+            modeloPaciente.color = this.vistaPaciente.txf_color.getText().toUpperCase();
             modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();
-            modeloPaciente.raza = this.vistaPaciente.txf_raza.getText();
+            modeloPaciente.raza = this.vistaPaciente.txf_raza.getText().toUpperCase();
             modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
             try 
             {
@@ -107,14 +124,14 @@ public class Controlador_Paciente implements ActionListener, KeyListener
             {
                 borrar_datos();
             }
-            llenar_tabla();
+            llenar_tabla_pacientes();
         }
         if (ae.getSource() == this.vistaPaciente.btn_buscar) 
         {
             modeloPaciente.nombre = this.vistaPaciente.txf_buscar.getText();
             try 
             {
-                DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaPaciente.jtb_listaPacientes.getModel();
+                DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaPaciente.jtb_tablaPacientes.getModel();
                 tablaModelo.setColumnCount(0);
                 tablaModelo.setRowCount(0);
 
@@ -148,36 +165,24 @@ public class Controlador_Paciente implements ActionListener, KeyListener
         }
         if (ae.getSource() == this.vistaPaciente.btn_seleccionarFila) 
         {
-            if (this.vistaPaciente.jtb_listaPacientes.getSelectedRowCount() == 1) 
+            if (this.vistaPaciente.jtb_tablaPacientes.getSelectedRowCount() == 1) 
             {
-                int filaSeleccionada = this.vistaPaciente.jtb_listaPacientes.getSelectedRow();
-                this.vistaPaciente.txf_nombre.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 1).toString());
-                this.vistaPaciente.txf_edad.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 2).toString());
-                this.vistaPaciente.cb_sexo.setSelectedItem(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 3).toString());
-                this.vistaPaciente.cb_especie.setSelectedItem(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 4).toString());
-                this.vistaPaciente.txf_raza.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 5).toString());
-                this.vistaPaciente.txf_color.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 6).toString());
-                this.vistaPaciente.txf_fechaNacimiento.setText(this.vistaPaciente.jtb_listaPacientes.getValueAt(filaSeleccionada, 7).toString());
-            }else if (this.vistaPaciente.jtb_listaPacientes.getSelectedRowCount() == 0)
+                int filaSeleccionada = this.vistaPaciente.jtb_tablaPacientes.getSelectedRow();
+                
+                this.vistaPaciente.txf_nombre.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 1).toString());
+                this.vistaPaciente.txf_edad.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 2).toString());
+                this.vistaPaciente.cb_sexo.setSelectedItem(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 3).toString());
+                this.vistaPaciente.cb_especie.setSelectedItem(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 4).toString());
+                this.vistaPaciente.txf_raza.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 5).toString());
+                this.vistaPaciente.txf_color.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 6).toString());
+                this.vistaPaciente.txf_fechaNacimiento.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 7).toString());
+            }else if (this.vistaPaciente.jtb_tablaPacientes.getSelectedRowCount() == 0)
             {
                 JOptionPane.showMessageDialog(vistaPaciente, "Aún no seleciona 1 opción.", "Información", JOptionPane.INFORMATION_MESSAGE);
             }else
             {
                 JOptionPane.showMessageDialog(vistaPaciente, "Selecciono más de 1 fila, seleccione solo 1.", "Error", JOptionPane.WARNING_MESSAGE);
             }
-        }
-    }
-    public void llenar_combo_especies()
-    {
-        try {
-            ResultSet rs = modeloPaciente.consultar_especie();
-            while (rs.next()) 
-            {
-                this.vistaPaciente.cb_especie.addItem(rs.getString("especie"));
-            }
-        } catch (SQLException ex) 
-        {
-            System.out.println("Error al llenar combo especies: " + ex);
         }
     }
 

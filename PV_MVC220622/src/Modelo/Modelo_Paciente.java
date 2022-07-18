@@ -42,7 +42,7 @@ public class Modelo_Paciente
     {
         Statement st = modeloConexion.conexion_bd().createStatement();
         String sql = "SELECT id_paciente, pac_nombre, pac_edad, pac_sexo, pac_especie, "
-                   + "pac_raza, pac_color, pac_fecha_nac FROM public.pacientes WHERE pac_nombre LIKE '"+ this.nombre +"%';";
+                   + "pac_raza, pac_color, pac_fecha_nac FROM public.pacientes WHERE pac_nombre LIKE '%"+ this.nombre +"%';";
         ResultSet rs = st.executeQuery(sql);
         return rs;
     }
