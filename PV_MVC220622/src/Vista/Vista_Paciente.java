@@ -72,6 +72,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_contenedorGeneral.setMinimumSize(new java.awt.Dimension(904, 694));
         jp_contenedorGeneral.setPreferredSize(new java.awt.Dimension(904, 694));
 
+        jp_contenedorTitulo.setPreferredSize(new java.awt.Dimension(754, 80));
+
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_titulo.setText("Datos del Paciente");
@@ -79,6 +81,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonSalir.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jp_botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jp_botonSalir.setMaximumSize(new java.awt.Dimension(130, 36));
         jp_botonSalir.setPreferredSize(new java.awt.Dimension(130, 36));
 
         lbl_botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -108,21 +111,21 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             jp_contenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTituloLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jp_botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jp_contenedorTituloLayout.setVerticalGroup(
             jp_contenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTituloLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jp_botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
             .addGroup(jp_contenedorTituloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jp_contenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_titulo)
-                    .addGroup(jp_contenedorTituloLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jp_botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jp_contenedorOpciones.setPreferredSize(new java.awt.Dimension(827, 277));
@@ -171,7 +174,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonGuardar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonGuardar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jp_botonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jp_botonGuardar.setPreferredSize(new java.awt.Dimension(138, 45));
+        jp_botonGuardar.setMaximumSize(new java.awt.Dimension(138, 36));
+        jp_botonGuardar.setPreferredSize(new java.awt.Dimension(138, 36));
 
         lbl_botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
@@ -199,7 +203,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonActualizar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonActualizar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jp_botonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jp_botonActualizar.setPreferredSize(new java.awt.Dimension(138, 45));
+        jp_botonActualizar.setMaximumSize(new java.awt.Dimension(138, 36));
+        jp_botonActualizar.setPreferredSize(new java.awt.Dimension(138, 36));
 
         lbl_botonActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_botonActualizar.setForeground(new java.awt.Color(0, 0, 0));
@@ -222,7 +227,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jp_botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jp_botonEliminar.setPreferredSize(new java.awt.Dimension(138, 45));
+        jp_botonEliminar.setMaximumSize(new java.awt.Dimension(138, 36));
+        jp_botonEliminar.setPreferredSize(new java.awt.Dimension(138, 36));
 
         lbl_botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_botonEliminar.setForeground(new java.awt.Color(0, 0, 0));
@@ -311,13 +317,16 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
                     .addComponent(txf_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jp_botonGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jp_botonActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jp_botonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                    .addComponent(jp_botonGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jp_botonActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jp_botonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(15, 15, 15))
         );
 
         jp_contenedorTabla.setPreferredSize(new java.awt.Dimension(680, 276));
+
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(882, 250));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(882, 250));
 
         jtb_tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -343,6 +352,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         btn_seleccionarFila.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/checkbox_16px.png"))); // NOI18N
         btn_seleccionarFila.setText("Seleccionar Fila");
         btn_seleccionarFila.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_seleccionarFila.setMaximumSize(new java.awt.Dimension(125, 25));
+        btn_seleccionarFila.setMinimumSize(new java.awt.Dimension(125, 25));
         btn_seleccionarFila.setPreferredSize(new java.awt.Dimension(125, 25));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -353,7 +364,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_contenedorTabla.setLayout(jp_contenedorTablaLayout);
         jp_contenedorTablaLayout.setHorizontalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
                 .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -395,7 +406,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
                     .addGroup(jp_contenedorLayout.createSequentialGroup()
                         .addComponent(jp_contenedorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jp_contenedorTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jp_contenedorTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)))
         );
         jp_contenedorLayout.setVerticalGroup(
             jp_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,7 +430,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             jp_contenedorGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_contenedorGeneralLayout.createSequentialGroup()
                 .addComponent(jp_contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(4, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

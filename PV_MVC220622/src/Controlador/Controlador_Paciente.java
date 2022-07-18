@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.Modelo_Paciente;
 import Vista.Vista_Paciente;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,17 +18,23 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
 {
     Vista_Paciente vistaPaciente;
     Modelo_Paciente modeloPaciente = new Modelo_Paciente();
+    Color colorCover = new Color(235, 245, 251);
+    Color colorCoverOtro = new Color(250, 219, 216);
+    Color colorBase = new Color(204,204,204);
     public Controlador_Paciente (Vista_Paciente vistaPaciente) 
     {
         this.vistaPaciente = vistaPaciente;
         //MouseListener para clicks.
         this.vistaPaciente.jp_botonSalir.addMouseListener(this);
         this.vistaPaciente.jp_botonGuardar.addMouseListener(this);
+        this.vistaPaciente.jp_botonActualizar.addMouseListener(this);
+        this.vistaPaciente.jp_botonEliminar.addMouseListener(this);
          //ActionListener para clicks.
         this.vistaPaciente.btn_buscar.addActionListener(this);
         this.vistaPaciente.btn_seleccionarFila.addActionListener(this);
         //KeyListener para eventos de teclas.
         this.vistaPaciente.txf_buscar.addKeyListener(this);
+        //Rellenar campos en combo box.
         this.llenar_combo_especies();
         this.llenar_tabla_pacientes();
     }
@@ -94,6 +101,17 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         }
     }
     
+    public void cargar_datos()
+    {
+        modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText().toUpperCase();
+        modeloPaciente.edad = this.vistaPaciente.txf_edad.getText().toUpperCase();
+        modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();
+        modeloPaciente.color = this.vistaPaciente.txf_color.getText().toUpperCase();
+        modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();
+        modeloPaciente.raza = this.vistaPaciente.txf_raza.getText().toUpperCase();
+        modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
@@ -127,7 +145,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
                     datos[5] = rs.getString("pac_raza");
                     datos[6] = rs.getString("pac_color");
                     datos[7] = rs.getString("pac_fecha_nac");
-                    tablaModelo.addRow(datos);  
+                    tablaModelo.addRow(datos);
                 }
             } catch (SQLException ex) 
             {
@@ -139,6 +157,8 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
             if (this.vistaPaciente.jtb_tablaPacientes.getSelectedRowCount() == 1) 
             {
                 int filaSeleccionada = this.vistaPaciente.jtb_tablaPacientes.getSelectedRow();
+                //Seleccion del id de dato a modificar. Mas adelante claro.
+                this.modeloPaciente.id = Integer.parseInt(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 0).toString());
                 
                 this.vistaPaciente.txf_nombre.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 1).toString());
                 this.vistaPaciente.txf_edad.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 2).toString());
@@ -175,35 +195,41 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         //Salimos de la ventana y se oculta sando paso a la palabra bienvenida en Vista_Principal.
         if (e.getSource() == this.vistaPaciente.jp_botonSalir) 
         {
-            this.vistaPaciente.setVisible(false);
             this.vistaPaciente.txf_buscar.setText(null);
-            this.vistaPaciente.btn_buscar.doClick();
+            this.vistaPaciente.setVisible(false);
+            this.llenar_tabla_pacientes();
             borrar_datos();
         }
-        
         //Guardamos la informacion dentro de los textField de Vista_Paciente y se borra una vez guardado.
         if (e.getSource() == this.vistaPaciente.jp_botonGuardar) 
         {
-            modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText().toUpperCase();
-            modeloPaciente.edad = this.vistaPaciente.txf_edad.getText().toUpperCase();
-            modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();
-            modeloPaciente.color = this.vistaPaciente.txf_color.getText().toUpperCase();
-            modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();
-            modeloPaciente.raza = this.vistaPaciente.txf_raza.getText().toUpperCase();
-            modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
+            this.cargar_datos();
             try 
             {
-                modeloPaciente.guardar_datos_paciente();
+                this.modeloPaciente.guardar_datos_paciente();
             } catch (SQLException ex) 
             {
-                
+                System.out.println("Error al guardar los datos: " + ex);
             }
             int opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.OK_OPTION) 
             {
                 borrar_datos();
             }
-            llenar_tabla_pacientes();
+            this.llenar_tabla_pacientes();
+        }
+        //Actualizamos la informacion de la BD
+        if (e.getSource() == this.vistaPaciente.jp_botonActualizar) 
+        {
+            this.cargar_datos();
+            try {
+               this.modeloPaciente.actualizar_pacientes();
+            } catch (SQLException ex) 
+            {
+                System.out.println("Error al actualizar los datos: " + ex);//Aun nose porque sale error es como que ingresa 2 veces.
+            }
+            this.llenar_tabla_pacientes();
+            this.borrar_datos();
         }
     }
 
@@ -214,8 +240,46 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     public void mouseReleased(MouseEvent e) {    }
 
     @Override
-    public void mouseEntered(MouseEvent e) {    }
+    public void mouseEntered(MouseEvent e) 
+    {
+        //        Asigno color al jPanel donde se encuentre el mouse.
+        if (e.getSource() == this.vistaPaciente.jp_botonActualizar) 
+        {
+            this.vistaPaciente.jp_botonActualizar.setBackground(colorCover);
+        }
+        else if (e.getSource() == this.vistaPaciente.jp_botonGuardar) 
+        {
+            this.vistaPaciente.jp_botonGuardar.setBackground(colorCover);
+        }
+        else if (e.getSource() == this.vistaPaciente.jp_botonEliminar) 
+        {
+            this.vistaPaciente.jp_botonEliminar.setBackground(colorCoverOtro);
+        }
+        else if (e.getSource() == this.vistaPaciente.jp_botonSalir) 
+        {
+            this.vistaPaciente.jp_botonSalir.setBackground(colorCover);
+        }
+    }
 
     @Override
-    public void mouseExited(MouseEvent e) {    }
+    public void mouseExited(MouseEvent e) 
+    {
+        //        Asigno color al jPanel donde se encuentre el mouse.
+        if (e.getSource() == this.vistaPaciente.jp_botonActualizar) 
+        {
+            this.vistaPaciente.jp_botonActualizar.setBackground(colorBase);
+        }
+        else if (e.getSource() == this.vistaPaciente.jp_botonGuardar) 
+        {
+            this.vistaPaciente.jp_botonGuardar.setBackground(colorBase);
+        }
+        else if (e.getSource() == this.vistaPaciente.jp_botonEliminar) 
+        {
+            this.vistaPaciente.jp_botonEliminar.setBackground(colorBase);
+        }
+        else if (e.getSource() == this.vistaPaciente.jp_botonSalir) 
+        {
+            this.vistaPaciente.jp_botonSalir.setBackground(colorBase);
+        }
+    }
 }

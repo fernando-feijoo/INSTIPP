@@ -24,8 +24,8 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     Controlador_Reporte controlReporte = new Controlador_Reporte(vistaReporte);
     Vista_Configuracion vistaConfiguracion = new Vista_Configuracion();
     Controlador_Configuracion controlConfiguracion = new Controlador_Configuracion(vistaConfiguracion);
-    Color colorOscuro1 = new Color(213,245,227);
-    Color colorOscuro2 = new Color(204,204,204);
+    Color colorCover = new Color(213,245,227);
+    Color colorBase = new Color(204,204,204);
     Color colorOpcion = new Color(65, 204, 0);
     int opcionClick, contador;
     Vista_Principal vistaPrincipal;
@@ -34,21 +34,21 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         this.vistaPrincipal = vistaPrincipal;
         this.vistaPrincipal.addComponentListener(this);
 //        Control de opciones de menu.
-        this.vistaPrincipal.jp_contenedor.addComponentListener(this);
         this.vistaPrincipal.jp_opcionUno.addMouseListener(this);
         this.vistaPrincipal.jp_opcionDos.addMouseListener(this);
         this.vistaPrincipal.jp_opcionTres.addMouseListener(this);
         this.vistaPrincipal.jp_opcionCuatro.addMouseListener(this);
         this.vistaPrincipal.jp_opcionCinco.addMouseListener(this);
         this.vistaPaciente.jp_botonSalir.addMouseListener(this);
+        this.vistaCliente.jp_botonSalir.addMouseListener(this);
 //        Control de ventana subMenus
+        this.vistaPrincipal.jp_contenedor.addComponentListener(this);
         this.vistaPaciente.addComponentListener(this);
         this.vistaCliente.addComponentListener(this);
         this.vistaMedicina.addComponentListener(this);
         this.vistaReporte.addComponentListener(this);
         this.vistaConfiguracion.addComponentListener(this);
 //        Control de salida de subMenus, para restablecer color base de botones y pantalla Bienvenida.
-        this.vistaCliente.btn_salir.addActionListener(this);
         this.vistaMedicina.btn_salir.addActionListener(this);
         this.vistaReporte.btn_salir.addActionListener(this);
         this.vistaConfiguracion.btn_salir.addActionListener(this);
@@ -154,8 +154,8 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             opcionClick = 5;
             contador++;
         }
-        //Opciones de salida:
-        if (me.getSource() == this.vistaPaciente.jp_botonSalir)
+//        Opciones de salida:
+        if (me.getSource() == this.vistaPaciente.jp_botonSalir || me.getSource() == this.vistaCliente.jp_botonSalir)
         {
             this.vistaPrincipal.jp_bienvenida.setVisible(true);
             opcionClick = 0;
@@ -172,23 +172,23 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
 //        Asigno color al jPanel donde se encuentre el mouse.
         if (me.getSource() == this.vistaPrincipal.jp_opcionUno && (opcionClick != 1)) 
         {
-            this.vistaPrincipal.jp_opcionUno.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionUno.setBackground(colorCover);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionDos && (opcionClick != 2)) 
         {
-            this.vistaPrincipal.jp_opcionDos.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionDos.setBackground(colorCover);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionTres && (opcionClick != 3)) 
         {
-            this.vistaPrincipal.jp_opcionTres.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionTres.setBackground(colorCover);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionCuatro && (opcionClick != 4)) 
         {
-            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorCover);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionCinco && (opcionClick != 5)) 
         {
-            this.vistaPrincipal.jp_opcionCinco.setBackground(colorOscuro1);
+            this.vistaPrincipal.jp_opcionCinco.setBackground(colorCover);
         }
     }
     @Override
@@ -197,23 +197,23 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
 //        Asigno nuevo color, que es el base cuando sale el mouse del jPanel.
         if (me.getSource() == this.vistaPrincipal.jp_opcionUno && (opcionClick != 1)) 
         {
-            this.vistaPrincipal.jp_opcionUno.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionUno.setBackground(colorBase);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionDos && (opcionClick != 2)) 
         {
-            this.vistaPrincipal.jp_opcionDos.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionDos.setBackground(colorBase);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionTres && (opcionClick != 3)) 
         {
-            this.vistaPrincipal.jp_opcionTres.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionTres.setBackground(colorBase);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionCuatro && (opcionClick != 4)) 
         {
-            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorBase);
         }
         else if (me.getSource() == this.vistaPrincipal.jp_opcionCinco && (opcionClick != 5)) 
         {
-            this.vistaPrincipal.jp_opcionCinco.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCinco.setBackground(colorBase);
         }
     }
     @Override
@@ -236,23 +236,23 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         //coloca el color base del boton. El problema era con la opcionClick.
         if (ce.getSource() == this.vistaPaciente) 
         {
-            this.vistaPrincipal.jp_opcionUno.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionUno.setBackground(colorBase);
         }
         if (ce.getSource() == this.vistaCliente) 
         {
-            this.vistaPrincipal.jp_opcionDos.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionDos.setBackground(colorBase);
         }
         if (ce.getSource() == this.vistaMedicina) 
         {
-            this.vistaPrincipal.jp_opcionTres.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionTres.setBackground(colorBase);
         }
         if (ce.getSource() == this.vistaReporte) 
         {
-            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCuatro.setBackground(colorBase);
         }
         if (ce.getSource() == this.vistaConfiguracion) 
         {
-            this.vistaPrincipal.jp_opcionCinco.setBackground(colorOscuro2);
+            this.vistaPrincipal.jp_opcionCinco.setBackground(colorBase);
         }
     }
     @Override
