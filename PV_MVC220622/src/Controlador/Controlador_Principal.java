@@ -40,6 +40,7 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         this.vistaPrincipal.jp_opcionTres.addMouseListener(this);
         this.vistaPrincipal.jp_opcionCuatro.addMouseListener(this);
         this.vistaPrincipal.jp_opcionCinco.addMouseListener(this);
+        this.vistaPaciente.jp_botonSalir.addMouseListener(this);
 //        Control de ventana subMenus
         this.vistaPaciente.addComponentListener(this);
         this.vistaCliente.addComponentListener(this);
@@ -47,7 +48,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         this.vistaReporte.addComponentListener(this);
         this.vistaConfiguracion.addComponentListener(this);
 //        Control de salida de subMenus, para restablecer color base de botones y pantalla Bienvenida.
-        this.vistaPaciente.btn_salir.addActionListener(this);
         this.vistaCliente.btn_salir.addActionListener(this);
         this.vistaMedicina.btn_salir.addActionListener(this);
         this.vistaReporte.btn_salir.addActionListener(this);
@@ -154,6 +154,13 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             opcionClick = 5;
             contador++;
         }
+        //Opciones de salida:
+        if (me.getSource() == this.vistaPaciente.jp_botonSalir)
+        {
+            this.vistaPrincipal.jp_bienvenida.setVisible(true);
+            opcionClick = 0;
+            contador = 0;
+        }
     }
     @Override
     public void mousePressed(MouseEvent me) {    }
@@ -252,7 +259,7 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     public void actionPerformed(ActionEvent ae) 
     {
 //        Controlo si se alterna entre menus, cuando se sale de cada 1 el valor de opcionClick regresa a 0.
-//        Control para subMenus
+//        Control para subMenus, temporal toca remplazarlo...
         this.vistaPrincipal.jp_bienvenida.setVisible(true);
         opcionClick = 0;
         contador = 0;

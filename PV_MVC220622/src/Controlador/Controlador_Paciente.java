@@ -6,21 +6,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Controlador_Paciente implements ActionListener, KeyListener
+public class Controlador_Paciente implements ActionListener, KeyListener, MouseListener
 {
     Vista_Paciente vistaPaciente;
     Modelo_Paciente modeloPaciente = new Modelo_Paciente();
     public Controlador_Paciente (Vista_Paciente vistaPaciente) 
     {
         this.vistaPaciente = vistaPaciente;
-        //ActionListener para clicks.
-        this.vistaPaciente.btn_salir.addActionListener(this);
-        this.vistaPaciente.btn_guardar.addActionListener(this);
+        //MouseListener para clicks.
+        this.vistaPaciente.jp_botonSalir.addMouseListener(this);
+        this.vistaPaciente.jp_botonGuardar.addMouseListener(this);
+         //ActionListener para clicks.
         this.vistaPaciente.btn_buscar.addActionListener(this);
         this.vistaPaciente.btn_seleccionarFila.addActionListener(this);
         //KeyListener para eventos de teclas.
@@ -94,38 +97,6 @@ public class Controlador_Paciente implements ActionListener, KeyListener
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-//        Salimos de la ventana y se oculta sando paso a la palabra bienvenida en Vista_Principal.
-        if (ae.getSource() == this.vistaPaciente.btn_salir) 
-        {
-            this.vistaPaciente.setVisible(false);
-            this.vistaPaciente.txf_buscar.setText(null);
-            this.vistaPaciente.btn_buscar.doClick();
-            borrar_datos();
-        }
-//        Guardamos la informacion dentro de los textField de Vista_Paciente y se borra una vez guardado.
-        if (ae.getSource() == this.vistaPaciente.btn_guardar) 
-        {
-            modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText().toUpperCase();
-            modeloPaciente.edad = this.vistaPaciente.txf_edad.getText().toUpperCase();
-            modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();
-            modeloPaciente.color = this.vistaPaciente.txf_color.getText().toUpperCase();
-            modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();
-            modeloPaciente.raza = this.vistaPaciente.txf_raza.getText().toUpperCase();
-            modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
-            try 
-            {
-                modeloPaciente.guardar_datos_paciente();
-            } catch (SQLException ex) 
-            {
-                
-            }
-            int opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
-            if (opcion == JOptionPane.OK_OPTION) 
-            {
-                borrar_datos();
-            }
-            llenar_tabla_pacientes();
-        }
         if (ae.getSource() == this.vistaPaciente.btn_buscar) 
         {
             modeloPaciente.nombre = this.vistaPaciente.txf_buscar.getText();
@@ -197,4 +168,54 @@ public class Controlador_Paciente implements ActionListener, KeyListener
     {
         this.vistaPaciente.btn_buscar.doClick();
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) 
+    {
+        //Salimos de la ventana y se oculta sando paso a la palabra bienvenida en Vista_Principal.
+        if (e.getSource() == this.vistaPaciente.jp_botonSalir) 
+        {
+            this.vistaPaciente.setVisible(false);
+            this.vistaPaciente.txf_buscar.setText(null);
+            this.vistaPaciente.btn_buscar.doClick();
+            borrar_datos();
+        }
+        
+        //Guardamos la informacion dentro de los textField de Vista_Paciente y se borra una vez guardado.
+        if (e.getSource() == this.vistaPaciente.jp_botonGuardar) 
+        {
+            modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText().toUpperCase();
+            modeloPaciente.edad = this.vistaPaciente.txf_edad.getText().toUpperCase();
+            modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();
+            modeloPaciente.color = this.vistaPaciente.txf_color.getText().toUpperCase();
+            modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();
+            modeloPaciente.raza = this.vistaPaciente.txf_raza.getText().toUpperCase();
+            modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
+            try 
+            {
+                modeloPaciente.guardar_datos_paciente();
+            } catch (SQLException ex) 
+            {
+                
+            }
+            int opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.OK_OPTION) 
+            {
+                borrar_datos();
+            }
+            llenar_tabla_pacientes();
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {    }
 }

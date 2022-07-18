@@ -31,6 +31,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_contenedor = new javax.swing.JPanel();
         jp_contenedorTitulo = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        jp_botonSalir = new javax.swing.JPanel();
+        lbl_botonSalir = new javax.swing.JLabel();
         jp_contenedorOpciones = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,10 +46,14 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txf_raza = new javax.swing.JTextField();
         txf_fechaNacimiento = new javax.swing.JTextField();
-        btn_guardar = new javax.swing.JButton();
-        btn_salir = new javax.swing.JButton();
         cb_especie = new javax.swing.JComboBox<>();
         cb_sexo = new javax.swing.JComboBox<>();
+        jp_botonGuardar = new javax.swing.JPanel();
+        lbl_botonGuardar = new javax.swing.JLabel();
+        jp_botonActualizar = new javax.swing.JPanel();
+        lbl_botonActualizar = new javax.swing.JLabel();
+        jp_botonEliminar = new javax.swing.JPanel();
+        lbl_botonEliminar = new javax.swing.JLabel();
         jp_contenedorTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtb_tablaPacientes = new javax.swing.JTable();
@@ -70,21 +76,53 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_titulo.setText("Datos del Paciente");
 
+        jp_botonSalir.setBackground(new java.awt.Color(204, 204, 204));
+        jp_botonSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        jp_botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jp_botonSalir.setPreferredSize(new java.awt.Dimension(130, 36));
+
+        lbl_botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonSalir.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_botonSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/logout_24px.png"))); // NOI18N
+        lbl_botonSalir.setText("SALIR");
+        lbl_botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_botonSalir.setMaximumSize(new java.awt.Dimension(74, 36));
+        lbl_botonSalir.setMinimumSize(new java.awt.Dimension(74, 36));
+        lbl_botonSalir.setPreferredSize(new java.awt.Dimension(74, 36));
+
+        javax.swing.GroupLayout jp_botonSalirLayout = new javax.swing.GroupLayout(jp_botonSalir);
+        jp_botonSalir.setLayout(jp_botonSalirLayout);
+        jp_botonSalirLayout.setHorizontalGroup(
+            jp_botonSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+        );
+        jp_botonSalirLayout.setVerticalGroup(
+            jp_botonSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jp_contenedorTituloLayout = new javax.swing.GroupLayout(jp_contenedorTitulo);
         jp_contenedorTitulo.setLayout(jp_contenedorTituloLayout);
         jp_contenedorTituloLayout.setHorizontalGroup(
             jp_contenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTituloLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jp_botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jp_contenedorTituloLayout.setVerticalGroup(
             jp_contenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_contenedorTituloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jp_contenedorTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_titulo)
+                    .addGroup(jp_contenedorTituloLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jp_botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         jp_contenedorOpciones.setPreferredSize(new java.awt.Dimension(827, 277));
@@ -120,20 +158,6 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
 
         txf_fechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        btn_guardar.setBackground(new java.awt.Color(204, 204, 204));
-        btn_guardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_guardar.setForeground(new java.awt.Color(51, 51, 51));
-        btn_guardar.setText("Guardar");
-        btn_guardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btn_salir.setBackground(new java.awt.Color(204, 204, 204));
-        btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_salir.setForeground(new java.awt.Color(102, 102, 102));
-        btn_salir.setText("Salir");
-        btn_salir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         cb_especie.setBackground(new java.awt.Color(255, 255, 255));
         cb_especie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_especie.setForeground(new java.awt.Color(0, 0, 0));
@@ -143,6 +167,83 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         cb_sexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_sexo.setForeground(new java.awt.Color(0, 0, 0));
         cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "M", "H" }));
+
+        jp_botonGuardar.setBackground(new java.awt.Color(204, 204, 204));
+        jp_botonGuardar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        jp_botonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jp_botonGuardar.setPreferredSize(new java.awt.Dimension(138, 45));
+
+        lbl_botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_botonGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/save_24px.png"))); // NOI18N
+        lbl_botonGuardar.setText("GUARDAR");
+        lbl_botonGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_botonGuardar.setMaximumSize(new java.awt.Dimension(104, 40));
+        lbl_botonGuardar.setMinimumSize(new java.awt.Dimension(104, 40));
+        lbl_botonGuardar.setPreferredSize(new java.awt.Dimension(104, 40));
+
+        javax.swing.GroupLayout jp_botonGuardarLayout = new javax.swing.GroupLayout(jp_botonGuardar);
+        jp_botonGuardar.setLayout(jp_botonGuardarLayout);
+        jp_botonGuardarLayout.setHorizontalGroup(
+            jp_botonGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_botonGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+        );
+        jp_botonGuardarLayout.setVerticalGroup(
+            jp_botonGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_botonGuardarLayout.createSequentialGroup()
+                .addComponent(lbl_botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jp_botonActualizar.setBackground(new java.awt.Color(204, 204, 204));
+        jp_botonActualizar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        jp_botonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jp_botonActualizar.setPreferredSize(new java.awt.Dimension(138, 45));
+
+        lbl_botonActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonActualizar.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_botonActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_botonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/refresh_24px.png"))); // NOI18N
+        lbl_botonActualizar.setText("ACTUALIZAR");
+        lbl_botonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout jp_botonActualizarLayout = new javax.swing.GroupLayout(jp_botonActualizar);
+        jp_botonActualizar.setLayout(jp_botonActualizarLayout);
+        jp_botonActualizarLayout.setHorizontalGroup(
+            jp_botonActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+        );
+        jp_botonActualizarLayout.setVerticalGroup(
+            jp_botonActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jp_botonEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        jp_botonEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        jp_botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jp_botonEliminar.setPreferredSize(new java.awt.Dimension(138, 45));
+
+        lbl_botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_botonEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/trash_24px.png"))); // NOI18N
+        lbl_botonEliminar.setText("ELIMINAR");
+        lbl_botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_botonEliminar.setMaximumSize(new java.awt.Dimension(101, 40));
+        lbl_botonEliminar.setMinimumSize(new java.awt.Dimension(101, 40));
+        lbl_botonEliminar.setPreferredSize(new java.awt.Dimension(101, 40));
+
+        javax.swing.GroupLayout jp_botonEliminarLayout = new javax.swing.GroupLayout(jp_botonEliminar);
+        jp_botonEliminar.setLayout(jp_botonEliminarLayout);
+        jp_botonEliminarLayout.setHorizontalGroup(
+            jp_botonEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_botonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+        );
+        jp_botonEliminarLayout.setVerticalGroup(
+            jp_botonEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jp_contenedorOpcionesLayout = new javax.swing.GroupLayout(jp_contenedorOpciones);
         jp_contenedorOpciones.setLayout(jp_contenedorOpcionesLayout);
@@ -176,10 +277,12 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorOpcionesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addComponent(jp_botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jp_botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jp_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jp_contenedorOpcionesLayout.setVerticalGroup(
             jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +309,12 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
                     .addComponent(txf_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txf_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_salir))
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jp_botonGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jp_botonActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jp_botonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         jp_contenedorTabla.setPreferredSize(new java.awt.Dimension(680, 276));
@@ -230,13 +334,16 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Buscar:");
 
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/search_16px.png"))); // NOI18N
         btn_buscar.setText("Buscar");
 
         btn_seleccionarFila.setBackground(new java.awt.Color(204, 204, 204));
         btn_seleccionarFila.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_seleccionarFila.setForeground(new java.awt.Color(102, 102, 102));
+        btn_seleccionarFila.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/checkbox_16px.png"))); // NOI18N
         btn_seleccionarFila.setText("Seleccionar Fila");
         btn_seleccionarFila.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_seleccionarFila.setPreferredSize(new java.awt.Dimension(125, 25));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -248,7 +355,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
             .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
-                .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(24, 24, 24)
@@ -262,14 +369,17 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_contenedorTablaLayout.setVerticalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
                 .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_buscar)
-                        .addComponent(jLabel9))
-                    .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_buscar)
+                            .addComponent(jLabel9)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
+                        .addContainerGap(19, Short.MAX_VALUE)
+                        .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -309,7 +419,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             jp_contenedorGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_contenedorGeneralLayout.createSequentialGroup()
                 .addComponent(jp_contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -339,8 +449,6 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_buscar;
-    public javax.swing.JButton btn_guardar;
-    public javax.swing.JButton btn_salir;
     public javax.swing.JButton btn_seleccionarFila;
     public javax.swing.JComboBox<String> cb_especie;
     public javax.swing.JComboBox<String> cb_sexo;
@@ -354,12 +462,20 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JPanel jp_botonActualizar;
+    public javax.swing.JPanel jp_botonEliminar;
+    public javax.swing.JPanel jp_botonGuardar;
+    public javax.swing.JPanel jp_botonSalir;
     private javax.swing.JPanel jp_contenedor;
     private javax.swing.JPanel jp_contenedorGeneral;
     private javax.swing.JPanel jp_contenedorOpciones;
     private javax.swing.JPanel jp_contenedorTabla;
     private javax.swing.JPanel jp_contenedorTitulo;
     public javax.swing.JTable jtb_tablaPacientes;
+    private javax.swing.JLabel lbl_botonActualizar;
+    private javax.swing.JLabel lbl_botonEliminar;
+    private javax.swing.JLabel lbl_botonGuardar;
+    private javax.swing.JLabel lbl_botonSalir;
     private javax.swing.JLabel lbl_titulo;
     public javax.swing.JTextField txf_buscar;
     public javax.swing.JTextField txf_color;
