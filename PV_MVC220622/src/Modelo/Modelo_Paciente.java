@@ -56,6 +56,7 @@ public class Modelo_Paciente
     
     public boolean actualizar_pacientes() throws SQLException
     {
+        System.out.println("Actualizado...BD");
         Statement st = modeloConexion.conexion_bd().createStatement();
         String sql = "UPDATE pacientes SET pac_nombre = '"+this.nombre+"', pac_edad = '"+this.edad+"', pac_sexo = '"+this.sexo+"', pac_especie = '"+this.especie+"', "
                    + "pac_raza = '"+this.raza+"', pac_color = '"+this.color+"', pac_fecha_nac = '"+this.fechaNacimiento+"' "

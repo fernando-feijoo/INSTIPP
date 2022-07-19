@@ -224,6 +224,8 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
             this.cargar_datos();
             try {
                this.modeloPaciente.actualizar_pacientes();
+                System.out.println("Actualizado...");
+               JOptionPane.showMessageDialog(vistaPaciente, "Datos actualizados correctamente.", "Actualización", JOptionPane.INFORMATION_MESSAGE);
             } catch (SQLException ex) 
             {
                 System.out.println("Error al actualizar los datos: " + ex);//Aun nose porque sale error es como que ingresa 2 veces.
