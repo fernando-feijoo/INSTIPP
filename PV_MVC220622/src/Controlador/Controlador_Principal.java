@@ -41,6 +41,7 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         this.vistaPrincipal.jp_opcionCinco.addMouseListener(this);
         this.vistaPaciente.jp_botonSalir.addMouseListener(this);
         this.vistaCliente.jp_botonSalir.addMouseListener(this);
+        this.vistaMedicina.jp_botonSalir.addMouseListener(this);
 //        Control de ventana subMenus
         this.vistaPrincipal.jp_contenedor.addComponentListener(this);
         this.vistaPaciente.addComponentListener(this);
@@ -49,7 +50,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         this.vistaReporte.addComponentListener(this);
         this.vistaConfiguracion.addComponentListener(this);
 //        Control de salida de subMenus, para restablecer color base de botones y pantalla Bienvenida.
-        this.vistaMedicina.btn_salir.addActionListener(this);
         this.vistaReporte.btn_salir.addActionListener(this);
         this.vistaConfiguracion.btn_salir.addActionListener(this);
     }
@@ -155,7 +155,8 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             contador++;
         }
 //        Opciones de salida:
-        if (me.getSource() == this.vistaPaciente.jp_botonSalir || me.getSource() == this.vistaCliente.jp_botonSalir)
+        if (me.getSource() == this.vistaPaciente.jp_botonSalir || me.getSource() == this.vistaCliente.jp_botonSalir
+         || me.getSource() == this.vistaMedicina.jp_botonSalir)
         {
             this.vistaPrincipal.jp_bienvenida.setVisible(true);
             opcionClick = 0;
