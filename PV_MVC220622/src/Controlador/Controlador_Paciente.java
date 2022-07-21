@@ -21,6 +21,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     Color colorCover = new Color(235, 245, 251);
     Color colorCoverOtro = new Color(250, 219, 216);
     Color colorBase = new Color(204,204,204);
+    int opcion;
     public Controlador_Paciente (Vista_Paciente vistaPaciente) 
     {
         this.vistaPaciente = vistaPaciente;
@@ -81,7 +82,8 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
                 datos[7] = rs.getString("pac_fecha_nac");
                 tablaModelo.addRow(datos);  
             }
-        } catch (SQLException ex) 
+        } 
+        catch (SQLException ex) 
         {
             System.out.println("Error al llenar la tabla... " + ex);
         }
@@ -95,7 +97,8 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
             {
                 this.vistaPaciente.cb_especie.addItem(rs.getString("especie"));
             }
-        } catch (SQLException ex) 
+        } 
+        catch (SQLException ex) 
         {
             System.out.println("Error al llenar combo especies: " + ex);
         }
@@ -147,7 +150,8 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
                     datos[7] = rs.getString("pac_fecha_nac");
                     tablaModelo.addRow(datos);
                 }
-            } catch (SQLException ex) 
+            } 
+            catch (SQLException ex) 
             {
                 System.out.println("Error al buscar el dato... " + ex);
             }
@@ -167,10 +171,12 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
                 this.vistaPaciente.txf_raza.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 5).toString());
                 this.vistaPaciente.txf_color.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 6).toString());
                 this.vistaPaciente.txf_fechaNacimiento.setText(this.vistaPaciente.jtb_tablaPacientes.getValueAt(filaSeleccionada, 7).toString());
-            }else if (this.vistaPaciente.jtb_tablaPacientes.getSelectedRowCount() == 0)
+            }
+            else if (this.vistaPaciente.jtb_tablaPacientes.getSelectedRowCount() == 0)
             {
                 JOptionPane.showMessageDialog(vistaPaciente, "Aún no seleciona 1 opción.", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }else
+            }
+            else
             {
                 JOptionPane.showMessageDialog(vistaPaciente, "Selecciono más de 1 fila, seleccione solo 1.", "Error", JOptionPane.WARNING_MESSAGE);
             }
@@ -207,11 +213,12 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
             try 
             {
                 this.modeloPaciente.guardar_datos_paciente();
-            } catch (SQLException ex) 
+            } 
+            catch (SQLException ex) 
             {
                 System.out.println("Error al guardar los datos: " + ex);
             }
-            int opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
+            opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.OK_OPTION) 
             {
                 borrar_datos();
@@ -221,17 +228,54 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         //Actualizamos la informacion de la BD
         if (e.getSource() == this.vistaPaciente.jp_botonActualizar) 
         {
+            opcion = 1;
             this.cargar_datos();
-            try {
-               this.modeloPaciente.actualizar_pacientes();
-                System.out.println("Actualizado...");
-               JOptionPane.showMessageDialog(vistaPaciente, "Datos actualizados correctamente.", "Actualización", JOptionPane.INFORMATION_MESSAGE);
-            } catch (SQLException ex) 
+            try 
+            {
+                opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea actualizar el registro?", "Actualizado", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.YES_OPTION) 
+                {
+                    this.modeloPaciente.actualizar_pacientes();
+                    System.out.println("Datos actualizados...");
+                }
+            } 
+            catch (SQLException ex) 
             {
                 System.out.println("Error al actualizar los datos: " + ex);//Aun nose porque sale error es como que ingresa 2 veces.
             }
-            this.llenar_tabla_pacientes();
-            this.borrar_datos();
+            if (opcion == JOptionPane.YES_OPTION)
+            {
+                JOptionPane.showMessageDialog(vistaPaciente, "Registro actualizado correctamente.", "Mensaje confirmación", JOptionPane.INFORMATION_MESSAGE);
+                this.llenar_tabla_pacientes();
+                this.borrar_datos();
+            }
+        }
+        
+        if (e.getSource() == this.vistaPaciente.jp_botonEliminar) 
+        {
+            opcion = 1; // valor de respuesta negativo, positivo es 0.
+            try 
+            {
+                opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea eliminar el registro?", "Eliminado", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.YES_OPTION) 
+                {
+                    this.modeloPaciente.eliminar_pacientes();
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                System.out.println("Error al eliminar los datos: " + ex);
+            }
+            if (opcion == JOptionPane.YES_OPTION)
+            {
+                JOptionPane.showMessageDialog(vistaPaciente, "Registro eliminado correctamente.", "Mensaje confirmación", JOptionPane.INFORMATION_MESSAGE);
+                this.llenar_tabla_pacientes();
+                this.borrar_datos();
+            }
+            else if (opcion == JOptionPane.NO_OPTION) 
+            {
+                this.modeloPaciente.id = 0;
+            }
         }
     }
 

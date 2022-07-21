@@ -54,4 +54,13 @@ public class Modelo_Medicina
         ResultSet rs = st.executeQuery(sql);
         return rs;
     }
+    
+    public boolean eliminar_medicamentos() throws SQLException
+    {
+        System.out.println("Eliminado de la...BD");
+        Statement st = modeloConexion.conexion_bd().createStatement();
+        String sql = "DELETE FROM medicamentos WHERE id_medicamento = "+this.id+";";
+        st.executeQuery(sql);
+        return true;
+    }
 }

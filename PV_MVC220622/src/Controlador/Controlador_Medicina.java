@@ -178,6 +178,33 @@ public class Controlador_Medicina implements ActionListener, MouseListener
             this.llenar_tabla_medicamentos();
         }
         
+        if (e.getSource() == this.vistaMedicina.jp_botonEliminar) 
+        {
+            int opcion = 1; // valor de respuesta negativo, positivo es 0.
+            try 
+            {
+                opcion = JOptionPane.showConfirmDialog(vistaMedicina, "¿Desea eliminar el registro?", "Eliminado", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.YES_OPTION) 
+                {
+                    this.modeloMedicina.eliminar_medicamentos();
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                System.out.println("Error al eliminar los datos: " + ex);
+            }
+            if (opcion == JOptionPane.YES_OPTION)
+            {
+                JOptionPane.showMessageDialog(vistaMedicina, "Registro eliminado correctamente.", "Mensaje confirmación", JOptionPane.INFORMATION_MESSAGE);
+                this.llenar_tabla_medicamentos();
+                this.borrar_datos();
+            }
+            else if (opcion == JOptionPane.NO_OPTION) 
+            {
+                this.modeloMedicina.id = 0;
+                this.borrar_datos();
+            }
+        }
     }
 
     @Override
@@ -229,5 +256,4 @@ public class Controlador_Medicina implements ActionListener, MouseListener
             this.vistaMedicina.jp_botonSalir.setBackground(colorBase);
         }
     }
-    
 }

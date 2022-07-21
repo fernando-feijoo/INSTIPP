@@ -127,6 +127,8 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
             {
                 int filaSeleccionada = this.vistaCliente.jtb_tablaClientes.getSelectedRow();
                 
+                this.modeloCliente.id = Integer.parseInt(this.vistaCliente.jtb_tablaClientes.getValueAt(filaSeleccionada, 0).toString());
+                
                 this.vistaCliente.txf_nombresCliente.setText(this.vistaCliente.jtb_tablaClientes.getValueAt(filaSeleccionada, 1).toString());
                 this.vistaCliente.cb_tipoIdentificacion.setSelectedItem(this.vistaCliente.jtb_tablaClientes.getValueAt(filaSeleccionada, 2).toString());
                 this.vistaCliente.txf_numeroIdentificacion.setText(this.vistaCliente.jtb_tablaClientes.getValueAt(filaSeleccionada, 3).toString());
@@ -232,6 +234,33 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
                 borrar_datos();
             }
             llenar_tabla_clientes();
+        }
+        
+        if (me.getSource() == this.vistaCliente.jp_botonEliminar) 
+        {
+            int opcion = 1; // valor de respuesta negativo, positivo es 0.
+            try 
+            {
+                opcion = JOptionPane.showConfirmDialog(vistaCliente, "¿Desea eliminar el registro?", "Eliminado", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.YES_OPTION) 
+                {
+                    this.modeloCliente.eliminar_pacientes();
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                System.out.println("Error al eliminar los datos: " + ex);
+            }
+            if (opcion == JOptionPane.YES_OPTION)
+            {
+                JOptionPane.showMessageDialog(vistaCliente, "Registro eliminado correctamente.", "Mensaje confirmación", JOptionPane.INFORMATION_MESSAGE);
+                this.llenar_tabla_clientes();
+                this.borrar_datos();
+            }
+            else if (opcion == JOptionPane.NO_OPTION) 
+            {
+                this.modeloCliente.id = 0;
+            }
         }
     }
 
