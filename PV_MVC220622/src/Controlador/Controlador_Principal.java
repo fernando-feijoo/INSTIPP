@@ -12,7 +12,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-public class Controlador_Principal implements MouseListener, ComponentListener, ActionListener
+import java.awt.event.MouseMotionListener;
+public class Controlador_Principal implements MouseListener, ComponentListener, ActionListener, MouseMotionListener
 {
     Vista_Paciente vistaPaciente = new Vista_Paciente();
     Controlador_Paciente controlPaciente = new Controlador_Paciente(vistaPaciente);
@@ -26,8 +27,9 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     Controlador_Configuracion controlConfiguracion = new Controlador_Configuracion(vistaConfiguracion);
     Color colorCover = new Color(213,245,227);
     Color colorBase = new Color(204,204,204);
+    Color colorBaseExit = new Color(238,238,238);
     Color colorOpcion = new Color(65, 204, 0);
-    int opcionClick, contador;
+    int opcionClick, contador, xMouse, yMouse;
     Vista_Principal vistaPrincipal;
     public Controlador_Principal(Vista_Principal vistaPrincipal) 
     {
@@ -42,6 +44,7 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         this.vistaPaciente.jp_botonSalir.addMouseListener(this);
         this.vistaCliente.jp_botonSalir.addMouseListener(this);
         this.vistaMedicina.jp_botonSalir.addMouseListener(this);
+        this.vistaPrincipal.jp_exit.addMouseListener(this);
 //        Control de ventana subMenus
         this.vistaPrincipal.jp_contenedor.addComponentListener(this);
         this.vistaPaciente.addComponentListener(this);
@@ -52,6 +55,11 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
 //        Control de salida de subMenus, para restablecer color base de botones y pantalla Bienvenida.
         this.vistaReporte.btn_salir.addActionListener(this);
         this.vistaConfiguracion.btn_salir.addActionListener(this);
+//        Implementacion de MouseMotionListener, para cuando mueva la pantalla.
+        this.vistaPrincipal.jp_textoLogo.addMouseMotionListener(this);
+        this.vistaPrincipal.jp_textoLogo.addMouseListener(this);
+        this.vistaPrincipal.txf_logoPrincipal.addMouseMotionListener(this);
+        this.vistaPrincipal.txf_logoPrincipal.addMouseListener(this);
     }
     public void centrarElementos()
     {
@@ -162,9 +170,22 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             opcionClick = 0;
             contador = 0;
         }
+        
+        if (me.getSource() == this.vistaPrincipal.jp_exit)
+        {
+            System.exit(0);
+        }
     }
     @Override
-    public void mousePressed(MouseEvent me) {    }
+    public void mousePressed(MouseEvent me) 
+    {
+        //        Opcion de mover ventana.
+        if (me.getSource() == this.vistaPrincipal.jp_textoLogo || me.getSource() == this.vistaPrincipal.txf_logoPrincipal)
+        {
+            xMouse = me.getX();
+            yMouse = me.getY();
+        }
+    }
     @Override
     public void mouseReleased(MouseEvent me) {    }
     @Override
@@ -191,6 +212,10 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         {
             this.vistaPrincipal.jp_opcionCinco.setBackground(colorCover);
         }
+        if (me.getSource() == this.vistaPrincipal.jp_exit) 
+        {
+            this.vistaPrincipal.jp_exit.setBackground(Color.red);
+        }
     }
     @Override
     public void mouseExited(MouseEvent me) 
@@ -215,6 +240,10 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         else if (me.getSource() == this.vistaPrincipal.jp_opcionCinco && (opcionClick != 5)) 
         {
             this.vistaPrincipal.jp_opcionCinco.setBackground(colorBase);
+        }
+        if (me.getSource() == this.vistaPrincipal.jp_exit) 
+        {
+            this.vistaPrincipal.jp_exit.setBackground(colorBaseExit);
         }
     }
     @Override
@@ -265,4 +294,15 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         opcionClick = 0;
         contador = 0;
     }
+
+    @Override
+    public void mouseDragged(MouseEvent me) 
+    {
+        int x = me.getXOnScreen();
+        int y = me.getYOnScreen();
+        this.vistaPrincipal.setLocation(x - xMouse, y - yMouse);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent me) {    }
 }

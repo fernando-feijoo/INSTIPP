@@ -38,9 +38,13 @@ public class Vista_Login extends javax.swing.JFrame {
         txf_contrasena = new javax.swing.JPasswordField();
         ico_user = new javax.swing.JLabel();
         ico_password = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         lbl_texto = new javax.swing.JLabel();
+        jp_header = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jp_contenedor.setBackground(new java.awt.Color(253, 253, 252));
 
@@ -49,24 +53,30 @@ public class Vista_Login extends javax.swing.JFrame {
 
         jp_datos.setBackground(new java.awt.Color(253, 253, 252));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setText("Usuario: *");
 
         txf_usuario.setBackground(new java.awt.Color(255, 255, 255));
+        txf_usuario.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        txf_usuario.setText("Ingrese su usario");
+        txf_usuario.setBorder(null);
         txf_usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Contraseña: *");
 
-        btn_inicioSesion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_inicioSesion.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_inicioSesion.setText("Iniciar Sesión");
         btn_inicioSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_salir.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_salir.setText("Salir");
         btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txf_contrasena.setBackground(new java.awt.Color(255, 255, 255));
+        txf_contrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txf_contrasena.setText("**********");
+        txf_contrasena.setBorder(null);
 
         ico_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/iniciar-sesion_16px.png"))); // NOI18N
 
@@ -79,6 +89,11 @@ public class Vista_Login extends javax.swing.JFrame {
             .addGroup(jp_datosLayout.createSequentialGroup()
                 .addGroup(jp_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jp_datosLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(btn_inicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_datosLayout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(jp_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(ico_password)
@@ -88,12 +103,9 @@ public class Vista_Login extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(txf_usuario)
-                            .addComponent(txf_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
-                    .addGroup(jp_datosLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btn_inicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txf_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(jSeparator1)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jp_datosLayout.setVerticalGroup(
@@ -105,22 +117,37 @@ public class Vista_Login extends javax.swing.JFrame {
                 .addGroup(jp_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ico_user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txf_usuario))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jp_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ico_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txf_contrasena))
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(jp_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_inicioSesion)
                     .addComponent(btn_salir))
                 .addGap(56, 129, Short.MAX_VALUE))
         );
 
-        lbl_texto.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lbl_texto.setFont(new java.awt.Font("Roboto Medium", 1, 36)); // NOI18N
         lbl_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_texto.setText("Veterinaria");
+
+        javax.swing.GroupLayout jp_headerLayout = new javax.swing.GroupLayout(jp_header);
+        jp_header.setLayout(jp_headerLayout);
+        jp_headerLayout.setHorizontalGroup(
+            jp_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jp_headerLayout.setVerticalGroup(
+            jp_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 25, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jp_contenedorLayout = new javax.swing.GroupLayout(jp_contenedor);
         jp_contenedor.setLayout(jp_contenedorLayout);
@@ -132,11 +159,13 @@ public class Vista_Login extends javax.swing.JFrame {
                 .addComponent(ico_logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(lbl_texto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jp_header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jp_contenedorLayout.setVerticalGroup(
             jp_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorLayout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addComponent(jp_header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(ico_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,9 +183,7 @@ public class Vista_Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jp_contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jp_contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -206,8 +233,11 @@ public class Vista_Login extends javax.swing.JFrame {
     public javax.swing.JLabel ico_user;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
+    public javax.swing.JSeparator jSeparator1;
+    public javax.swing.JSeparator jSeparator2;
     public javax.swing.JPanel jp_contenedor;
     public javax.swing.JPanel jp_datos;
+    public javax.swing.JPanel jp_header;
     public javax.swing.JLabel lbl_texto;
     public javax.swing.JPasswordField txf_contrasena;
     public javax.swing.JTextField txf_usuario;
