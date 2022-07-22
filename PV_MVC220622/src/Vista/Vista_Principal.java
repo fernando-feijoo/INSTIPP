@@ -275,20 +275,23 @@ public class Vista_Principal extends javax.swing.JFrame {
         lbl_textoInferior.setText("BIENVENIDO/A");
         lbl_textoInferior.setRequestFocusEnabled(false);
 
+        jp_exit.setMaximumSize(new java.awt.Dimension(40, 40));
+        jp_exit.setMinimumSize(new java.awt.Dimension(40, 40));
+
         jLabel6.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("X");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/turn-off_24px.png"))); // NOI18N
 
         javax.swing.GroupLayout jp_exitLayout = new javax.swing.GroupLayout(jp_exit);
         jp_exit.setLayout(jp_exitLayout);
         jp_exitLayout.setHorizontalGroup(
             jp_exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
         jp_exitLayout.setVerticalGroup(
             jp_exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jp_bienvenidaLayout = new javax.swing.GroupLayout(jp_bienvenida);
@@ -298,22 +301,20 @@ public class Vista_Principal extends javax.swing.JFrame {
             .addGroup(jp_bienvenidaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jp_bienvenidaLayout.createSequentialGroup()
-                        .addGroup(jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_textoInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jp_bienvenidaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jp_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(lbl_textoInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_bienvenidaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jp_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jp_bienvenidaLayout.setVerticalGroup(
             jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_bienvenidaLayout.createSequentialGroup()
                 .addComponent(jp_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(205, 205, 205)
+                .addGap(189, 189, 189)
                 .addComponent(lbl_textoInferior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                 .addComponent(lbl_textoSuperior)
                 .addGap(44, 44, 44))
         );
