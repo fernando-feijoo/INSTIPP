@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 public class Modelo_Paciente 
 {
+    public int id;
     public String nombre;
     public String edad;
     public String especie;
@@ -13,7 +14,6 @@ public class Modelo_Paciente
     public String sexo;
     public String raza;
     public String fechaNacimiento;
-    public int id;
     
     Modelo_Conexion modeloConexion = new Modelo_Conexion();
     
@@ -61,6 +61,15 @@ public class Modelo_Paciente
         String sql = "UPDATE pacientes SET pac_nombre = '"+this.nombre+"', pac_edad = '"+this.edad+"', pac_sexo = '"+this.sexo+"', pac_especie = '"+this.especie+"', "
                    + "pac_raza = '"+this.raza+"', pac_color = '"+this.color+"', pac_fecha_nac = '"+this.fechaNacimiento+"' "
                    + "WHERE id_paciente = "+this.id+";";
+        st.executeQuery(sql);
+        return true;
+    }
+    
+    public boolean eliminar_pacientes() throws SQLException
+    {
+        System.out.println("Eliminado completo de la...BD");
+        Statement st = modeloConexion.conexion_bd().createStatement();
+        String sql = "DELETE FROM pacientes WHERE id_paciente = "+this.id+";";
         st.executeQuery(sql);
         return true;
     }

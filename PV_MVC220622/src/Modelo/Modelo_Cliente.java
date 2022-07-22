@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 public class Modelo_Cliente 
 {
+    public int id;
     public String nombres;
     public int tipoIdentificacion;
     public String numeroIdentificacion;
@@ -69,5 +70,14 @@ public class Modelo_Cliente
                     "	cli.id_cliente;";
         ResultSet rs = st.executeQuery(sql);
         return rs;
+    }
+    
+    public boolean eliminar_pacientes() throws SQLException
+    {
+        System.out.println("Eliminado completo de la...BD");
+        Statement st = modeloConexion.conexion_bd().createStatement();
+        String sql = "DELETE FROM clientes WHERE id_cliente = "+this.id+";";
+        st.executeQuery(sql);
+        return true;
     }
 }
