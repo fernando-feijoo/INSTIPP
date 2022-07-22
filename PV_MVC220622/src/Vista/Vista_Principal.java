@@ -30,7 +30,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_contenedor = new javax.swing.JPanel();
         jp_contenedorOpciones = new javax.swing.JPanel();
         jp_textoLogo = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        txf_logoPrincipal = new javax.swing.JLabel();
         jp_contenedorMenu = new javax.swing.JPanel();
         jp_opcionUno = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -46,33 +46,34 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_bienvenida = new javax.swing.JPanel();
         lbl_textoSuperior = new javax.swing.JLabel();
         lbl_textoInferior = new javax.swing.JLabel();
+        jp_exit = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+        setUndecorated(true);
 
         jp_contenedor.setBackground(new java.awt.Color(204, 204, 204));
+        jp_contenedor.setPreferredSize(new java.awt.Dimension(1222, 700));
 
         jp_contenedorOpciones.setBackground(new java.awt.Color(253, 253, 252));
 
         jp_textoLogo.setBackground(new java.awt.Color(253, 253, 252));
         jp_textoLogo.setMaximumSize(new java.awt.Dimension(87, 107));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/LogoVeterinaria.png"))); // NOI18N
+        txf_logoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/LogoVeterinaria.png"))); // NOI18N
 
         javax.swing.GroupLayout jp_textoLogoLayout = new javax.swing.GroupLayout(jp_textoLogo);
         jp_textoLogo.setLayout(jp_textoLogoLayout);
         jp_textoLogoLayout.setHorizontalGroup(
             jp_textoLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_textoLogoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(txf_logoPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
         );
         jp_textoLogoLayout.setVerticalGroup(
             jp_textoLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_textoLogoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(7, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_textoLogoLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(txf_logoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jp_contenedorMenu.setBackground(new java.awt.Color(253, 253, 252));
@@ -173,7 +174,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_opcionCuatroLayout.setHorizontalGroup(
             jp_opcionCuatroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_opcionCuatroLayout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -257,9 +258,13 @@ public class Vista_Principal extends javax.swing.JFrame {
                 .addComponent(jp_contenedorMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jp_resultadoOpcion.setMaximumSize(new java.awt.Dimension(904, 694));
-        jp_resultadoOpcion.setMinimumSize(new java.awt.Dimension(904, 694));
-        jp_resultadoOpcion.setPreferredSize(new java.awt.Dimension(904, 694));
+        jp_resultadoOpcion.setMaximumSize(new java.awt.Dimension(904, 700));
+        jp_resultadoOpcion.setMinimumSize(new java.awt.Dimension(904, 700));
+        jp_resultadoOpcion.setPreferredSize(new java.awt.Dimension(904, 700));
+
+        jp_bienvenida.setMaximumSize(new java.awt.Dimension(886, 700));
+        jp_bienvenida.setMinimumSize(new java.awt.Dimension(886, 700));
+        jp_bienvenida.setPreferredSize(new java.awt.Dimension(886, 700));
 
         lbl_textoSuperior.setFont(new java.awt.Font("Segoe UI", 1, 80)); // NOI18N
         lbl_textoSuperior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -270,6 +275,22 @@ public class Vista_Principal extends javax.swing.JFrame {
         lbl_textoInferior.setText("BIENVENIDO/A");
         lbl_textoInferior.setRequestFocusEnabled(false);
 
+        jLabel6.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("X");
+
+        javax.swing.GroupLayout jp_exitLayout = new javax.swing.GroupLayout(jp_exit);
+        jp_exit.setLayout(jp_exitLayout);
+        jp_exitLayout.setHorizontalGroup(
+            jp_exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+        jp_exitLayout.setVerticalGroup(
+            jp_exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jp_bienvenidaLayout = new javax.swing.GroupLayout(jp_bienvenida);
         jp_bienvenida.setLayout(jp_bienvenidaLayout);
         jp_bienvenidaLayout.setHorizontalGroup(
@@ -277,16 +298,22 @@ public class Vista_Principal extends javax.swing.JFrame {
             .addGroup(jp_bienvenidaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_textoInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jp_bienvenidaLayout.createSequentialGroup()
+                        .addGroup(jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_textoInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_textoSuperior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(jp_bienvenidaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jp_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jp_bienvenidaLayout.setVerticalGroup(
             jp_bienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_bienvenidaLayout.createSequentialGroup()
-                .addGap(232, 232, 232)
+                .addComponent(jp_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(205, 205, 205)
                 .addComponent(lbl_textoInferior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
                 .addComponent(lbl_textoSuperior)
                 .addGap(44, 44, 44))
         );
@@ -303,9 +330,9 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_resultadoOpcionLayout.setVerticalGroup(
             jp_resultadoOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_resultadoOpcionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jp_bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jp_bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout jp_contenedorLayout = new javax.swing.GroupLayout(jp_contenedor);
@@ -314,13 +341,13 @@ public class Vista_Principal extends javax.swing.JFrame {
             jp_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_contenedorLayout.createSequentialGroup()
                 .addComponent(jp_contenedorOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jp_contenedorLayout.setVerticalGroup(
             jp_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jp_contenedorOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jp_contenedorOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jp_resultadoOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -331,7 +358,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jp_contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jp_contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -378,11 +405,12 @@ public class Vista_Principal extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
-    public javax.swing.JLabel jLabel7;
+    public javax.swing.JLabel jLabel6;
     public javax.swing.JPanel jp_bienvenida;
     public javax.swing.JPanel jp_contenedor;
     public javax.swing.JPanel jp_contenedorMenu;
     public javax.swing.JPanel jp_contenedorOpciones;
+    public javax.swing.JPanel jp_exit;
     public javax.swing.JPanel jp_opcionCinco;
     public javax.swing.JPanel jp_opcionCuatro;
     public javax.swing.JPanel jp_opcionDos;
@@ -392,5 +420,6 @@ public class Vista_Principal extends javax.swing.JFrame {
     public javax.swing.JPanel jp_textoLogo;
     public javax.swing.JLabel lbl_textoInferior;
     public javax.swing.JLabel lbl_textoSuperior;
+    public javax.swing.JLabel txf_logoPrincipal;
     // End of variables declaration//GEN-END:variables
 }
