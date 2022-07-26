@@ -5,14 +5,18 @@ import Vista.Vista_Medicina;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
-public class Controlador_Medicina implements ActionListener, MouseListener
+public class Controlador_Medicina implements ActionListener, MouseListener, KeyListener
 {
     Vista_Medicina vistaMedicina;
     Modelo_Medicina modeloMedicina = new Modelo_Medicina();
@@ -27,8 +31,10 @@ public class Controlador_Medicina implements ActionListener, MouseListener
         this.vistaMedicina.jp_botonActualizar.addMouseListener(this);
         this.vistaMedicina.jp_botonEliminar.addMouseListener(this);
         
-        this.vistaMedicina.btn_seleccionarFila.addActionListener(this);
+        //---this.vistaMedicina.btn_seleccionarFila.addActionListener(this);
         
+        this.vistaMedicina.txf_buscar.addKeyListener(this);
+        this.vistaMedicina.jtb_tablaMedicamentos.addKeyListener(this);
         //Rellenar campos
         this.llenar_tabla_medicamentos();
         this.llenar_combo_tipo_medicinas();
@@ -122,33 +128,21 @@ public class Controlador_Medicina implements ActionListener, MouseListener
         }
     }
     
+    public void filtrar_datos(String valor)
+    {
+        DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaMedicina.jtb_tablaMedicamentos.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(tablaModelo);
+        this.vistaMedicina.jtb_tablaMedicamentos.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + valor, 2));
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-        if (ae.getSource() == this.vistaMedicina.btn_seleccionarFila) 
+        /*if (ae.getSource() == this.vistaMedicina.btn_seleccionarFila) 
         {
-            if (this.vistaMedicina.jtb_tablaMedicamentos.getSelectedRowCount() == 1) 
-            {
-                int filaSeleccionada = this.vistaMedicina.jtb_tablaMedicamentos.getSelectedRow();
-                //Seleccion del id de dato a modificar. Mas adelante claro.
-                
-                this.modeloMedicina.id = Integer.parseInt(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 0).toString());
-                
-                this.vistaMedicina.cb_bodega.setSelectedItem(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 1).toString());
-                this.vistaMedicina.cb_tipoMedicamento.setSelectedItem(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 2).toString());
-                this.vistaMedicina.txf_nombreMedicamento.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 3).toString());
-                this.vistaMedicina.txf_fechaIngreso.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 4).toString());
-                this.vistaMedicina.txf_fechaVencimiento.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 5).toString());
-                this.vistaMedicina.txf_precio.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 6).toString());
-                this.vistaMedicina.txf_existenciaMedicamento.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 7).toString());
-            }else if (this.vistaMedicina.jtb_tablaMedicamentos.getSelectedRowCount() == 0)
-            {
-                JOptionPane.showMessageDialog(vistaMedicina, "Aún no seleciona 1 opción.", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }else
-            {
-                JOptionPane.showMessageDialog(vistaMedicina, "Selecciono más de 1 fila, seleccione solo 1.", "Error", JOptionPane.WARNING_MESSAGE);
-            }
-        }
+            
+        }*/
     }
 
     @Override
@@ -254,6 +248,47 @@ public class Controlador_Medicina implements ActionListener, MouseListener
         else if (e.getSource() == this.vistaMedicina.jp_botonSalir) 
         {
             this.vistaMedicina.jp_botonSalir.setBackground(colorBase);
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {    }
+
+    @Override
+    public void keyPressed(KeyEvent e) 
+    {
+        if (e.getExtendedKeyCode() == KeyEvent.VK_ENTER)
+        {
+            if (this.vistaMedicina.jtb_tablaMedicamentos.getSelectedRowCount() == 1) 
+            {
+                int filaSeleccionada = this.vistaMedicina.jtb_tablaMedicamentos.getSelectedRow();
+                //Seleccion del id de dato a modificar. Mas adelante claro.
+                
+                this.modeloMedicina.id = Integer.parseInt(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 0).toString());
+                
+                this.vistaMedicina.cb_bodega.setSelectedItem(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 1).toString());
+                this.vistaMedicina.cb_tipoMedicamento.setSelectedItem(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 2).toString());
+                this.vistaMedicina.txf_nombreMedicamento.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 3).toString());
+                this.vistaMedicina.txf_fechaIngreso.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 4).toString());
+                this.vistaMedicina.txf_fechaVencimiento.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 5).toString());
+                this.vistaMedicina.txf_precio.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 6).toString());
+                this.vistaMedicina.txf_existenciaMedicamento.setText(this.vistaMedicina.jtb_tablaMedicamentos.getValueAt(filaSeleccionada, 7).toString());
+            }else if (this.vistaMedicina.jtb_tablaMedicamentos.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(vistaMedicina, "Aún no seleciona 1 opción.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }else
+            {
+                JOptionPane.showMessageDialog(vistaMedicina, "Selecciono más de 1 fila, seleccione solo 1.", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) 
+    {
+        if (e.getSource() == this.vistaMedicina.txf_buscar) 
+        {
+            filtrar_datos(this.vistaMedicina.txf_buscar.getText());
         }
     }
 }
