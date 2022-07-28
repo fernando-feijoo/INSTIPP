@@ -23,14 +23,13 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
     Color colorCover = new Color(235, 245, 251);
     Color colorCoverOtro = new Color(250, 219, 216);
     Color colorBase = new Color(204,204,204);
+    int fila;
     public Controlador_Cliente(Vista_Cliente vista_cliente) 
     {
         this.vistaCliente = vista_cliente;
 //        MouseListener para los clicks en jPanels.
         this.vistaCliente.jp_botonGuardar.addMouseListener(this);
         this.vistaCliente.jp_botonSalir.addMouseListener(this);
-        this.vistaCliente.jp_botonSalir.addMouseListener(this);
-        this.vistaCliente.jp_botonGuardar.addMouseListener(this);
         this.vistaCliente.jp_botonEliminar.addMouseListener(this);
         this.vistaCliente.jp_botonActualizar.addMouseListener(this);
 //        ActionListener para los clicks en botones.
@@ -39,6 +38,10 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
         //KeyListener para eventos de teclas.
         this.vistaCliente.txf_buscar.addKeyListener(this);
         this.vistaCliente.jtb_tablaClientes.addKeyListener(this);
+        
+        this.vistaCliente.btng_grupoOpciones.add(vista_cliente.jrb_nombres);
+        this.vistaCliente.btng_grupoOpciones.add(vista_cliente.jrb_identificacion);
+        
         this.llenar_tabla_clientes();
         this.llenar_combo_tipo_cliente();
         this.llenar_combo_tipo_identificacion();
@@ -61,7 +64,7 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
             tablaModelo.addColumn("Estado Civil");
             tablaModelo.addColumn("Estado");
         
-            ResultSet rs = modeloCliente.consultar_clientes();
+            ResultSet rs = modeloCliente.consultar_cliente();
             String[] datos = new String[8];
             while (rs.next()) 
             {
@@ -83,6 +86,7 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
     
     public void borrar_datos()
     {
+        this.vistaCliente.btng_grupoOpciones.clearSelection();
         this.vistaCliente.txf_nombresCliente.setText(null);
         this.vistaCliente.cb_tipoIdentificacion.setSelectedIndex(0);
         this.vistaCliente.txf_numeroIdentificacion.setText(null);
@@ -120,25 +124,26 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
         }
     }
     
-    public void filtrar_datos(String valor)
+    public void filtrar_datos(String valor, int fila)
     {
-        int tmp = this.vistaCliente.cb_opcionBusqueda.getSelectedIndex();
-        int fila = 0;
-        if (tmp == 1) 
-        {
-            fila = tmp;
-        } 
-        else if(tmp == 2)
-        {
-            fila = tmp + 1;
-        }
-        if (fila != 0) 
+        if (fila != 0)
         {
             DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaCliente.jtb_tablaClientes.getModel();
             TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(tablaModelo);
             this.vistaCliente.jtb_tablaClientes.setRowSorter(tr);
             tr.setRowFilter(RowFilter.regexFilter("(?i)" + valor, fila));
         }
+    }
+    
+    public void cargar_datos()
+    {
+        modeloCliente.nombres = this.vistaCliente.txf_nombresCliente.getText().toUpperCase();
+        modeloCliente.numeroIdentificacion = this.vistaCliente.txf_numeroIdentificacion.getText();
+        modeloCliente.tipoCliente = this.vistaCliente.cb_tipoCliente.getSelectedIndex();//Aqui coloque el index ya que va el id para foreign key de 1 a n...
+        modeloCliente.estadoCivil = this.vistaCliente.cb_estadoCivil.getSelectedItem().toString();
+        modeloCliente.tipoIdentificacion = this.vistaCliente.cb_tipoIdentificacion.getSelectedIndex();//Aqui coloque el index ya que va el id para foreign key de 1 a n...
+        modeloCliente.sexo = this.vistaCliente.cb_sexo.getSelectedItem().toString();
+        modeloCliente.estado = this.vistaCliente.cb_estado.getSelectedItem().toString();
     }
     
     @Override
@@ -208,7 +213,7 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
     {
         if (me.getSource() == this.vistaCliente.jp_botonSalir) 
         {
-            this.vistaCliente.cb_opcionBusqueda.setSelectedIndex(0);
+            //this.vistaCliente.cb_opcionBusqueda.setSelectedIndex(0);
             this.vistaCliente.txf_buscar.setText(null);
             this.vistaCliente.setVisible(false);
             this.llenar_tabla_clientes();
@@ -217,13 +222,7 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
         if (me.getSource() == this.vistaCliente.jp_botonGuardar) 
         {
             
-            modeloCliente.nombres = this.vistaCliente.txf_nombresCliente.getText().toUpperCase();
-            modeloCliente.numeroIdentificacion = this.vistaCliente.txf_numeroIdentificacion.getText();
-            modeloCliente.tipoCliente = this.vistaCliente.cb_tipoCliente.getSelectedIndex();//Aqui coloque el index ya que va el id para foreign key de 1 a n...
-            modeloCliente.estadoCivil = this.vistaCliente.cb_estadoCivil.getSelectedItem().toString();
-            modeloCliente.tipoIdentificacion = this.vistaCliente.cb_tipoIdentificacion.getSelectedIndex();//Aqui coloque el index ya que va el id para foreign key de 1 a n...
-            modeloCliente.sexo = this.vistaCliente.cb_sexo.getSelectedItem().toString();
-            modeloCliente.estado = this.vistaCliente.cb_estado.getSelectedItem().toString();
+            this.cargar_datos();
             try 
             {
                 modeloCliente.guardar_datos_clientes();
@@ -247,7 +246,7 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
                 opcion = JOptionPane.showConfirmDialog(vistaCliente, "¿Desea eliminar el registro?", "Eliminado", JOptionPane.YES_NO_OPTION);
                 if (opcion == JOptionPane.YES_OPTION) 
                 {
-                    this.modeloCliente.eliminar_pacientes();
+                    this.modeloCliente.eliminar_cliente();
                 }
             } 
             catch (SQLException ex) 
@@ -263,6 +262,31 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
             else if (opcion == JOptionPane.NO_OPTION) 
             {
                 this.modeloCliente.id = 0;
+            }
+        }
+        //Actualizamos la informacion de la BD
+        if (me.getSource() == this.vistaCliente.jp_botonActualizar) 
+        {
+            int opcion = 1;
+            this.cargar_datos();
+            try 
+            {
+                opcion = JOptionPane.showConfirmDialog(vistaCliente, "¿Desea actualizar el registro?", "Actualizado", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.YES_OPTION) 
+                {
+                    this.modeloCliente.actualizar_cliente();
+                    System.out.println("Datos actualizados...");
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                System.out.println("Error al actualizar los datos: " + ex);//Aun nose porque sale error es como que ingresa 2 veces.
+            }
+            if (opcion == JOptionPane.YES_OPTION)
+            {
+                JOptionPane.showMessageDialog(vistaCliente, "Registro actualizado correctamente.", "Mensaje confirmación", JOptionPane.INFORMATION_MESSAGE);
+                this.llenar_tabla_clientes();
+                this.borrar_datos();
             }
         }
     }
@@ -323,7 +347,7 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
     @Override
     public void keyPressed(KeyEvent ke) 
     {
-        if (ke.getExtendedKeyCode() ==  KeyEvent.VK_ENTER)
+        if (ke.getExtendedKeyCode() ==  KeyEvent.VK_ENTER && ke.getSource() == this.vistaCliente.jtb_tablaClientes)
         {
             if (this.vistaCliente.jtb_tablaClientes.getSelectedRowCount() == 1) 
             {
@@ -355,14 +379,27 @@ public class Controlador_Cliente implements ActionListener, MouseListener, KeyLi
         //this.vistaCliente.btn_buscar.doClick();
         if (ke.getSource() == this.vistaCliente.txf_buscar) 
         {
-            if (this.vistaCliente.cb_opcionBusqueda.getSelectedIndex() == 0) 
+            if (!this.vistaCliente.jrb_nombres.isSelected() && !this.vistaCliente.jrb_identificacion.isSelected()) 
             {
-                JOptionPane.showMessageDialog(vistaCliente, "Aún no seleciona 1 filtro en busqueda.", "Información", JOptionPane.INFORMATION_MESSAGE);
-                this.vistaCliente.txf_buscar.setText(null);
+                if (ke.getExtendedKeyCode() != KeyEvent.VK_ENTER) 
+                {
+                    this.vistaCliente.txf_buscar.setText(null);
+                    JOptionPane.showMessageDialog(vistaCliente, "Aún no seleciona 1 filtro en busqueda.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
             else
             {
-                filtrar_datos(this.vistaCliente.txf_buscar.getText());
+                if (this.vistaCliente.jrb_nombres.isSelected()) 
+                {
+                    fila = 1;
+                    filtrar_datos(this.vistaCliente.txf_buscar.getText(), fila);
+                }
+                else if (this.vistaCliente.jrb_identificacion.isSelected()) 
+                {
+                    fila = 3;
+                    filtrar_datos(this.vistaCliente.txf_buscar.getText(), fila);
+                }
+                
             }
         }
     }

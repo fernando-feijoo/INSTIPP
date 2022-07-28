@@ -26,7 +26,7 @@ public class Modelo_Cliente
         return true;
     }
     
-    public ResultSet consultar_clientes() throws SQLException
+    public ResultSet consultar_cliente() throws SQLException
     {
         Statement st = modeloConexion.conexion_bd().createStatement();
         String sql = "  SELECT" +
@@ -72,11 +72,23 @@ public class Modelo_Cliente
         return rs;
     }
     
-    public boolean eliminar_pacientes() throws SQLException
+    public boolean eliminar_cliente() throws SQLException
     {
         System.out.println("Eliminado completo de la...BD");
         Statement st = modeloConexion.conexion_bd().createStatement();
         String sql = "DELETE FROM clientes WHERE id_cliente = "+this.id+";";
+        st.executeQuery(sql);
+        return true;
+    }
+    
+    public boolean actualizar_cliente() throws SQLException
+    {
+        System.out.println("Actualizado...BD");
+        Statement st = modeloConexion.conexion_bd().createStatement();
+        String sql = "UPDATE clientes	SET " +
+                     "	nombre='"+this.nombres+"', tipo_identificacion="+this.tipoIdentificacion+", num_identificacion='"+this.numeroIdentificacion+"', " +
+                     "	tipo_cliente="+this.tipoCliente+", sexo='"+this.sexo+"', estado_civil='"+this.estadoCivil+"', estado='"+this.estado+"' " +
+                     "	WHERE id_cliente="+this.id+";";
         st.executeQuery(sql);
         return true;
     }

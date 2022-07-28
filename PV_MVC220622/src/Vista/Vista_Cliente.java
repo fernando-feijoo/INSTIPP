@@ -27,6 +27,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btng_grupoOpciones = new javax.swing.ButtonGroup();
         jp_contenedor = new javax.swing.JPanel();
         jp_titulo = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
@@ -59,7 +60,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txf_buscar = new javax.swing.JTextField();
-        cb_opcionBusqueda = new javax.swing.JComboBox<>();
+        jrb_nombres = new javax.swing.JRadioButton();
+        jrb_identificacion = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(904, 715));
@@ -350,7 +352,9 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Buscar:");
 
-        cb_opcionBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "Nombres", "N° identificación" }));
+        jrb_nombres.setText("Nombres");
+
+        jrb_identificacion.setText("N° identificación");
 
         javax.swing.GroupLayout jp_contenedorTablaLayout = new javax.swing.GroupLayout(jp_contenedorTabla);
         jp_contenedorTabla.setLayout(jp_contenedorTablaLayout);
@@ -358,10 +362,12 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cb_opcionBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jrb_nombres)
+                .addGap(44, 44, 44)
+                .addComponent(jrb_identificacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -375,7 +381,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(cb_opcionBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jrb_nombres)
+                    .addComponent(jrb_identificacion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -422,9 +429,9 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.ButtonGroup btng_grupoOpciones;
     public javax.swing.JComboBox<String> cb_estado;
     public javax.swing.JComboBox<String> cb_estadoCivil;
-    public javax.swing.JComboBox<String> cb_opcionBusqueda;
     public javax.swing.JComboBox<String> cb_sexo;
     public javax.swing.JComboBox<String> cb_tipoCliente;
     public javax.swing.JComboBox<String> cb_tipoIdentificacion;
@@ -446,6 +453,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     public javax.swing.JPanel jp_contenedorOpciones;
     public javax.swing.JPanel jp_contenedorTabla;
     public javax.swing.JPanel jp_titulo;
+    public javax.swing.JRadioButton jrb_identificacion;
+    public javax.swing.JRadioButton jrb_nombres;
     public javax.swing.JTable jtb_tablaClientes;
     public javax.swing.JLabel lbl_botonActualizar;
     public javax.swing.JLabel lbl_botonEliminar;
