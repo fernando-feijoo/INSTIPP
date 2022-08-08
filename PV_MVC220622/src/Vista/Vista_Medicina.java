@@ -59,8 +59,6 @@ public class Vista_Medicina extends javax.swing.JInternalFrame {
         jtb_tablaMedicamentos = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         txf_buscar = new javax.swing.JTextField();
-        btn_buscar = new javax.swing.JButton();
-        btn_seleccionarFila = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -347,19 +345,6 @@ public class Vista_Medicina extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Buscar:");
 
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/search_16px.png"))); // NOI18N
-        btn_buscar.setText("Buscar");
-
-        btn_seleccionarFila.setBackground(new java.awt.Color(204, 204, 204));
-        btn_seleccionarFila.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_seleccionarFila.setForeground(new java.awt.Color(102, 102, 102));
-        btn_seleccionarFila.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/checkbox_16px.png"))); // NOI18N
-        btn_seleccionarFila.setText("Seleccionar Fila");
-        btn_seleccionarFila.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btn_seleccionarFila.setMaximumSize(new java.awt.Dimension(125, 25));
-        btn_seleccionarFila.setMinimumSize(new java.awt.Dimension(125, 25));
-        btn_seleccionarFila.setPreferredSize(new java.awt.Dimension(125, 25));
-
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Listado de los Medicamentos");
@@ -370,31 +355,22 @@ public class Vista_Medicina extends javax.swing.JInternalFrame {
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
-                .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(255, 255, 255)
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_buscar)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
         jp_contenedorTablaLayout.setVerticalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
-                .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jp_contenedorTablaLayout.createSequentialGroup()
-                        .addGap(0, 18, Short.MAX_VALUE)
-                        .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_buscar)
-                            .addComponent(jLabel9)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
-                        .addContainerGap(19, Short.MAX_VALUE)
-                        .addComponent(btn_seleccionarFila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 18, Short.MAX_VALUE)
+                .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -463,8 +439,6 @@ public class Vista_Medicina extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btn_buscar;
-    public javax.swing.JButton btn_seleccionarFila;
     public javax.swing.JComboBox<String> cb_bodega;
     public javax.swing.JComboBox<String> cb_tipoMedicamento;
     private javax.swing.JLabel jLabel1;

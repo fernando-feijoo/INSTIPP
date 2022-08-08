@@ -1,7 +1,7 @@
 package PV_MVC220622;
 import Controlador.Controlador_Login;
 import Vista.Vista_Login;
-public class Main_MVC 
+public class Main 
 {
 
     public static void main(String[] args) 

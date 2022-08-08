@@ -12,7 +12,9 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class Controlador_Paciente implements ActionListener, KeyListener, MouseListener
 {
@@ -31,10 +33,11 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         this.vistaPaciente.jp_botonActualizar.addMouseListener(this);
         this.vistaPaciente.jp_botonEliminar.addMouseListener(this);
          //ActionListener para clicks.
-        this.vistaPaciente.btn_buscar.addActionListener(this);
-        this.vistaPaciente.btn_seleccionarFila.addActionListener(this);
+        //---this.vistaPaciente.btn_buscar.addActionListener(this);
+        //---this.vistaPaciente.btn_seleccionarFila.addActionListener(this);
         //KeyListener para eventos de teclas.
         this.vistaPaciente.txf_buscar.addKeyListener(this);
+        this.vistaPaciente.jtb_tablaPacientes.addKeyListener(this);
         //Rellenar campos en combo box.
         this.llenar_combo_especies();
         this.llenar_tabla_pacientes();
@@ -115,10 +118,18 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
     }
     
+    public void filtrar_datos(String valor)
+    {
+        DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaPaciente.jtb_tablaPacientes.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(tablaModelo);
+        this.vistaPaciente.jtb_tablaPacientes.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + valor, 1));
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-        if (ae.getSource() == this.vistaPaciente.btn_buscar) 
+        /*if (ae.getSource() == this.vistaPaciente.btn_buscar) 
         {
             modeloPaciente.nombre = this.vistaPaciente.txf_buscar.getText();
             try 
@@ -155,8 +166,20 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
             {
                 System.out.println("Error al buscar el dato... " + ex);
             }
-        }
-        if (ae.getSource() == this.vistaPaciente.btn_seleccionarFila) 
+        }*/
+        /*if (ae.getSource() == this.vistaPaciente.btn_seleccionarFila) 
+        {
+            
+        }*/
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {    }
+
+    @Override
+    public void keyPressed(KeyEvent e) 
+    {
+        if (e.getExtendedKeyCode() == KeyEvent.VK_ENTER) 
         {
             if (this.vistaPaciente.jtb_tablaPacientes.getSelectedRowCount() == 1) 
             {
@@ -184,15 +207,13 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {    }
-
-    @Override
     public void keyReleased(KeyEvent e) 
     {
-        this.vistaPaciente.btn_buscar.doClick();
+        //this.vistaPaciente.btn_buscar.doClick();
+        if (e.getSource() == this.vistaPaciente.txf_buscar)
+        {
+            filtrar_datos(this.vistaPaciente.txf_buscar.getText());
+        }
     }
 
     @Override
