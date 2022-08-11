@@ -39,12 +39,13 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         //KeyListener para eventos de teclas.
         this.vistaPaciente.txf_buscar.addKeyListener(this);
         this.vistaPaciente.jtb_tablaPacientes.addKeyListener(this);
+        this.vistaPaciente.txf_edad.addKeyListener(this);
         //Rellenar campos en combo box.
         this.llenar_combo_especies();
         this.llenar_tabla_pacientes();
         //FocusListener es para las cajas de texto donde se esta escribiendo.
         this.vistaPaciente.txf_nombre.addFocusListener(this);
-        this.vistaPaciente.txf_edad.addFocusListener(this);
+        //this.vistaPaciente.txf_edad.addFocusListener(this);
         //Ejecucion de otros parametros.
         this.ocultarElementos();
     }
@@ -253,6 +254,21 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         {
             filtrar_datos(this.vistaPaciente.txf_buscar.getText());
         }
+        if (e.getSource() == this.vistaPaciente.txf_edad)
+        {
+            validador = isNumericInt(this.vistaPaciente.txf_edad.getText());
+            if (!this.vistaPaciente.txf_edad.getText().isEmpty() && !validador
+                 && this.vistaPaciente.txf_edad.getText().length() <= 2)
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(true);
+            }else if (this.vistaPaciente.txf_edad.getText().length() == 2)
+            {
+                e.consume();
+            }else
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(false);
+            }
+        }
     }
 
     @Override
@@ -407,23 +423,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
                 this.vistaPaciente.lbl_nombreIncorrecto.setVisible(true);
             } else
             {
-                 this.vistaPaciente.lbl_nombreIncorrecto.setVisible(false);
-            }
-        }
-        if (e.getSource() == this.vistaPaciente.txf_edad) 
-        {
-            validador = isNumericInt(this.vistaPaciente.txf_edad.getText());
-            System.out.println("Validador " + validador);
-            if (!this.vistaPaciente.txf_edad.getText().isEmpty() && !validador
-                 && this.vistaPaciente.txf_edad.getText().length() <= 2)
-            {
-                this.vistaPaciente.lbl_edadIncorrecta.setVisible(true);
-            }else if (this.vistaPaciente.txf_edad.getText().length() > 2)
-            {
-                
-            }else
-            {
-                this.vistaPaciente.lbl_edadIncorrecta.setVisible(false);
+                this.vistaPaciente.lbl_nombreIncorrecto.setVisible(false);
             }
         }
     }
