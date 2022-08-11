@@ -5,6 +5,8 @@ import Vista.Vista_Paciente;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -16,7 +18,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class Controlador_Paciente implements ActionListener, KeyListener, MouseListener
+public class Controlador_Paciente implements ActionListener, KeyListener, MouseListener, FocusListener
 {
     Vista_Paciente vistaPaciente;
     Modelo_Paciente modeloPaciente = new Modelo_Paciente();
@@ -24,7 +26,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     Color colorCoverOtro = new Color(250, 219, 216);
     Color colorBase = new Color(204,204,204);
     int opcion;
-    boolean validadorVacio, validadorLetras, validadorLetras1, validadorLetras2, validadorLetras3, validadorLetras4;
+    boolean validadorVacio, validadorLetras, validadorLetras1, validadorLetras2, validadorLetras3, validadorLetras4, validador;
     public Controlador_Paciente (Vista_Paciente vistaPaciente) 
     {
         this.vistaPaciente = vistaPaciente;
@@ -33,15 +35,18 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         this.vistaPaciente.jp_botonGuardar.addMouseListener(this);
         this.vistaPaciente.jp_botonActualizar.addMouseListener(this);
         this.vistaPaciente.jp_botonEliminar.addMouseListener(this);
-         //ActionListener para clicks.
-        //---this.vistaPaciente.btn_buscar.addActionListener(this);
-        //---this.vistaPaciente.btn_seleccionarFila.addActionListener(this);
+        //ActionListener para clicks.
         //KeyListener para eventos de teclas.
         this.vistaPaciente.txf_buscar.addKeyListener(this);
         this.vistaPaciente.jtb_tablaPacientes.addKeyListener(this);
         //Rellenar campos en combo box.
         this.llenar_combo_especies();
         this.llenar_tabla_pacientes();
+        //FocusListener es para las cajas de texto donde se esta escribiendo.
+        this.vistaPaciente.txf_nombre.addFocusListener(this);
+        this.vistaPaciente.txf_edad.addFocusListener(this);
+        //Ejecucion de otros parametros.
+        this.ocultarElementos();
     }
     
     public void borrar_datos ()
@@ -172,18 +177,37 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
      * @return true or false;
      */
     static boolean esSoloLetras(String cadena)
-	{
-            for (int i = 0; i < cadena.length(); i++)
-            {
-                    char caracter = cadena.toUpperCase().charAt(i);
-                    int valorASCII = (int)caracter;
-                    if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90))
-                    {
-                        return false; //Se ha encontrado un caracter que no es letra
-                    }
-            }
-            return true; //Terminado el bucle sin que se haya retornado false, es que todos los caracteres son letras
+    {
+        for (int i = 0; i < cadena.length(); i++)
+        {
+                char caracter = cadena.toUpperCase().charAt(i);
+                int valorASCII = (int)caracter;
+                if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90) && valorASCII != 32)
+                {
+                    return false; //Se ha encontrado un caracter que no es letra
+                }
+        }
+        return true; //Terminado el bucle sin que se haya retornado false, es que todos los caracteres son letras
+    }
+    
+    public void ocultarElementos()
+    {
+        this.vistaPaciente.lbl_nombreIncorrecto.setVisible(false);
+        this.vistaPaciente.lbl_edadIncorrecta.setVisible(false);
+        this.vistaPaciente.lbl_fechaNacimientoIncorrecta.setVisible(false);
+    }
+    
+    public static boolean isNumericInt(String cadena)
+    {
+	try 
+        {
+		Integer.parseInt(cadena);
+		return true;
+	} catch (NumberFormatException nfe)
+        {
+		return false;
 	}
+    }
     
     @Override
     public void actionPerformed(ActionEvent ae) {    }
@@ -366,6 +390,41 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         else if (e.getSource() == this.vistaPaciente.jp_botonSalir) 
         {
             this.vistaPaciente.jp_botonSalir.setBackground(colorBase);
+        }
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {    }
+
+    @Override
+    public void focusLost(FocusEvent e) 
+    {
+        if (e.getSource() == this.vistaPaciente.txf_nombre) 
+        {
+            validador = esSoloLetras(this.vistaPaciente.txf_nombre.getText());
+            if (!validador && !this.vistaPaciente.txf_nombre.getText().isEmpty()) 
+            {
+                this.vistaPaciente.lbl_nombreIncorrecto.setVisible(true);
+            } else
+            {
+                 this.vistaPaciente.lbl_nombreIncorrecto.setVisible(false);
+            }
+        }
+        if (e.getSource() == this.vistaPaciente.txf_edad) 
+        {
+            validador = isNumericInt(this.vistaPaciente.txf_edad.getText());
+            System.out.println("Validador " + validador);
+            if (!this.vistaPaciente.txf_edad.getText().isEmpty() && !validador
+                 && this.vistaPaciente.txf_edad.getText().length() <= 2)
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(true);
+            }else if (this.vistaPaciente.txf_edad.getText().length() > 2)
+            {
+                
+            }else
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(false);
+            }
         }
     }
 }

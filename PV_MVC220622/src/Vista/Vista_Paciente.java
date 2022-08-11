@@ -54,6 +54,9 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         lbl_botonActualizar = new javax.swing.JLabel();
         jp_botonEliminar = new javax.swing.JPanel();
         lbl_botonEliminar = new javax.swing.JLabel();
+        lbl_nombreIncorrecto = new javax.swing.JLabel();
+        lbl_edadIncorrecta = new javax.swing.JLabel();
+        lbl_fechaNacimientoIncorrecta = new javax.swing.JLabel();
         jp_contenedorTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtb_tablaPacientes = new javax.swing.JTable();
@@ -127,47 +130,62 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         );
 
         jp_contenedorOpciones.setPreferredSize(new java.awt.Dimension(827, 277));
+        jp_contenedorOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Nombre: *");
+        jp_contenedorOpciones.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 24, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Edad: *");
+        jp_contenedorOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 69, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Especie: *");
+        jp_contenedorOpciones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 114, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Color: *");
+        jp_contenedorOpciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 159, -1, -1));
 
         txf_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jp_contenedorOpciones.add(txf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 25, 667, -1));
 
         txf_edad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jp_contenedorOpciones.add(txf_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 70, 135, -1));
 
         txf_color.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jp_contenedorOpciones.add(txf_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 160, 135, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Sexo: *");
+        jp_contenedorOpciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 69, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Raza: *");
+        jp_contenedorOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 114, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Fecha de Nac. : *");
+        jp_contenedorOpciones.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 159, -1, -1));
 
         txf_raza.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jp_contenedorOpciones.add(txf_raza, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 251, -1));
 
         txf_fechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jp_contenedorOpciones.add(txf_fechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 160, 251, -1));
 
         cb_especie.setBackground(new java.awt.Color(255, 255, 255));
         cb_especie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_especie.setForeground(new java.awt.Color(0, 0, 0));
         cb_especie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
+        jp_contenedorOpciones.add(cb_especie, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 115, 135, -1));
 
         cb_sexo.setBackground(new java.awt.Color(255, 255, 255));
         cb_sexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cb_sexo.setForeground(new java.awt.Color(0, 0, 0));
         cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "M", "H" }));
+        jp_contenedorOpciones.add(cb_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 70, 251, -1));
 
         jp_botonGuardar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonGuardar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
@@ -198,6 +216,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jp_contenedorOpciones.add(jp_botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 226, -1, -1));
+
         jp_botonActualizar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonActualizar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jp_botonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -221,6 +241,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             jp_botonActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lbl_botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jp_contenedorOpciones.add(jp_botonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 226, -1, -1));
 
         jp_botonEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
@@ -249,77 +271,22 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             .addComponent(lbl_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jp_contenedorOpcionesLayout = new javax.swing.GroupLayout(jp_contenedorOpciones);
-        jp_contenedorOpciones.setLayout(jp_contenedorOpcionesLayout);
-        jp_contenedorOpcionesLayout.setHorizontalGroup(
-            jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
-                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txf_color, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txf_edad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_especie, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(110, 110, 110)
-                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7))
-                        .addGap(30, 30, 30)
-                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txf_raza, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txf_fechaNacimiento)
-                            .addComponent(cb_sexo, javax.swing.GroupLayout.Alignment.LEADING, 0, 251, Short.MAX_VALUE)))
-                    .addComponent(txf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorOpcionesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jp_botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jp_botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jp_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jp_contenedorOpcionesLayout.setVerticalGroup(
-            jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txf_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6)
-                    .addComponent(txf_raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_especie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txf_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txf_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jp_botonGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jp_botonActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jp_botonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15))
-        );
+        jp_contenedorOpciones.add(jp_botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 226, -1, -1));
+
+        lbl_nombreIncorrecto.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_nombreIncorrecto.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_nombreIncorrecto.setText("* Ingreso de datos incorrectos, solo ingresar letras.");
+        jp_contenedorOpciones.add(lbl_nombreIncorrecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 52, -1, -1));
+
+        lbl_edadIncorrecta.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_edadIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_edadIncorrecta.setText("* Ingreso de datos incorrectos, solo ingresar numeros.");
+        jp_contenedorOpciones.add(lbl_edadIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 98, -1, -1));
+
+        lbl_fechaNacimientoIncorrecta.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_fechaNacimientoIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_fechaNacimientoIncorrecta.setText("* Ingreso de datos incorrectos, usar - o / para separar fechas.");
+        jp_contenedorOpciones.add(lbl_fechaNacimientoIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
 
         jp_contenedorTabla.setPreferredSize(new java.awt.Dimension(680, 276));
 
@@ -378,7 +345,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
             .addGroup(jp_contenedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jp_contenedorOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                    .addComponent(jp_contenedorOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jp_contenedorLayout.createSequentialGroup()
                         .addComponent(jp_contenedorTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -461,6 +428,9 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_botonEliminar;
     private javax.swing.JLabel lbl_botonGuardar;
     private javax.swing.JLabel lbl_botonSalir;
+    public javax.swing.JLabel lbl_edadIncorrecta;
+    public javax.swing.JLabel lbl_fechaNacimientoIncorrecta;
+    public javax.swing.JLabel lbl_nombreIncorrecto;
     private javax.swing.JLabel lbl_titulo;
     public javax.swing.JTextField txf_buscar;
     public javax.swing.JTextField txf_color;
