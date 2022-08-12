@@ -24,6 +24,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     Color colorCoverOtro = new Color(250, 219, 216);
     Color colorBase = new Color(204,204,204);
     int opcion;
+    boolean validadorVacio, validadorLetras, validadorLetras1, validadorLetras2, validadorLetras3, validadorLetras4;
     public Controlador_Paciente (Vista_Paciente vistaPaciente) 
     {
         this.vistaPaciente = vistaPaciente;
@@ -109,13 +110,48 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     
     public void cargar_datos()
     {
-        modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText().toUpperCase();
-        modeloPaciente.edad = this.vistaPaciente.txf_edad.getText().toUpperCase();
-        modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();
-        modeloPaciente.color = this.vistaPaciente.txf_color.getText().toUpperCase();
-        modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();
-        modeloPaciente.raza = this.vistaPaciente.txf_raza.getText().toUpperCase();
-        modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
+        validadorVacio = true;
+        validadorLetras = true;
+        try
+        {
+            if ( this.vistaPaciente.txf_nombre.getText().isEmpty() || this.vistaPaciente.txf_edad.getText().isEmpty()
+                || this.vistaPaciente.cb_especie.getSelectedIndex() == 0 || this.vistaPaciente.txf_color.getText().isEmpty()
+                || this.vistaPaciente.cb_sexo.getSelectedIndex() == 0 || this.vistaPaciente.txf_raza.getText().isEmpty()
+                || this.vistaPaciente.txf_fechaNacimiento.getText().isEmpty())
+            {
+                validadorVacio = false;
+                throw new Exception();
+            }
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(vistaPaciente, "Campos vacios, ingrese los datos faltantes.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        validadorLetras1 = esSoloLetras(this.vistaPaciente.txf_nombre.getText());
+        validadorLetras2 = esSoloLetras(this.vistaPaciente.txf_color.getText());
+        validadorLetras3 = esSoloLetras(this.vistaPaciente.txf_raza.getText());
+        if (validadorLetras1 && validadorLetras2 && validadorLetras3) 
+        {
+            System.out.println("Datos correctos");
+            validadorLetras = true;
+        } else
+        {
+            validadorLetras = false;
+            JOptionPane.showMessageDialog(vistaPaciente, "Campos con caracteres especiales.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        if (validadorVacio && validadorLetras) 
+        {
+            System.out.println("Ingreso a los datos de envio.");
+            modeloPaciente.nombre = this.vistaPaciente.txf_nombre.getText().toUpperCase();
+            modeloPaciente.edad = this.vistaPaciente.txf_edad.getText();
+            modeloPaciente.especie = this.vistaPaciente.cb_especie.getSelectedItem().toString();
+            modeloPaciente.color = this.vistaPaciente.txf_color.getText().toUpperCase();
+            modeloPaciente.sexo = this.vistaPaciente.cb_sexo.getSelectedItem().toString();
+            modeloPaciente.raza = this.vistaPaciente.txf_raza.getText().toUpperCase();
+            modeloPaciente.fechaNacimiento = this.vistaPaciente.txf_fechaNacimiento.getText();
+        }else
+        {
+            System.out.println("Falso en el ingreso de datos.");
+        }
     }
     
     public void filtrar_datos(String valor)
@@ -126,52 +162,31 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         tr.setRowFilter(RowFilter.regexFilter("(?i)" + valor, 1));
     }
     
-    @Override
-    public void actionPerformed(ActionEvent ae) 
-    {
-        /*if (ae.getSource() == this.vistaPaciente.btn_buscar) 
-        {
-            modeloPaciente.nombre = this.vistaPaciente.txf_buscar.getText();
-            try 
+    /**
+     * Recorremos cada caracter de la cadena y comprobamos si son letras.
+     * Para comprobarlo, lo pasamos a mayuscula y consultamos su numero ASCII.
+     * Si está fuera del rango 65 - 90, es que NO son letras.
+     * Para ser más exactos al tratarse del idioma español, tambien comprobamos
+     * el valor 165 equivalente a la Ñ
+     * @param cadena
+     * @return true or false;
+     */
+    static boolean esSoloLetras(String cadena)
+	{
+            for (int i = 0; i < cadena.length(); i++)
             {
-                DefaultTableModel tablaModelo = (DefaultTableModel) this.vistaPaciente.jtb_tablaPacientes.getModel();
-                tablaModelo.setColumnCount(0);
-                tablaModelo.setRowCount(0);
-
-                tablaModelo.addColumn("id");
-                tablaModelo.addColumn("Nombre");
-                tablaModelo.addColumn("Edad");
-                tablaModelo.addColumn("Sexo");
-                tablaModelo.addColumn("Especie");
-                tablaModelo.addColumn("Raza");
-                tablaModelo.addColumn("Color");
-                tablaModelo.addColumn("Fecha de Nacimiento");
-
-                ResultSet rs = modeloPaciente.buscar_pacientes();
-                String[] datos = new String[8];
-                while (rs.next()) 
-                {
-                    datos[0] = rs.getString("id_paciente");
-                    datos[1] = rs.getString("pac_nombre");
-                    datos[2] = rs.getString("pac_edad");
-                    datos[3] = rs.getString("pac_sexo");
-                    datos[4] = rs.getString("pac_especie");
-                    datos[5] = rs.getString("pac_raza");
-                    datos[6] = rs.getString("pac_color");
-                    datos[7] = rs.getString("pac_fecha_nac");
-                    tablaModelo.addRow(datos);
-                }
-            } 
-            catch (SQLException ex) 
-            {
-                System.out.println("Error al buscar el dato... " + ex);
+                    char caracter = cadena.toUpperCase().charAt(i);
+                    int valorASCII = (int)caracter;
+                    if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90))
+                    {
+                        return false; //Se ha encontrado un caracter que no es letra
+                    }
             }
-        }*/
-        /*if (ae.getSource() == this.vistaPaciente.btn_seleccionarFila) 
-        {
-            
-        }*/
-    }
+            return true; //Terminado el bucle sin que se haya retornado false, es que todos los caracteres son letras
+	}
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {    }
 
     @Override
     public void keyTyped(KeyEvent e) {    }
@@ -231,20 +246,24 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         if (e.getSource() == this.vistaPaciente.jp_botonGuardar) 
         {
             this.cargar_datos();
-            try 
+            System.out.println("Validador en Guardar: " + validadorVacio);
+            if (validadorVacio && validadorLetras) 
             {
-                this.modeloPaciente.guardar_datos_paciente();
-            } 
-            catch (SQLException ex) 
-            {
-                System.out.println("Error al guardar los datos: " + ex);
+                try 
+                {
+                    this.modeloPaciente.guardar_datos_paciente();
+                } 
+                catch (SQLException ex) 
+                {
+                    System.out.println("Error al guardar los datos: " + ex);
+                }
+                opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.OK_OPTION) 
+                {
+                    borrar_datos();
+                }
+                this.llenar_tabla_pacientes();
             }
-            opcion = JOptionPane.showConfirmDialog(vistaPaciente, "¿Desea ingresas mas datos?", "Datos", JOptionPane.YES_NO_OPTION);
-            if (opcion == JOptionPane.OK_OPTION) 
-            {
-                borrar_datos();
-            }
-            this.llenar_tabla_pacientes();
         }
         //Actualizamos la informacion de la BD
         if (e.getSource() == this.vistaPaciente.jp_botonActualizar) 
