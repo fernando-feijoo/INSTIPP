@@ -75,7 +75,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
 
         jp_contenedorTitulo.setPreferredSize(new java.awt.Dimension(754, 80));
 
-        lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lbl_titulo.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_titulo.setText("Datos del Paciente");
 
@@ -85,7 +85,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonSalir.setMaximumSize(new java.awt.Dimension(130, 36));
         jp_botonSalir.setPreferredSize(new java.awt.Dimension(130, 36));
 
-        lbl_botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonSalir.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/logout_24px.png"))); // NOI18N
@@ -130,62 +130,47 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         );
 
         jp_contenedorOpciones.setPreferredSize(new java.awt.Dimension(827, 277));
-        jp_contenedorOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel1.setText("Nombre: *");
-        jp_contenedorOpciones.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 24, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel2.setText("Edad: *");
-        jp_contenedorOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 69, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel3.setText("Especie: *");
-        jp_contenedorOpciones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 114, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel4.setText("Color: *");
-        jp_contenedorOpciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 159, -1, -1));
 
-        txf_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jp_contenedorOpciones.add(txf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 25, 667, -1));
+        txf_nombre.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
 
-        txf_edad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jp_contenedorOpciones.add(txf_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 70, 135, -1));
+        txf_edad.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
 
-        txf_color.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jp_contenedorOpciones.add(txf_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 160, 135, -1));
+        txf_color.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel5.setText("Sexo: *");
-        jp_contenedorOpciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 69, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel6.setText("Raza: *");
-        jp_contenedorOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 114, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel7.setText("Fecha de Nac. : *");
-        jp_contenedorOpciones.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 159, -1, -1));
 
-        txf_raza.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jp_contenedorOpciones.add(txf_raza, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 251, -1));
+        txf_raza.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
 
-        txf_fechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jp_contenedorOpciones.add(txf_fechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 160, 251, -1));
+        txf_fechaNacimiento.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
 
         cb_especie.setBackground(new java.awt.Color(255, 255, 255));
-        cb_especie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_especie.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         cb_especie.setForeground(new java.awt.Color(0, 0, 0));
         cb_especie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
-        jp_contenedorOpciones.add(cb_especie, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 115, 135, -1));
 
         cb_sexo.setBackground(new java.awt.Color(255, 255, 255));
-        cb_sexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_sexo.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         cb_sexo.setForeground(new java.awt.Color(0, 0, 0));
         cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "M", "H" }));
-        jp_contenedorOpciones.add(cb_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 70, 251, -1));
 
         jp_botonGuardar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonGuardar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
@@ -193,7 +178,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonGuardar.setMaximumSize(new java.awt.Dimension(138, 36));
         jp_botonGuardar.setPreferredSize(new java.awt.Dimension(138, 36));
 
-        lbl_botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/save_24px.png"))); // NOI18N
@@ -216,15 +201,13 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jp_contenedorOpciones.add(jp_botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 226, -1, -1));
-
         jp_botonActualizar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonActualizar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jp_botonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jp_botonActualizar.setMaximumSize(new java.awt.Dimension(138, 36));
         jp_botonActualizar.setPreferredSize(new java.awt.Dimension(138, 36));
 
-        lbl_botonActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonActualizar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonActualizar.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/refresh_24px.png"))); // NOI18N
@@ -239,10 +222,8 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         );
         jp_botonActualizarLayout.setVerticalGroup(
             jp_botonActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbl_botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
-
-        jp_contenedorOpciones.add(jp_botonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 226, -1, -1));
 
         jp_botonEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jp_botonEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
@@ -250,7 +231,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonEliminar.setMaximumSize(new java.awt.Dimension(138, 36));
         jp_botonEliminar.setPreferredSize(new java.awt.Dimension(138, 36));
 
-        lbl_botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonEliminar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonEliminar.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/trash_24px.png"))); // NOI18N
@@ -268,31 +249,138 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         );
         jp_botonEliminarLayout.setVerticalGroup(
             jp_botonEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(lbl_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, Short.MAX_VALUE)
         );
 
-        jp_contenedorOpciones.add(jp_botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 226, -1, -1));
-
-        lbl_nombreIncorrecto.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_nombreIncorrecto.setFont(new java.awt.Font("Roboto Medium", 0, 9)); // NOI18N
         lbl_nombreIncorrecto.setForeground(new java.awt.Color(255, 0, 0));
         lbl_nombreIncorrecto.setText("* Ingreso de datos incorrectos, solo ingresar letras.");
-        jp_contenedorOpciones.add(lbl_nombreIncorrecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 52, -1, -1));
 
-        lbl_edadIncorrecta.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_edadIncorrecta.setFont(new java.awt.Font("Roboto Medium", 0, 9)); // NOI18N
         lbl_edadIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
         lbl_edadIncorrecta.setText("* Ingreso de datos incorrectos, solo ingresar numeros.");
-        jp_contenedorOpciones.add(lbl_edadIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 98, -1, -1));
 
-        lbl_fechaNacimientoIncorrecta.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_fechaNacimientoIncorrecta.setFont(new java.awt.Font("Roboto Medium", 0, 9)); // NOI18N
         lbl_fechaNacimientoIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
         lbl_fechaNacimientoIncorrecta.setText("* Ingreso de datos incorrectos, usar - o / para separar fechas.");
-        jp_contenedorOpciones.add(lbl_fechaNacimientoIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
+
+        javax.swing.GroupLayout jp_contenedorOpcionesLayout = new javax.swing.GroupLayout(jp_contenedorOpciones);
+        jp_contenedorOpciones.setLayout(jp_contenedorOpcionesLayout);
+        jp_contenedorOpcionesLayout.setHorizontalGroup(
+            jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addGap(16, 16, 16)
+                        .addComponent(txf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(lbl_nombreIncorrecto))
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(lbl_edadIncorrecta))
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(412, 412, 412)
+                        .addComponent(jp_botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jp_botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jp_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(19, 19, 19)
+                                .addComponent(cb_especie, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(110, 110, 110)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txf_raza, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(42, 42, 42)
+                                .addComponent(txf_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(110, 110, 110)
+                                .addComponent(jLabel5)
+                                .addGap(109, 109, 109)
+                                .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4)
+                        .addGap(39, 39, 39)
+                        .addComponent(txf_color, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel7)
+                        .addGap(22, 22, 22)
+                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_fechaNacimientoIncorrecta)
+                            .addComponent(txf_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(6, 6, 6))
+        );
+        jp_contenedorOpcionesLayout.setVerticalGroup(
+            jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(4, 4, 4)
+                .addComponent(lbl_nombreIncorrecto)
+                .addGap(5, 5, 5)
+                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txf_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(5, 5, 5)
+                .addComponent(lbl_edadIncorrecta)
+                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel3))
+                            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(cb_especie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel6)))
+                        .addGap(21, 21, 21)
+                        .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel7)
+                            .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txf_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txf_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jp_contenedorOpcionesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txf_raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_fechaNacimientoIncorrecta)
+                .addGap(25, 25, 25)
+                .addGroup(jp_contenedorOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jp_botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jp_botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jp_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         jp_contenedorTabla.setPreferredSize(new java.awt.Dimension(680, 276));
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(882, 250));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(882, 250));
 
+        jtb_tablaPacientes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtb_tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -306,9 +394,10 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtb_tablaPacientes);
 
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Buscar:");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Listado de Pacientes");
 
@@ -329,7 +418,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_contenedorTablaLayout.setVerticalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
+                .addGap(0, 19, Short.MAX_VALUE)
                 .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
