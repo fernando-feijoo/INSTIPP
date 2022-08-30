@@ -12,7 +12,7 @@ public class Proceso2 implements Runnable{
     public void run() {
         for (int i = numeroLocal; i > 0; i--) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1500);
                 System.out.println("Proceso 2: " + numeroLocal/i);
             } catch (InterruptedException ex) {
                 //Logger.getLogger(Proceso2.class.getName()).log(Level.SEVERE, null, ex);
