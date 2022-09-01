@@ -75,7 +75,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
 
         jp_contenedorTitulo.setPreferredSize(new java.awt.Dimension(754, 80));
 
-        lbl_titulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lbl_titulo.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_titulo.setText("Datos del Paciente");
 
@@ -85,7 +85,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonSalir.setMaximumSize(new java.awt.Dimension(130, 36));
         jp_botonSalir.setPreferredSize(new java.awt.Dimension(130, 36));
 
-        lbl_botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonSalir.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/logout_24px.png"))); // NOI18N
@@ -132,59 +132,59 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_contenedorOpciones.setPreferredSize(new java.awt.Dimension(827, 277));
         jp_contenedorOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel1.setText("Nombre: *");
         jp_contenedorOpciones.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 24, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel2.setText("Edad: *");
         jp_contenedorOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 69, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel3.setText("Especie: *");
         jp_contenedorOpciones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 114, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel4.setText("Color: *");
         jp_contenedorOpciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 159, -1, -1));
 
-        txf_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txf_nombre.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jp_contenedorOpciones.add(txf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 25, 667, -1));
 
-        txf_edad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txf_edad.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jp_contenedorOpciones.add(txf_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 70, 135, -1));
 
-        txf_color.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txf_color.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jp_contenedorOpciones.add(txf_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 160, 135, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel5.setText("Sexo: *");
         jp_contenedorOpciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 69, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel6.setText("Raza: *");
-        jp_contenedorOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 114, -1, -1));
+        jp_contenedorOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 111, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel7.setText("Fecha de Nac. : *");
         jp_contenedorOpciones.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 159, -1, -1));
 
-        txf_raza.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jp_contenedorOpciones.add(txf_raza, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 251, -1));
+        txf_raza.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jp_contenedorOpciones.add(txf_raza, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 114, 251, -1));
 
-        txf_fechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txf_fechaNacimiento.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jp_contenedorOpciones.add(txf_fechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 160, 251, -1));
 
         cb_especie.setBackground(new java.awt.Color(255, 255, 255));
-        cb_especie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_especie.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         cb_especie.setForeground(new java.awt.Color(0, 0, 0));
-        cb_especie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓" }));
+        cb_especie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opción" }));
         jp_contenedorOpciones.add(cb_especie, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 115, 135, -1));
 
         cb_sexo.setBackground(new java.awt.Color(255, 255, 255));
-        cb_sexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cb_sexo.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         cb_sexo.setForeground(new java.awt.Color(0, 0, 0));
-        cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "↓ Opción ↓", "M", "H" }));
+        cb_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opción", "M", "H" }));
         jp_contenedorOpciones.add(cb_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 70, 251, -1));
 
         jp_botonGuardar.setBackground(new java.awt.Color(204, 204, 204));
@@ -193,7 +193,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonGuardar.setMaximumSize(new java.awt.Dimension(138, 36));
         jp_botonGuardar.setPreferredSize(new java.awt.Dimension(138, 36));
 
-        lbl_botonGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonGuardar.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/save_24px.png"))); // NOI18N
@@ -224,7 +224,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonActualizar.setMaximumSize(new java.awt.Dimension(138, 36));
         jp_botonActualizar.setPreferredSize(new java.awt.Dimension(138, 36));
 
-        lbl_botonActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonActualizar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonActualizar.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/refresh_24px.png"))); // NOI18N
@@ -239,7 +239,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         );
         jp_botonActualizarLayout.setVerticalGroup(
             jp_botonActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbl_botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
         jp_contenedorOpciones.add(jp_botonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 226, -1, -1));
@@ -250,7 +250,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_botonEliminar.setMaximumSize(new java.awt.Dimension(138, 36));
         jp_botonEliminar.setPreferredSize(new java.awt.Dimension(138, 36));
 
-        lbl_botonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_botonEliminar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbl_botonEliminar.setForeground(new java.awt.Color(0, 0, 0));
         lbl_botonEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/trash_24px.png"))); // NOI18N
@@ -268,31 +268,32 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         );
         jp_botonEliminarLayout.setVerticalGroup(
             jp_botonEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(lbl_botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, Short.MAX_VALUE)
         );
 
         jp_contenedorOpciones.add(jp_botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 226, -1, -1));
 
-        lbl_nombreIncorrecto.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_nombreIncorrecto.setFont(new java.awt.Font("Roboto Medium", 0, 9)); // NOI18N
         lbl_nombreIncorrecto.setForeground(new java.awt.Color(255, 0, 0));
         lbl_nombreIncorrecto.setText("* Ingreso de datos incorrectos, solo ingresar letras.");
         jp_contenedorOpciones.add(lbl_nombreIncorrecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 52, -1, -1));
 
-        lbl_edadIncorrecta.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_edadIncorrecta.setFont(new java.awt.Font("Roboto Medium", 0, 9)); // NOI18N
         lbl_edadIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
         lbl_edadIncorrecta.setText("* Ingreso de datos incorrectos, solo ingresar numeros.");
         jp_contenedorOpciones.add(lbl_edadIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 98, -1, -1));
 
-        lbl_fechaNacimientoIncorrecta.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        lbl_fechaNacimientoIncorrecta.setFont(new java.awt.Font("Roboto Medium", 0, 9)); // NOI18N
         lbl_fechaNacimientoIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
-        lbl_fechaNacimientoIncorrecta.setText("* Ingreso de datos incorrectos, usar - o / para separar fechas.");
-        jp_contenedorOpciones.add(lbl_fechaNacimientoIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
+        lbl_fechaNacimientoIncorrecta.setText("* Ingreso de datos incorrectos, usar -  para separar fechas.");
+        jp_contenedorOpciones.add(lbl_fechaNacimientoIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 189, -1, -1));
 
         jp_contenedorTabla.setPreferredSize(new java.awt.Dimension(680, 276));
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(882, 250));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(882, 250));
 
+        jtb_tablaPacientes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtb_tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -306,9 +307,12 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtb_tablaPacientes);
 
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Buscar:");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txf_buscar.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Listado de Pacientes");
 
@@ -329,7 +333,7 @@ public class Vista_Paciente extends javax.swing.JInternalFrame {
         jp_contenedorTablaLayout.setVerticalGroup(
             jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_contenedorTablaLayout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
+                .addGap(0, 19, Short.MAX_VALUE)
                 .addGroup(jp_contenedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

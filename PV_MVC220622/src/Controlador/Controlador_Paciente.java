@@ -25,8 +25,9 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     Color colorCover = new Color(235, 245, 251);
     Color colorCoverOtro = new Color(250, 219, 216);
     Color colorBase = new Color(204,204,204);
-    int opcion;
+    int opcion, valorASCII;
     boolean validadorVacio, validadorLetras, validadorLetras1, validadorLetras2, validadorLetras3, validadorLetras4, validador;
+    char tmp;
     public Controlador_Paciente (Vista_Paciente vistaPaciente) 
     {
         this.vistaPaciente = vistaPaciente;
@@ -40,12 +41,15 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         this.vistaPaciente.txf_buscar.addKeyListener(this);
         this.vistaPaciente.jtb_tablaPacientes.addKeyListener(this);
         this.vistaPaciente.txf_edad.addKeyListener(this);
+        this.vistaPaciente.txf_nombre.addKeyListener(this);
+        this.vistaPaciente.txf_fechaNacimiento.addKeyListener(this);
+        //FocusListener para algunos textbox
+        this.vistaPaciente.txf_edad.addFocusListener(this);
+        this.vistaPaciente.txf_nombre.addFocusListener(this);
+        this.vistaPaciente.txf_fechaNacimiento.addFocusListener(this);
         //Rellenar campos en combo box.
         this.llenar_combo_especies();
         this.llenar_tabla_pacientes();
-        //FocusListener es para las cajas de texto donde se esta escribiendo.
-        this.vistaPaciente.txf_nombre.addFocusListener(this);
-        //this.vistaPaciente.txf_edad.addFocusListener(this);
         //Ejecucion de otros parametros.
         this.ocultarElementos();
     }
@@ -132,6 +136,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         {
             JOptionPane.showMessageDialog(vistaPaciente, "Campos vacios, ingrese los datos faltantes.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        
         validadorLetras1 = esSoloLetras(this.vistaPaciente.txf_nombre.getText());
         validadorLetras2 = esSoloLetras(this.vistaPaciente.txf_color.getText());
         validadorLetras3 = esSoloLetras(this.vistaPaciente.txf_raza.getText());
@@ -183,7 +188,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
         {
                 char caracter = cadena.toUpperCase().charAt(i);
                 int valorASCII = (int)caracter;
-                if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90) && valorASCII != 32)
+                if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90) && valorASCII != 32 && valorASCII != 8)
                 {
                     return false; //Se ha encontrado un caracter que no es letra
                 }
@@ -210,16 +215,80 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
 	}
     }
     
+    /**
+     * Obtenemos el valor ASCII de un char
+     * @param caracter
+     * @return int del char recibido.
+     */
+    public int numeroASCII(char caracter)
+    {
+        int valorASCII = (int)caracter;
+        return valorASCII;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) {    }
 
     @Override
-    public void keyTyped(KeyEvent e) {    }
+    public void keyTyped(KeyEvent e) 
+    {  
+        if (e.getSource() == this.vistaPaciente.txf_buscar)
+        {
+            filtrar_datos(this.vistaPaciente.txf_buscar.getText());
+        }
+        
+        if (e.getSource() == this.vistaPaciente.txf_edad)
+        {
+            tmp = e.getKeyChar();
+            valorASCII = numeroASCII(tmp);
+            if (!Character.isDigit(tmp) && valorASCII != 8)
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setText("* Ingreso de datos incorrectos, solo ingresar numeros.");
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(true);
+                e.consume();
+            }else if (this.vistaPaciente.txf_edad.getText().length() >= 2)
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setText("* Solo puede ingresar 2 numeros.");
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(true);
+                e.consume();
+            }else
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(false);
+            }
+        }
+        
+        if (e.getSource() == this.vistaPaciente.txf_nombre) 
+        {
+            tmp = e.getKeyChar();
+            valorASCII = numeroASCII(tmp);
+            if (!Character.isLetter(tmp) && valorASCII != 8 && valorASCII != 32)
+            {
+                this.vistaPaciente.lbl_nombreIncorrecto.setVisible(true);
+                e.consume();
+            } else
+            {
+                this.vistaPaciente.lbl_nombreIncorrecto.setVisible(false);
+            }
+        }
+        if (e.getSource() == this.vistaPaciente.txf_fechaNacimiento) 
+        {
+            tmp = e.getKeyChar();
+            valorASCII = numeroASCII(tmp);
+            if (!Character.isDigit(tmp) && valorASCII != 8 && valorASCII != 45)
+            {
+                this.vistaPaciente.lbl_fechaNacimientoIncorrecta.setVisible(true);
+                e.consume();
+            } else
+            {
+                this.vistaPaciente.lbl_fechaNacimientoIncorrecta.setVisible(false);
+            }
+        }
+    }
 
     @Override
     public void keyPressed(KeyEvent e) 
     {
-        if (e.getExtendedKeyCode() == KeyEvent.VK_ENTER) 
+        if (e.getExtendedKeyCode() == KeyEvent.VK_ENTER && e.getSource() == vistaPaciente.jtb_tablaPacientes) 
         {
             if (this.vistaPaciente.jtb_tablaPacientes.getSelectedRowCount() == 1) 
             {
@@ -247,29 +316,7 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     }
 
     @Override
-    public void keyReleased(KeyEvent e) 
-    {
-        //this.vistaPaciente.btn_buscar.doClick();
-        if (e.getSource() == this.vistaPaciente.txf_buscar)
-        {
-            filtrar_datos(this.vistaPaciente.txf_buscar.getText());
-        }
-        if (e.getSource() == this.vistaPaciente.txf_edad)
-        {
-            validador = isNumericInt(this.vistaPaciente.txf_edad.getText());
-            if (!this.vistaPaciente.txf_edad.getText().isEmpty() && !validador
-                 && this.vistaPaciente.txf_edad.getText().length() <= 2)
-            {
-                this.vistaPaciente.lbl_edadIncorrecta.setVisible(true);
-            }else if (this.vistaPaciente.txf_edad.getText().length() == 2)
-            {
-                e.consume();
-            }else
-            {
-                this.vistaPaciente.lbl_edadIncorrecta.setVisible(false);
-            }
-        }
-    }
+    public void keyReleased(KeyEvent e)  {     }
 
     @Override
     public void mouseClicked(MouseEvent e) 
@@ -415,16 +462,24 @@ public class Controlador_Paciente implements ActionListener, KeyListener, MouseL
     @Override
     public void focusLost(FocusEvent e) 
     {
+        if (e.getSource() == this.vistaPaciente.txf_edad)
+        {
+            if (this.vistaPaciente.txf_edad.getText().length() <= 2)
+            {
+                this.vistaPaciente.lbl_edadIncorrecta.setVisible(false);
+            }
+        }
         if (e.getSource() == this.vistaPaciente.txf_nombre) 
         {
             validador = esSoloLetras(this.vistaPaciente.txf_nombre.getText());
-            if (!validador && !this.vistaPaciente.txf_nombre.getText().isEmpty()) 
-            {
-                this.vistaPaciente.lbl_nombreIncorrecto.setVisible(true);
-            } else
+            if (validador)
             {
                 this.vistaPaciente.lbl_nombreIncorrecto.setVisible(false);
             }
+        }
+        if (e.getSource() == this.vistaPaciente.txf_fechaNacimiento) 
+        {
+            this.vistaPaciente.lbl_fechaNacimientoIncorrecta.setVisible(false);
         }
     }
 }

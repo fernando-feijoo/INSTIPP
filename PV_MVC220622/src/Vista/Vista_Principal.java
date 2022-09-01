@@ -84,7 +84,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_opcionUno.setMinimumSize(new java.awt.Dimension(300, 50));
         jp_opcionUno.setPreferredSize(new java.awt.Dimension(300, 50));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/veterinarian_32px.png"))); // NOI18N
         jLabel1.setText("Pacientes");
 
@@ -111,7 +111,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_opcionDos.setMinimumSize(new java.awt.Dimension(300, 50));
         jp_opcionDos.setPreferredSize(new java.awt.Dimension(300, 50));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/customer_32px.png"))); // NOI18N
         jLabel2.setText("Clientes");
 
@@ -138,7 +138,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_opcionTres.setMinimumSize(new java.awt.Dimension(300, 50));
         jp_opcionTres.setPreferredSize(new java.awt.Dimension(300, 50));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/botella-de-pastillas_32px.png"))); // NOI18N
         jLabel3.setText("Medicinas");
 
@@ -165,7 +165,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_opcionCuatro.setMinimumSize(new java.awt.Dimension(300, 50));
         jp_opcionCuatro.setPreferredSize(new java.awt.Dimension(300, 50));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/pdf_32px.png"))); // NOI18N
         jLabel5.setText("Reportes");
 
@@ -192,7 +192,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jp_opcionCinco.setMinimumSize(new java.awt.Dimension(300, 50));
         jp_opcionCinco.setPreferredSize(new java.awt.Dimension(300, 50));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/configuraciones_32px.png"))); // NOI18N
         jLabel4.setText("Configuración");
 
@@ -270,7 +270,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         lbl_textoSuperior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_textoSuperior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/BannerMascotas.png"))); // NOI18N
 
-        lbl_textoInferior.setFont(new java.awt.Font("Segoe UI", 1, 80)); // NOI18N
+        lbl_textoInferior.setFont(new java.awt.Font("Roboto Lt", 1, 80)); // NOI18N
         lbl_textoInferior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_textoInferior.setText("BIENVENIDO/A");
         lbl_textoInferior.setRequestFocusEnabled(false);
@@ -314,7 +314,7 @@ public class Vista_Principal extends javax.swing.JFrame {
                 .addComponent(jp_exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(189, 189, 189)
                 .addComponent(lbl_textoInferior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(lbl_textoSuperior)
                 .addGap(44, 44, 44))
         );
