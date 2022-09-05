@@ -17,6 +17,11 @@ nb-configuration.xml
 
 # File or library
 postgresql-42.4.0.jar
+<<<<<<< HEAD
 /FeijooFernando_pv_ev1/nbproject/private/
 /MisPropiasExepciones/nbproject/private/
 /Laboratorio15_060822/nbproject/private/
+/PruebaReporte/nbproject/private/
+=======
+/FeijooFernando/nbproject/private/
+>>>>>>> evaluacionTemporal
