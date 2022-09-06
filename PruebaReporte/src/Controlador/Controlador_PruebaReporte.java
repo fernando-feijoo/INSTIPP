@@ -4,6 +4,7 @@ import Modelo.Modelo_Conexion;
 import Vista.Vista_PruebaReporte;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -23,6 +24,11 @@ public class Controlador_PruebaReporte implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vistaPrueba.btn_imprimir) {
             try {
+                
+                HashMap<String, Object> param = new HashMap<>();
+                param.put(,);
+                
+                
                 JasperReport reporte;
                 JasperPrint jprint = null;
                 reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/Pacientes_Reporte.jasper"));
