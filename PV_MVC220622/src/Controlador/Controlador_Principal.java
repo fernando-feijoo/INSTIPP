@@ -29,7 +29,7 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     Color colorBase = new Color(204,204,204);
     Color colorBaseExit = new Color(238,238,238);
     Color colorOpcion = new Color(65, 204, 0);
-    int opcionClick, contador, xMouse, yMouse;
+    int opcionClick, xMouse, yMouse;
     Vista_Principal vistaPrincipal;
     public Controlador_Principal(Vista_Principal vistaPrincipal) 
     {
@@ -88,7 +88,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
 //            Valido cada click en la opcion para su animacion MouseListener.
             opcionClick = 1;
 //            Valido cuando se hace mas de un click entre menus, pero no sale aun, si sale retorna el color base.
-            contador++;
         }
 //        Opcion 2 Clientes
         if (me.getSource() == this.vistaPrincipal.jp_opcionDos) 
@@ -106,7 +105,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             this.vistaCliente.setVisible(true);
             
             opcionClick = 2;
-            contador++;
         }
 //        Opcion 3 Medicinas 
         if (me.getSource() == this.vistaPrincipal.jp_opcionTres) 
@@ -124,7 +122,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             this.vistaMedicina.setVisible(true);
             
             opcionClick = 3;
-            contador++;
         }
 //        Opcion 4 Reporte
         if (me.getSource() == this.vistaPrincipal.jp_opcionCuatro) 
@@ -142,7 +139,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             this.vistaReporte.setVisible(true);
             
             opcionClick = 4;
-            contador++;
         }
 //        Opcion 5 Configuracion
         if (me.getSource() == this.vistaPrincipal.jp_opcionCinco) 
@@ -160,7 +156,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
             this.vistaConfiguracion.setVisible(true);
             
             opcionClick = 5;
-            contador++;
         }
 //        Opciones de salida:
         if (me.getSource() == this.vistaPaciente.jp_botonSalir || me.getSource() == this.vistaCliente.jp_botonSalir
@@ -168,7 +163,6 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
         {
             this.vistaPrincipal.jp_bienvenida.setVisible(true);
             opcionClick = 0;
-            contador = 0;
         }
         
         if (me.getSource() == this.vistaPrincipal.jp_exit)
@@ -263,7 +257,8 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     @Override
     public void componentHidden(ComponentEvent ce) 
     {
-        //coloca el color base del boton. El problema era con la opcionClick.
+        // coloca el color base del boton. El problema era con la opcionClick.
+        // Actualizamos los colores de los botones cuando seleccionamos una opcion.
         if (ce.getSource() == this.vistaPaciente) 
         {
             this.vistaPrincipal.jp_opcionUno.setBackground(colorBase);
@@ -289,10 +284,8 @@ public class Controlador_Principal implements MouseListener, ComponentListener, 
     public void actionPerformed(ActionEvent ae) 
     {
 //        Controlo si se alterna entre menus, cuando se sale de cada 1 el valor de opcionClick regresa a 0.
-//        Control para subMenus, temporal toca remplazarlo...
         this.vistaPrincipal.jp_bienvenida.setVisible(true);
         opcionClick = 0;
-        contador = 0;
     }
 
     @Override
