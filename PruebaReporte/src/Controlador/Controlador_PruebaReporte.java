@@ -4,6 +4,7 @@ import Modelo.Modelo_Conexion;
 import Vista.Vista_PruebaReporte;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -25,8 +26,11 @@ public class Controlador_PruebaReporte implements ActionListener {
             try {
                 JasperReport reporte;
                 JasperPrint jprint = null;
-                reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/Pacientes_Reporte.jasper"));
-                jprint = JasperFillManager.fillReport(reporte, null, modeloConexion.conexion_bd());
+                HashMap<String, Object> param = new HashMap<String, Object>();
+                param.put("Filtro_bodega", "BODEGA 02");
+                param.put("Filtro_tipo_medicamento", "CÁPSULAS");
+                reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/Personalizado_Reporte.jasper"));
+                jprint = JasperFillManager.fillReport(reporte, param, modeloConexion.conexion_bd());
                 if (jprint != null) {
                     JasperViewer view = new JasperViewer(jprint);
                     view.setVisible(true);
