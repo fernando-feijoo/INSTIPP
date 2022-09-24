@@ -11,7 +11,7 @@ public class Modelo_Conexion
     {
         String baseDatos = "jdbc:postgresql://localhost:5432/veterinaria_pv_270622";
         String user = "postgres";
-        String password = "FerDatos95";
+        String password = "postgres";
         try 
         {
 //            Conexion a la base de datos.
