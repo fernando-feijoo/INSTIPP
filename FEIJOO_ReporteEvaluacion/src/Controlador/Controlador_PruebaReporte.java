@@ -23,13 +23,13 @@ public class Controlador_PruebaReporte implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vistaPrueba.btn_imprimir) {
+            String parametro = this.vistaPrueba.txf_busqueda.getText();
             try {
                 JasperReport reporte;
                 JasperPrint jprint = null;
                 HashMap<String, Object> param = new HashMap<String, Object>();
-                param.put("Filtro_bodega", "BODEGA 02");
-                param.put("Filtro_tipo_medicamento", "CÁPSULAS");
-                reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/Personalizado_Reporte.jasper"));
+                param.put("FiltroEstado", parametro);
+                reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/FernandoReporte.jasper"));
                 jprint = JasperFillManager.fillReport(reporte, param, modeloConexion.conexion_bd());
                 if (jprint != null) {
                     JasperViewer view = new JasperViewer(jprint);
