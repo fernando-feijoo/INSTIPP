@@ -15,12 +15,24 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "NewWebService")
 public class NewWebService {
-
     /**
      * This is a sample web service operation
      */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    @WebMethod(operationName = "suma")
+    public String suma(@WebParam(name = "n1") String n1, @WebParam(name = "n2") String n2) {
+        int total = Integer.parseInt(n1)+Integer.parseInt(n2);
+        return "Hello " + total + " !";
+    }
+    public String resta(@WebParam(name = "n1") String n1, @WebParam(name = "n2") String n2) {
+        int total = Integer.parseInt(n1)-Integer.parseInt(n2);
+        return "Hello " + total + " !";
+    }
+    public String multiplicacion (@WebParam(name = "n1") String n1, @WebParam(name = "n2") String n2) {
+        int total = Integer.parseInt(n1)*Integer.parseInt(n2);
+        return "Hello " + total + " !";
+    }
+    public String division (@WebParam(name = "n1") String n1, @WebParam(name = "n2") String n2) {
+        double total = Double.parseDouble(n1)/Double.parseDouble(n2);
+        return "Hello " + total + " !";
     }
 }
