@@ -4,9 +4,6 @@
     <service name="NewWebService">
       <implementation-class>ws.NewWebService</implementation-class>
     </service>
-    <service name="FernandoFeijoo">
-      <implementation-class>ws.FernandoFeijoo</implementation-class>
-    </service>
   </services>
   <clients/>
 </jax-ws>
