@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/FEIJOO_ReporteEvaluacion.iml" filepath="$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/FEIJOO_ReporteEvaluacion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FeijooFernando/FeijooFernando.iml" filepath="$PROJECT_DIR$/FeijooFernando/FeijooFernando.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FeijooFernando_pv_ev1/FeijooFernando_pv_ev1.iml" filepath="$PROJECT_DIR$/FeijooFernando_pv_ev1/FeijooFernando_pv_ev1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FundamentosFernandoFeijoo/FundamentosFernandoFeijoo.iml" filepath="$PROJECT_DIR$/FundamentosFernandoFeijoo/FundamentosFernandoFeijoo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Laboratorio15_060822/Laboratorio15_060822.iml" filepath="$PROJECT_DIR$/Laboratorio15_060822/Laboratorio15_060822.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MisPropiasExepciones/MisPropiasExepciones.iml" filepath="$PROJECT_DIR$/MisPropiasExepciones/MisPropiasExepciones.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/NetBeansProjects.iml" filepath="$PROJECT_DIR$/.idea/NetBeansProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PV_MVC220622/PV_MVC220622.iml" filepath="$PROJECT_DIR$/PV_MVC220622/PV_MVC220622.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Platzi-Practicas/Platzi-Practicas.iml" filepath="$PROJECT_DIR$/Platzi-Practicas/Platzi-Practicas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PrimeraLibreria/PrimeraLibreria.iml" filepath="$PROJECT_DIR$/PrimeraLibreria/PrimeraLibreria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PruebaPersonales/PruebaPersonales.iml" filepath="$PROJECT_DIR$/PruebaPersonales/PruebaPersonales.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Segundo Semestre/Segundo Semestre.iml" filepath="$PROJECT_DIR$/Segundo Semestre/Segundo Semestre.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TercerSemestre/TercerSemestre.iml" filepath="$PROJECT_DIR$/TercerSemestre/TercerSemestre.iml" />
+    </modules>
+  </component>
+</project>

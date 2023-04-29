@@ -1,0 +1,28 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/commons-codec-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/jfreechart-1.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/commons-digester-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/poi-ooxml-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/poi-ooxml-schemas-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/itextpdf-5.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/groovy-all-2.4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/poi-scratchpad-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/poi-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/postgresql-42.2.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/jasperreports-6.19.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/commons-beanutils-1.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/poi-excelant-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/itext-pdfa-5.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/xmlbeans-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/lib/commons-collections4-4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

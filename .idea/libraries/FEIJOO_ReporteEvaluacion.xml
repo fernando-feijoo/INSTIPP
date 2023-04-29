@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="FEIJOO_ReporteEvaluacion">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/FEIJOO_ReporteEvaluacion/dist/FEIJOO_ReporteEvaluacion.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
