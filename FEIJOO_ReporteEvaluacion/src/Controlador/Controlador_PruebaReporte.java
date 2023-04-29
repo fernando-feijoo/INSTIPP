@@ -28,8 +28,14 @@ public class Controlador_PruebaReporte implements ActionListener {
                 JasperReport reporte;
                 JasperPrint jprint = null;
                 HashMap<String, Object> param = new HashMap<String, Object>();
-                param.put("FiltroEstado", parametro);
-                reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/FernandoReporte.jasper"));
+                param.put("OBS_GENERAL", parametro);
+                param.put("subReporteUno", "/C:\\Users\\User\\JaspersoftWorkspace\\Proyecto_TierraFertil\\Reporte_Principal\\datosLlegada.jasper");
+                param.put("subReporteDos", "/C:\\Users\\User\\JaspersoftWorkspace\\Proyecto_TierraFertil\\Reporte_Principal\\Inspeccion.jasper");
+                param.put("subReporteTres", "/C:\\Users\\User\\JaspersoftWorkspace\\Proyecto_TierraFertil\\Reporte_Principal\\Higiene.jasper");
+                param.put("subReporteTresObs", "/C:\\Users\\User\\JaspersoftWorkspace\\Proyecto_TierraFertil\\Reporte_Principal\\Observacion_Higiene.jasper");
+                param.put("subReporteCuatro", "/C:\\Users\\User\\JaspersoftWorkspace\\Proyecto_TierraFertil\\Reporte_Principal\\Despacho.jasper");
+                param.put("subReporteCinco", "/C:\\Users\\User\\JaspersoftWorkspace\\Proyecto_TierraFertil\\Reporte_Principal\\ControlPalet.jasper");
+                reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/Reporte.jasper"));
                 jprint = JasperFillManager.fillReport(reporte, param, modeloConexion.conexion_bd());
                 if (jprint != null) {
                     JasperViewer view = new JasperViewer(jprint);
