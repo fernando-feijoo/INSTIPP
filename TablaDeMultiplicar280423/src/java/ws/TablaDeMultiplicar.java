@@ -24,8 +24,9 @@ public class TablaDeMultiplicar {
         int numero = Integer.parseInt(num);
         String cadena = "";
         for (int i = 1; i <= 12; i++) {
-            cadena += i + " x " + numero + " = " + (i*numero) + " \\`<br>\\` ";
+            cadena += i + " x " + numero + " = " + (i*numero) + "\n ";
         }
+        System.out.println(cadena);
         return cadena;
     }
 }
