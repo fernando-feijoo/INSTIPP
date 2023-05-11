@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -202,11 +204,11 @@ public class ConexionEnterprise {
                     String direccion = resultSet.getString("direccion");
                     String sueldo = resultSet.getString("sueldo");
 
-                    resultado.append("Cédula: ").append(cedula).append("\n");
-                    resultado.append("Apellido: ").append(apellido).append("\n");
-                    resultado.append("Nombre: ").append(nombre).append("\n");
-                    resultado.append("Dirección: ").append(direccion).append("\n");
-                    resultado.append("Sueldo: ").append(sueldo).append("\n");
+                    resultado.append("Cédula: ").append(cedula).append(" \n");
+                    resultado.append("Apellido: ").append(apellido).append(" \n");
+                    resultado.append("Nombre: ").append(nombre).append(" \n");
+                    resultado.append("Dirección: ").append(direccion).append(" \n");
+                    resultado.append("Sueldo: ").append(sueldo).append(" \n");
                 }
 
                 if (resultado.length() == 0) {
@@ -218,6 +220,54 @@ public class ConexionEnterprise {
                 e.printStackTrace();
             }
             return resultado.toString();
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "consulta")
+    public String[] consulta(@WebParam(name = "codigo") String codigo) {
+        //TODO write your implementation code here:
+        List<String> resultados = new ArrayList<>();
+
+        if (codigo.isEmpty()) {
+            resultados.add("Complete la informacion, Codigo");
+            return resultados.toArray(new String[0]);
+        } else {
+            try {
+                Class.forName("org.postgresql.Driver");
+                conexion = DriverManager.getConnection(url, user, password);
+                System.out.println("Conexión exitosa");
+
+                String sql = "SELECT * FROM enterprise_tb WHERE codigo = ?";
+                PreparedStatement statement = conexion.prepareStatement(sql);
+                statement.setString(1, codigo);
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    String cedula = resultSet.getString("cedula");
+                    String apellido = resultSet.getString("apellido");
+                    String nombre = resultSet.getString("nombre");
+                    String direccion = resultSet.getString("direccion");
+                    String sueldo = resultSet.getString("sueldo");
+
+                    resultados.add(cedula);
+                    resultados.add(apellido);
+                    resultados.add(nombre);
+                    resultados.add(direccion);
+                    resultados.add(sueldo);
+                }
+
+                if (resultados.isEmpty()) {
+                    resultados.add("No se encontraron registros con el código especificado.");
+                }
+            } catch (ClassNotFoundException | SQLException e) {
+                resultados.add("Error al listar los datos.");
+                System.out.println(resultados.toString());
+                e.printStackTrace();
+            }
+            return resultados.toArray(new String[0]);
         }
     }
 }

@@ -336,4 +336,10 @@ public class dashboard extends javax.swing.JFrame {
         return port.listarPorCodigo(codigo);
     }
 
+    private static java.util.List<java.lang.String> consulta(java.lang.String codigo) {
+        enterprise080523.ConexionEnterprise_Service service = new enterprise080523.ConexionEnterprise_Service();
+        enterprise080523.ConexionEnterprise port = service.getConexionEnterprisePort();
+        return port.consulta(codigo);
+    }
+    
 }

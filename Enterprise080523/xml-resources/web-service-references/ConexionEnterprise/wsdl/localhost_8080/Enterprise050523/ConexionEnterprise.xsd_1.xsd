@@ -4,6 +4,10 @@
 
 <xs:element name="actualizarResponse" type="tns:actualizarResponse"/>
 
+<xs:element name="consulta" type="tns:consulta"/>
+
+<xs:element name="consultaResponse" type="tns:consultaResponse"/>
+
 <xs:element name="eliminar" type="tns:eliminar"/>
 
 <xs:element name="eliminarResponse" type="tns:eliminarResponse"/>
@@ -69,6 +73,18 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consulta">
+<xs:sequence>
+<xs:element name="codigo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultaResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
