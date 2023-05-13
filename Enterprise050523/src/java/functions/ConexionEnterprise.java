@@ -229,11 +229,11 @@ public class ConexionEnterprise {
     @WebMethod(operationName = "consulta")
     public String[] consulta(@WebParam(name = "codigo") String codigo) {
         //TODO write your implementation code here:
-        List<String> resultados = new ArrayList<>();
+        String[] respuesta = new String[8];
 
         if (codigo.isEmpty()) {
-            resultados.add("Complete la informacion, Codigo");
-            return resultados.toArray(new String[0]);
+            respuesta[5] = "Complete la informacion, Codigo";
+            return respuesta;
         } else {
             try {
                 Class.forName("org.postgresql.Driver");
@@ -246,28 +246,23 @@ public class ConexionEnterprise {
                 ResultSet resultSet = statement.executeQuery();
 
                 while (resultSet.next()) {
-                    String cedula = resultSet.getString("cedula");
-                    String apellido = resultSet.getString("apellido");
-                    String nombre = resultSet.getString("nombre");
-                    String direccion = resultSet.getString("direccion");
-                    String sueldo = resultSet.getString("sueldo");
-
-                    resultados.add(cedula);
-                    resultados.add(apellido);
-                    resultados.add(nombre);
-                    resultados.add(direccion);
-                    resultados.add(sueldo);
+                    respuesta[0] = resultSet.getString("cedula");
+                    respuesta[1] = resultSet.getString("apellido");
+                    respuesta[2] = resultSet.getString("nombre");
+                    respuesta[3] = resultSet.getString("direccion");
+                    respuesta[4] = resultSet.getString("sueldo");
+                    
+                    respuesta[5] = "true";
                 }
 
-                if (resultados.isEmpty()) {
-                    resultados.add("No se encontraron registros con el código especificado.");
+                if (respuesta[0].isEmpty() || respuesta[1].isEmpty() || respuesta[2].isEmpty() || respuesta[3].isEmpty() || respuesta[4].isEmpty()) {
+                    respuesta[6] = "No se encontraron registros con el código especificado.";
                 }
             } catch (ClassNotFoundException | SQLException e) {
-                resultados.add("Error al listar los datos.");
-                System.out.println(resultados.toString());
+                respuesta[7] = "Error al listar los datos.";
                 e.printStackTrace();
             }
-            return resultados.toArray(new String[0]);
+            return respuesta;
         }
     }
 }
