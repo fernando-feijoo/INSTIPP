@@ -42,13 +42,15 @@ public class dashboard extends javax.swing.JFrame {
         txt_direccion = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
         txt_sueldo = new javax.swing.JTextField();
-        btn_guardar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         btn_actualizar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_listar = new javax.swing.JButton();
-        txt_respuesta = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,14 +66,14 @@ public class dashboard extends javax.swing.JFrame {
 
         jLabel6.setText("SUELDO:");
 
-        btn_guardar.setText("GUARDAR");
-        btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel7.setText("FORMULARIO DE REGISTRO");
+
+        jButton1.setText("Buscar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_guardarMouseClicked(evt);
+                jButton1MouseClicked(evt);
             }
         });
-
-        jLabel7.setText("FORMULARIO DE REGISTRO");
 
         btn_actualizar.setText("ACTUALIZAR");
         btn_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,63 +96,95 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
-        txt_respuesta.setText("Respuesta");
-
-        jButton1.setText("Buscar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_guardar.setText("GUARDAR");
+        btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btn_guardarMouseClicked(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_guardar)
+                .addGap(18, 18, 18)
+                .addComponent(btn_actualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_eliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_listar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_guardar)
+                    .addComponent(btn_actualizar)
+                    .addComponent(btn_eliminar)
+                    .addComponent(btn_listar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel2))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))))
+                        .addGap(112, 112, 112)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel2))
+                                    .addGap(27, 27, 27)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jButton1))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(106, 106, 106)
+                                    .addComponent(jLabel7)))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel7)))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_respuesta)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_guardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_actualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_eliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_listar)))
-                .addGap(49, 49, 49))
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel7)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -177,15 +211,11 @@ public class dashboard extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_actualizar)
-                    .addComponent(btn_eliminar)
-                    .addComponent(btn_listar))
                 .addGap(18, 18, 18)
-                .addComponent(txt_respuesta)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,7 +230,7 @@ public class dashboard extends javax.swing.JFrame {
         String nombre = txt_nombre.getText();
         String direccion = txt_direccion.getText();
         String sueldo = txt_sueldo.getText();
-        
+
         List<String> respuesta = guardar(codigo, cedula, apellido, nombre, direccion, sueldo);
         JOptionPane.showMessageDialog(null, respuesta.get(0));
 
@@ -223,7 +253,7 @@ public class dashboard extends javax.swing.JFrame {
         String nombre = txt_nombre.getText();
         String direccion = txt_direccion.getText();
         String sueldo = txt_sueldo.getText();
-        
+
         List<String> respuesta = actualizar(codigo, cedula, apellido, nombre, direccion, sueldo);
         JOptionPane.showMessageDialog(null, respuesta.get(0));
 
@@ -241,7 +271,7 @@ public class dashboard extends javax.swing.JFrame {
     private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
         // TODO add your handling code here:
         String codigo = txt_codigo.getText();
-                
+
         List<String> respuesta = eliminar(codigo);
         JOptionPane.showMessageDialog(null, respuesta.get(0));
 
@@ -259,30 +289,26 @@ public class dashboard extends javax.swing.JFrame {
     private void btn_listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_listarMouseClicked
         // TODO add your handling code here:
         String codigo = txt_codigo.getText();
-        
-        
+
         String respuesta = listarPorCodigo(codigo);
         JOptionPane.showMessageDialog(null, respuesta);
 
-        txt_respuesta.setText(respuesta);
+        // txt_respuesta.setText(respuesta);
     }//GEN-LAST:event_btn_listarMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         String codigo = txt_codigo.getText();
         List<String> respuesta = consulta(codigo);
-        
-        System.out.println(respuesta.get(5));
-        
+
         if (respuesta.get(5).equalsIgnoreCase("true")) {
-            System.out.println("Ingreso a campo datos");
             txt_cedula.setText(respuesta.get(0).toString());
             txt_apellido.setText(respuesta.get(1).toString());
             txt_nombre.setText(respuesta.get(2).toString());
             txt_direccion.setText(respuesta.get(3).toString());
             txt_sueldo.setText(respuesta.get(4).toString());
         }
-        
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -334,12 +360,14 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     public javax.swing.JTextField txt_apellido;
     public javax.swing.JTextField txt_cedula;
     public javax.swing.JTextField txt_codigo;
     public javax.swing.JTextField txt_direccion;
     public javax.swing.JTextField txt_nombre;
-    public javax.swing.JLabel txt_respuesta;
     public javax.swing.JTextField txt_sueldo;
     // End of variables declaration//GEN-END:variables
 

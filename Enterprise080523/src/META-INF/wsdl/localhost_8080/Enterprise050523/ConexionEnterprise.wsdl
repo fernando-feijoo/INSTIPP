@@ -4,17 +4,11 @@
 <xsd:import namespace="http://functions/" schemaLocation="http://localhost:8080/Enterprise050523/ConexionEnterprise?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="consulta">
-<part name="parameters" element="tns:consulta"/>
+<message name="listarPorCodigo">
+<part name="parameters" element="tns:listarPorCodigo"/>
 </message>
-<message name="consultaResponse">
-<part name="parameters" element="tns:consultaResponse"/>
-</message>
-<message name="actualizar">
-<part name="parameters" element="tns:actualizar"/>
-</message>
-<message name="actualizarResponse">
-<part name="parameters" element="tns:actualizarResponse"/>
+<message name="listarPorCodigoResponse">
+<part name="parameters" element="tns:listarPorCodigoResponse"/>
 </message>
 <message name="eliminar">
 <part name="parameters" element="tns:eliminar"/>
@@ -22,11 +16,11 @@
 <message name="eliminarResponse">
 <part name="parameters" element="tns:eliminarResponse"/>
 </message>
-<message name="listarPorCodigo">
-<part name="parameters" element="tns:listarPorCodigo"/>
+<message name="actualizar">
+<part name="parameters" element="tns:actualizar"/>
 </message>
-<message name="listarPorCodigoResponse">
-<part name="parameters" element="tns:listarPorCodigoResponse"/>
+<message name="actualizarResponse">
+<part name="parameters" element="tns:actualizarResponse"/>
 </message>
 <message name="guardar">
 <part name="parameters" element="tns:guardar"/>
@@ -34,40 +28,37 @@
 <message name="guardarResponse">
 <part name="parameters" element="tns:guardarResponse"/>
 </message>
+<message name="consulta">
+<part name="parameters" element="tns:consulta"/>
+</message>
+<message name="consultaResponse">
+<part name="parameters" element="tns:consultaResponse"/>
+</message>
 <portType name="ConexionEnterprise">
-<operation name="consulta">
-<input wsam:Action="http://functions/ConexionEnterprise/consultaRequest" message="tns:consulta"/>
-<output wsam:Action="http://functions/ConexionEnterprise/consultaResponse" message="tns:consultaResponse"/>
-</operation>
-<operation name="actualizar">
-<input wsam:Action="http://functions/ConexionEnterprise/actualizarRequest" message="tns:actualizar"/>
-<output wsam:Action="http://functions/ConexionEnterprise/actualizarResponse" message="tns:actualizarResponse"/>
+<operation name="listarPorCodigo">
+<input wsam:Action="http://functions/ConexionEnterprise/listarPorCodigoRequest" message="tns:listarPorCodigo"/>
+<output wsam:Action="http://functions/ConexionEnterprise/listarPorCodigoResponse" message="tns:listarPorCodigoResponse"/>
 </operation>
 <operation name="eliminar">
 <input wsam:Action="http://functions/ConexionEnterprise/eliminarRequest" message="tns:eliminar"/>
 <output wsam:Action="http://functions/ConexionEnterprise/eliminarResponse" message="tns:eliminarResponse"/>
 </operation>
-<operation name="listarPorCodigo">
-<input wsam:Action="http://functions/ConexionEnterprise/listarPorCodigoRequest" message="tns:listarPorCodigo"/>
-<output wsam:Action="http://functions/ConexionEnterprise/listarPorCodigoResponse" message="tns:listarPorCodigoResponse"/>
+<operation name="actualizar">
+<input wsam:Action="http://functions/ConexionEnterprise/actualizarRequest" message="tns:actualizar"/>
+<output wsam:Action="http://functions/ConexionEnterprise/actualizarResponse" message="tns:actualizarResponse"/>
 </operation>
 <operation name="guardar">
 <input wsam:Action="http://functions/ConexionEnterprise/guardarRequest" message="tns:guardar"/>
 <output wsam:Action="http://functions/ConexionEnterprise/guardarResponse" message="tns:guardarResponse"/>
 </operation>
+<operation name="consulta">
+<input wsam:Action="http://functions/ConexionEnterprise/consultaRequest" message="tns:consulta"/>
+<output wsam:Action="http://functions/ConexionEnterprise/consultaResponse" message="tns:consultaResponse"/>
+</operation>
 </portType>
 <binding name="ConexionEnterprisePortBinding" type="tns:ConexionEnterprise">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="consulta">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="actualizar">
+<operation name="listarPorCodigo">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -85,7 +76,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="listarPorCodigo">
+<operation name="actualizar">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -95,6 +86,15 @@
 </output>
 </operation>
 <operation name="guardar">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="consulta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

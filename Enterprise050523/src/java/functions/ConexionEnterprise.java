@@ -10,8 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -25,6 +23,70 @@ public class ConexionEnterprise {
     Connection conexion = null;
     String resultado = "";
 
+    /**
+     * Valida el numero de cedula de una persona Ecuatoriana, solo se ingresa el
+     * numero como String.
+     *
+     * @param cedula
+     * @return boolean
+     */
+    public boolean validadorDeCedula(String cedula) {
+        boolean cedulaCorrecta = false;
+
+        try {
+            if (cedula.length() == 10) {
+                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+                if (tercerDigito < 6) {
+                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+                    int verificador = Integer.parseInt(cedula.substring(9, 10));
+                    int suma = 0;
+                    int digito = 0;
+                    for (int i = 0; i < (cedula.length() - 1); i++) {
+                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
+                        suma += ((digito % 10) + (digito / 10));
+                    }
+
+                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+                        cedulaCorrecta = true;
+                    } else if ((10 - (suma % 10)) == verificador) {
+                        cedulaCorrecta = true;
+                    } else {
+                        cedulaCorrecta = false;
+                    }
+                } else {
+                    cedulaCorrecta = false;
+                }
+            } else {
+                cedulaCorrecta = false;
+            }
+        } catch (NumberFormatException nfe) {
+            cedulaCorrecta = false;
+        } catch (Exception err) {
+            System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+            cedulaCorrecta = false;
+        }
+
+        if (!cedulaCorrecta) {
+            System.out.println("La Cédula ingresada es Incorrecta");
+        }
+        return cedulaCorrecta;
+    }
+
+    /**
+     * Para validar si es un numero lo que se ingreso en el campo, se envia como
+     * String y devuelve un boolean.
+     *
+     * @param input
+     * @return boolean
+     */
+    public static boolean isNumber(String input) {
+        if (input.matches("[0-9]+(\\.[0-9]+)?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @WebMethod(operationName = "guardar")
     public String[] guardar(@WebParam(name = "codigo") String codigo, @WebParam(name = "cedula") String cedula, @WebParam(name = "apellido") String apellido, @WebParam(name = "nombre") String nombre, @WebParam(name = "direccion") String direccion, @WebParam(name = "sueldo") String sueldo) {
         String[] respuesta = new String[2];
@@ -34,6 +96,10 @@ public class ConexionEnterprise {
             return respuesta;
         } else if (cedula.isEmpty()) {
             respuesta[0] = "Complete la informacion, Cedula";
+            respuesta[1] = "false";
+            return respuesta;
+        } else if (!validadorDeCedula(cedula) && !cedula.isEmpty()) {
+            respuesta[0] = "Error en numero de cedula, es invalido.";
             respuesta[1] = "false";
             return respuesta;
         } else if (apellido.isEmpty()) {
@@ -50,6 +116,10 @@ public class ConexionEnterprise {
             return respuesta;
         } else if (sueldo.isEmpty()) {
             respuesta[0] = "Complete la informacion, Sueldo";
+            respuesta[1] = "false";
+            return respuesta;
+        } else if (!isNumber(sueldo)) {
+            respuesta[0] = "Error en el sueldo ingresado, debe ser entero o decimal con \"punto\" decimal.";
             respuesta[1] = "false";
             return respuesta;
         } else {
@@ -76,7 +146,7 @@ public class ConexionEnterprise {
                     respuesta[1] = "false";
                 }
             } catch (ClassNotFoundException | SQLException e) {
-                respuesta[0] = "Error al guardar los datos.";
+                respuesta[0] = "Error al guardar los datos. " + e;
                 respuesta[1] = "false";
                 e.printStackTrace();
             }
@@ -93,6 +163,10 @@ public class ConexionEnterprise {
             return respuesta;
         } else if (cedula.isEmpty()) {
             respuesta[0] = "Complete la informacion, Cedula";
+            respuesta[1] = "false";
+            return respuesta;
+        } else if (!validadorDeCedula(cedula) && !cedula.isEmpty()) {
+            respuesta[0] = "Error en numero de cedula, es invalido.";
             respuesta[1] = "false";
             return respuesta;
         } else if (apellido.isEmpty()) {
@@ -135,7 +209,7 @@ public class ConexionEnterprise {
                     respuesta[1] = "false";
                 }
             } catch (ClassNotFoundException | SQLException e) {
-                respuesta[0] = "Error al actualizador los datos.";
+                respuesta[0] = "Error al actualizador los datos. " + e;
                 respuesta[1] = "false";
                 e.printStackTrace();
             }
@@ -172,7 +246,7 @@ public class ConexionEnterprise {
                     respuesta[1] = "false";
                 }
             } catch (ClassNotFoundException | SQLException e) {
-                respuesta[0] = "Error al eliminar los datos.";
+                respuesta[0] = "Error al eliminar los datos. " + e;
                 respuesta[1] = "false";
                 e.printStackTrace();
             }
@@ -251,7 +325,7 @@ public class ConexionEnterprise {
                     respuesta[2] = resultSet.getString("nombre");
                     respuesta[3] = resultSet.getString("direccion");
                     respuesta[4] = resultSet.getString("sueldo");
-                    
+
                     respuesta[5] = "true";
                 }
 
@@ -264,5 +338,14 @@ public class ConexionEnterprise {
             }
             return respuesta;
         }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "consultaTabla")
+    public String consultaTabla() {
+        //TODO write your implementation code here:
+        return null;
     }
 }
