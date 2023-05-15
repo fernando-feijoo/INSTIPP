@@ -32,7 +32,6 @@ public class ConexionEnterprise {
      */
     public boolean validadorDeCedula(String cedula) {
         boolean cedulaCorrecta = false;
-
         try {
             if (cedula.length() == 10) {
                 int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
@@ -302,7 +301,6 @@ public class ConexionEnterprise {
      */
     @WebMethod(operationName = "consulta")
     public String[] consulta(@WebParam(name = "codigo") String codigo) {
-        //TODO write your implementation code here:
         String[] respuesta = new String[8];
 
         if (codigo.isEmpty()) {
@@ -319,17 +317,23 @@ public class ConexionEnterprise {
                 statement.setString(1, codigo);
                 ResultSet resultSet = statement.executeQuery();
 
+                boolean registrosEncontrados = false; // Bandera para indicar si se encontraron registros
+
                 while (resultSet.next()) {
                     respuesta[0] = resultSet.getString("cedula");
                     respuesta[1] = resultSet.getString("apellido");
                     respuesta[2] = resultSet.getString("nombre");
                     respuesta[3] = resultSet.getString("direccion");
                     respuesta[4] = resultSet.getString("sueldo");
+                    respuesta[5] = resultSet.getString("codigo");
 
-                    respuesta[5] = "true";
+                    registrosEncontrados = true; // Se encontraron registros
+
+                    respuesta[6] = "true";
+                    respuesta[7] = "Datos encontrados.";
                 }
 
-                if (respuesta[0].isEmpty() || respuesta[1].isEmpty() || respuesta[2].isEmpty() || respuesta[3].isEmpty() || respuesta[4].isEmpty()) {
+                if (!registrosEncontrados) {
                     respuesta[6] = "No se encontraron registros con el código especificado.";
                 }
             } catch (ClassNotFoundException | SQLException e) {
@@ -340,12 +344,4 @@ public class ConexionEnterprise {
         }
     }
 
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "consultaTabla")
-    public String consultaTabla() {
-        //TODO write your implementation code here:
-        return null;
-    }
 }
