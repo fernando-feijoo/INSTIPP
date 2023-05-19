@@ -10,12 +10,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
+import org.xml.sax.InputSource;
 
 /**
  *
@@ -448,33 +450,35 @@ public class dashboard extends javax.swing.JFrame {
 
     private void btn_buscarXML_WEBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarXML_WEBMouseClicked
         // TODO add your handling code here:
-        String codigo = txt_codigo.getText();
+         String codigo = txt_codigo.getText();
 
-        List<String> respuesta = xmlBusqueda(codigo);
+    List<String> respuesta = xmlBusqueda(codigo);
 
-        if (respuesta.get(2).equalsIgnoreCase("true")) {
-            System.out.println(respuesta.get(0));
-            JOptionPane.showMessageDialog(null, respuesta.get(1));
-            try {
-                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-                Document documento = dBuilder.parse(respuesta.get(0));
+    if (respuesta.get(2).equalsIgnoreCase("true")) {
+        System.out.println(respuesta.get(0));
+        JOptionPane.showMessageDialog(null, respuesta.get(1));
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 
-                Element rootElement = documento.getDocumentElement();
-                txt_codigo.setText(rootElement.getAttribute("codigo"));
-                txt_cedula.setText(rootElement.getAttribute("cedula"));
-                txt_apellido.setText(rootElement.getAttribute("apellido"));
-                txt_nombre.setText(rootElement.getAttribute("nombre"));
-                txt_direccion.setText(rootElement.getAttribute("direccion"));
-                txt_sueldo.setText(rootElement.getAttribute("sueldo"));
+            InputSource inputSource = new InputSource(new StringReader(respuesta.get(0)));
+            Document documento = dBuilder.parse(inputSource);
 
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al leer el archivo XML WEB: " + e.getMessage());
-            }
+            Element rootElement = documento.getDocumentElement();
+            txt_codigo.setText(rootElement.getElementsByTagName("codigo").item(0).getTextContent());
+            txt_cedula.setText(rootElement.getElementsByTagName("cedula").item(0).getTextContent());
+            txt_apellido.setText(rootElement.getElementsByTagName("apellido").item(0).getTextContent());
+            txt_nombre.setText(rootElement.getElementsByTagName("nombre").item(0).getTextContent());
+            txt_direccion.setText(rootElement.getElementsByTagName("direccion").item(0).getTextContent());
+            txt_sueldo.setText(rootElement.getElementsByTagName("sueldo").item(0).getTextContent());
 
-        } else {
-            JOptionPane.showMessageDialog(null, respuesta.get(1));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo XML WEB: " + e.getMessage());
         }
+
+    } else {
+        JOptionPane.showMessageDialog(null, respuesta.get(1));
+    }
     }//GEN-LAST:event_btn_buscarXML_WEBMouseClicked
 
     /**

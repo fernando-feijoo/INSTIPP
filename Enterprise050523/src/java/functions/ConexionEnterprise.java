@@ -10,11 +10,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLXML;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import org.postgresql.jdbc.PgSQLXML;
-import org.postgresql.util.PGobject;
 
 @WebService(serviceName = "ConexionEnterprise")
 public class ConexionEnterprise {
@@ -378,15 +377,18 @@ public class ConexionEnterprise {
             conexion = DriverManager.getConnection(url, user, password);
             System.out.println("Conexión exitosa");
 
-            String sql = "INSERT INTO xml_db (codigo, xml_data) VALUES (?, xmlparse(content ?));";
+            // String sql = "INSERT INTO xml_db (codigo, xml_data) VALUES (?, xmlparse(content ?));";
+            String sql = "INSERT INTO xml_db (codigo, xml_data) VALUES (?,?);";
             PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, codigo);
+            statement.setString(2, xml);
 
+            /*
             PGobject xmlObject = new PGobject();
             xmlObject.setType("xml");
             xmlObject.setValue(xml);
             statement.setObject(2, xmlObject);
-
+             */
             int filasActualizadas = statement.executeUpdate();
             if (filasActualizadas > 0) {
                 respuesta[0] = "Datos XML guardados exitosamente.";
@@ -409,7 +411,7 @@ public class ConexionEnterprise {
      */
     @WebMethod(operationName = "xmlBusqueda")
     public String[] xmlBusqueda(@WebParam(name = "codigo") String codigo) {
-        //TODO write your implementation code here:
+        // TODO write your implementation code here:
         String[] respuesta = new String[3];
 
         if (codigo.isEmpty()) {
@@ -429,7 +431,7 @@ public class ConexionEnterprise {
                 boolean registroEncontrado = resultSet.next();
 
                 if (registroEncontrado) {
-                    PgSQLXML xmlObject = (PgSQLXML) resultSet.getObject("xml_data");
+                    SQLXML xmlObject = resultSet.getSQLXML("xml_data");
                     String xml = xmlObject.getString();
 
                     respuesta[0] = xml;  // Aquí se guarda el valor del XML
