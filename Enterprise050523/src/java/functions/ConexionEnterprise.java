@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import org.postgresql.jdbc.PgSQLXML;
+import org.postgresql.util.PGobject;
 
 @WebService(serviceName = "ConexionEnterprise")
 public class ConexionEnterprise {
@@ -45,8 +47,27 @@ public class ConexionEnterprise {
                         suma += ((digito % 10) + (digito / 10));
                     }
 
+                    char primerDigito = cedula.charAt(0);
+                    boolean unique = false;
+
+                    for (int i = 1; i < cedula.length(); i++) {
+                        if (cedula.charAt(i) != primerDigito) {
+                            unique = true;
+                            break;
+                        }
+                        unique = false;
+                        break;
+                    }
+
                     if ((suma % 10 == 0) && (suma % 10 == verificador)) {
                         cedulaCorrecta = true;
+                        if (!unique) {
+                            cedulaCorrecta = false;
+                            return false;
+                        } else {
+                            cedulaCorrecta = true;
+                            return true;
+                        }
                     } else if ((10 - (suma % 10)) == verificador) {
                         cedulaCorrecta = true;
                     } else {
@@ -338,6 +359,89 @@ public class ConexionEnterprise {
                 }
             } catch (ClassNotFoundException | SQLException e) {
                 respuesta[7] = "Error al listar los datos.";
+                e.printStackTrace();
+            }
+            return respuesta;
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "xmlGuardar")
+    public String[] xmlGuardar(@WebParam(name = "codigo") String codigo, @WebParam(name = "xml") String xml) {
+        //TODO write your implementation code here:
+        String[] respuesta = new String[2];
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            conexion = DriverManager.getConnection(url, user, password);
+            System.out.println("Conexión exitosa");
+
+            String sql = "INSERT INTO xml_db (codigo, xml_data) VALUES (?, xmlparse(content ?));";
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, codigo);
+
+            PGobject xmlObject = new PGobject();
+            xmlObject.setType("xml");
+            xmlObject.setValue(xml);
+            statement.setObject(2, xmlObject);
+
+            int filasActualizadas = statement.executeUpdate();
+            if (filasActualizadas > 0) {
+                respuesta[0] = "Datos XML guardados exitosamente.";
+                respuesta[1] = "true";
+            } else {
+                respuesta[0] = "Error al guardar los datos XML.";
+                respuesta[1] = "false";
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            respuesta[0] = "Error al guardar los datos XML. " + e;
+            respuesta[1] = "false";
+            e.printStackTrace();
+        }
+        return respuesta;
+
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "xmlBusqueda")
+    public String[] xmlBusqueda(@WebParam(name = "codigo") String codigo) {
+        //TODO write your implementation code here:
+        String[] respuesta = new String[3];
+
+        if (codigo.isEmpty()) {
+            respuesta[1] = "Complete la información, Código";
+            return respuesta;
+        } else {
+            try {
+                Class.forName("org.postgresql.Driver");
+                conexion = DriverManager.getConnection(url, user, password);
+                System.out.println("Conexión exitosa");
+
+                String sql = "SELECT xml_data FROM xml_db WHERE codigo = ?";
+                PreparedStatement statement = conexion.prepareStatement(sql);
+                statement.setString(1, codigo);
+                ResultSet resultSet = statement.executeQuery();
+
+                boolean registroEncontrado = resultSet.next();
+
+                if (registroEncontrado) {
+                    PgSQLXML xmlObject = (PgSQLXML) resultSet.getObject("xml_data");
+                    String xml = xmlObject.getString();
+
+                    respuesta[0] = xml;  // Aquí se guarda el valor del XML
+
+                    respuesta[2] = "true";
+                    respuesta[1] = "Datos encontrados.";
+                } else {
+                    respuesta[2] = "false";
+                    respuesta[1] = "No se encontró ningún registro con el código especificado.";
+                }
+            } catch (ClassNotFoundException | SQLException e) {
+                respuesta[1] = "Error al listar los datos.";
                 e.printStackTrace();
             }
             return respuesta;

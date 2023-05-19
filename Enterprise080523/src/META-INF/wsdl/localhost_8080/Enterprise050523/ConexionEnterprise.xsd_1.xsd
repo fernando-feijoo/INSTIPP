@@ -24,6 +24,14 @@
 
 <xs:element name="validadorDeCedulaResponse" type="tns:validadorDeCedulaResponse"/>
 
+<xs:element name="xmlBusqueda" type="tns:xmlBusqueda"/>
+
+<xs:element name="xmlBusquedaResponse" type="tns:xmlBusquedaResponse"/>
+
+<xs:element name="xmlGuardar" type="tns:xmlGuardar"/>
+
+<xs:element name="xmlGuardarResponse" type="tns:xmlGuardarResponse"/>
+
 <xs:complexType name="guardar">
 <xs:sequence>
 <xs:element name="codigo" type="xs:string" minOccurs="0"/>
@@ -36,6 +44,19 @@
 </xs:complexType>
 
 <xs:complexType name="guardarResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="xmlGuardar">
+<xs:sequence>
+<xs:element name="codigo" type="xs:string" minOccurs="0"/>
+<xs:element name="xml" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="xmlGuardarResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
@@ -77,6 +98,18 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="xmlBusqueda">
+<xs:sequence>
+<xs:element name="codigo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="xmlBusquedaResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>

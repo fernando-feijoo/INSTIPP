@@ -4,12 +4,6 @@
 <xsd:import namespace="http://functions/" schemaLocation="http://localhost:8080/Enterprise050523/ConexionEnterprise?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="validadorDeCedula">
-<part name="parameters" element="tns:validadorDeCedula"/>
-</message>
-<message name="validadorDeCedulaResponse">
-<part name="parameters" element="tns:validadorDeCedulaResponse"/>
-</message>
 <message name="eliminar">
 <part name="parameters" element="tns:eliminar"/>
 </message>
@@ -40,11 +34,25 @@
 <message name="actualizarResponse">
 <part name="parameters" element="tns:actualizarResponse"/>
 </message>
+<message name="xmlBusqueda">
+<part name="parameters" element="tns:xmlBusqueda"/>
+</message>
+<message name="xmlBusquedaResponse">
+<part name="parameters" element="tns:xmlBusquedaResponse"/>
+</message>
+<message name="xmlGuardar">
+<part name="parameters" element="tns:xmlGuardar"/>
+</message>
+<message name="xmlGuardarResponse">
+<part name="parameters" element="tns:xmlGuardarResponse"/>
+</message>
+<message name="validadorDeCedula">
+<part name="parameters" element="tns:validadorDeCedula"/>
+</message>
+<message name="validadorDeCedulaResponse">
+<part name="parameters" element="tns:validadorDeCedulaResponse"/>
+</message>
 <portType name="ConexionEnterprise">
-<operation name="validadorDeCedula">
-<input wsam:Action="http://functions/ConexionEnterprise/validadorDeCedulaRequest" message="tns:validadorDeCedula"/>
-<output wsam:Action="http://functions/ConexionEnterprise/validadorDeCedulaResponse" message="tns:validadorDeCedulaResponse"/>
-</operation>
 <operation name="eliminar">
 <input wsam:Action="http://functions/ConexionEnterprise/eliminarRequest" message="tns:eliminar"/>
 <output wsam:Action="http://functions/ConexionEnterprise/eliminarResponse" message="tns:eliminarResponse"/>
@@ -65,18 +73,21 @@
 <input wsam:Action="http://functions/ConexionEnterprise/actualizarRequest" message="tns:actualizar"/>
 <output wsam:Action="http://functions/ConexionEnterprise/actualizarResponse" message="tns:actualizarResponse"/>
 </operation>
+<operation name="xmlBusqueda">
+<input wsam:Action="http://functions/ConexionEnterprise/xmlBusquedaRequest" message="tns:xmlBusqueda"/>
+<output wsam:Action="http://functions/ConexionEnterprise/xmlBusquedaResponse" message="tns:xmlBusquedaResponse"/>
+</operation>
+<operation name="xmlGuardar">
+<input wsam:Action="http://functions/ConexionEnterprise/xmlGuardarRequest" message="tns:xmlGuardar"/>
+<output wsam:Action="http://functions/ConexionEnterprise/xmlGuardarResponse" message="tns:xmlGuardarResponse"/>
+</operation>
+<operation name="validadorDeCedula">
+<input wsam:Action="http://functions/ConexionEnterprise/validadorDeCedulaRequest" message="tns:validadorDeCedula"/>
+<output wsam:Action="http://functions/ConexionEnterprise/validadorDeCedulaResponse" message="tns:validadorDeCedulaResponse"/>
+</operation>
 </portType>
 <binding name="ConexionEnterprisePortBinding" type="tns:ConexionEnterprise">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="validadorDeCedula">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="eliminar">
 <soap:operation soapAction=""/>
 <input>
@@ -114,6 +125,33 @@
 </output>
 </operation>
 <operation name="actualizar">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="xmlBusqueda">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="xmlGuardar">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="validadorDeCedula">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

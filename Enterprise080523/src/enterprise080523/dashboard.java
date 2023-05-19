@@ -5,9 +5,13 @@
  */
 package enterprise080523;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.w3c.dom.*;
@@ -56,6 +60,7 @@ public class dashboard extends javax.swing.JFrame {
         btn_guardar = new javax.swing.JButton();
         btn_xml = new javax.swing.JButton();
         btn_buscarXML = new javax.swing.JButton();
+        btn_buscarXML_WEB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,6 +157,13 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_buscarXML_WEB.setText("Buscar XML WEB");
+        btn_buscarXML_WEB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarXML_WEBMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,8 +195,10 @@ public class dashboard extends javax.swing.JFrame {
                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btn_buscarXML)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_buscarXML)
+                            .addComponent(btn_buscarXML_WEB))))
+                .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,7 +224,8 @@ public class dashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(btn_buscarXML_WEB, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,7 +348,8 @@ public class dashboard extends javax.swing.JFrame {
         boolean validar = false;
 
         try {
-            String rutaArchivo = "C:/Users/USUARIO PC/Documents/NetBeansProjects/Enterprise080523/src/enterprise080523/Archivo" + codigo + ".xml";
+            //String rutaArchivo = "C:/Users/USUARIO PC/Documents/NetBeansProjects/Enterprise080523/src/enterprise080523/Archivo" + codigo + ".xml";
+            String rutaArchivo = "C:/Users/User/Documents/NetBeansProjects/Enterprise080523/src/enterprise080523/Archivo" + codigo + ".xml";
             File archivoXML = new File(rutaArchivo);
 
             FileWriter escritor = new FileWriter(archivoXML);
@@ -352,7 +368,28 @@ public class dashboard extends javax.swing.JFrame {
 
             validar = true;
 
+            Path archivoXMLPath = Paths.get(rutaArchivo);
+            // Leer el contenido del archivo XML en una sola llamada 
+            StringBuilder contenidoXMLBuilder = new StringBuilder();
+            try (BufferedReader br = new BufferedReader(new FileReader(archivoXMLPath.toFile()))) {
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    contenidoXMLBuilder.append(linea).append("\n");
+                }
+            }
+            String contenidoXML = contenidoXMLBuilder.toString();
+
+            // Imprimir el contenido del archivo en la consola
+            System.out.println(contenidoXML);
+
+            List<String> respuesta = xmlGuardar(codigo, contenidoXML);
+
             JOptionPane.showMessageDialog(null, "Archivo XML generado correctamente.");
+            if (respuesta.get(1).equalsIgnoreCase("true")) {
+                JOptionPane.showMessageDialog(null, respuesta.get(0));
+            } else {
+                JOptionPane.showMessageDialog(null, respuesta.get(0));
+            }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al generar el archivo XML: " + e.getMessage());
         }
@@ -372,7 +409,8 @@ public class dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         String codigoArchivo = txt_codigo.getText();
         try {
-            String rutaArchivo = "C:/Users/USUARIO PC/Documents/NetBeansProjects/Enterprise080523/src/enterprise080523/Archivo" + codigoArchivo + ".xml";
+            //String rutaArchivo = "C:/Users/USUARIO PC/Documents/NetBeansProjects/Enterprise080523/src/enterprise080523/Archivo" + codigoArchivo + ".xml";
+            String rutaArchivo = "C:/Users/User/Documents/NetBeansProjects/Enterprise080523/src/enterprise080523/Archivo" + codigoArchivo + ".xml";
             File archivoXML = new File(rutaArchivo);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -407,6 +445,37 @@ public class dashboard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo XML: " + e.getMessage());
         }
     }//GEN-LAST:event_btn_buscarXMLMouseClicked
+
+    private void btn_buscarXML_WEBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarXML_WEBMouseClicked
+        // TODO add your handling code here:
+        String codigo = txt_codigo.getText();
+
+        List<String> respuesta = xmlBusqueda(codigo);
+
+        if (respuesta.get(2).equalsIgnoreCase("true")) {
+            System.out.println(respuesta.get(0));
+            JOptionPane.showMessageDialog(null, respuesta.get(1));
+            try {
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                Document documento = dBuilder.parse(respuesta.get(0));
+
+                Element rootElement = documento.getDocumentElement();
+                txt_codigo.setText(rootElement.getAttribute("codigo"));
+                txt_cedula.setText(rootElement.getAttribute("cedula"));
+                txt_apellido.setText(rootElement.getAttribute("apellido"));
+                txt_nombre.setText(rootElement.getAttribute("nombre"));
+                txt_direccion.setText(rootElement.getAttribute("direccion"));
+                txt_sueldo.setText(rootElement.getAttribute("sueldo"));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo XML WEB: " + e.getMessage());
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, respuesta.get(1));
+        }
+    }//GEN-LAST:event_btn_buscarXML_WEBMouseClicked
 
     /**
      * @param args the command line arguments
@@ -447,6 +516,7 @@ public class dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscarXML;
+    private javax.swing.JButton btn_buscarXML_WEB;
     public javax.swing.JButton btn_eliminar;
     public javax.swing.JButton btn_guardar;
     public javax.swing.JButton btn_listar;
@@ -496,6 +566,18 @@ public class dashboard extends javax.swing.JFrame {
         enterprise080523.ConexionEnterprise_Service service = new enterprise080523.ConexionEnterprise_Service();
         enterprise080523.ConexionEnterprise port = service.getConexionEnterprisePort();
         return port.consulta(codigo);
+    }
+
+    private static java.util.List<java.lang.String> xmlGuardar(java.lang.String codigo, java.lang.String xml) {
+        enterprise080523.ConexionEnterprise_Service service = new enterprise080523.ConexionEnterprise_Service();
+        enterprise080523.ConexionEnterprise port = service.getConexionEnterprisePort();
+        return port.xmlGuardar(codigo, xml);
+    }
+
+    private static java.util.List<java.lang.String> xmlBusqueda(java.lang.String codigo) {
+        enterprise080523.ConexionEnterprise_Service service = new enterprise080523.ConexionEnterprise_Service();
+        enterprise080523.ConexionEnterprise port = service.getConexionEnterprisePort();
+        return port.xmlBusqueda(codigo);
     }
 
 }
