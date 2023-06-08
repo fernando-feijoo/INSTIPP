@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/zoo_ws_feijoo/zoo_ws_conexion?wsdl" uri="xml-resources/web-service-references/zoo_ws_conexion/wsdl/localhost_8080/zoo_ws_feijoo/zoo_ws_conexion.wsdl"/>
+    <system systemId="http://localhost:8080/zoo_ws_feijoo/zoo_ws_conexion?xsd=1" uri="xml-resources/web-service-references/zoo_ws_conexion/wsdl/localhost_8080/zoo_ws_feijoo/zoo_ws_conexion.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/zoo_ws_feijoo/zoo_ws_conexion?xsd=2" uri="xml-resources/web-service-references/zoo_ws_conexion/wsdl/localhost_8080/zoo_ws_feijoo/zoo_ws_conexion.xsd_2.xsd"/>
+</catalog>
