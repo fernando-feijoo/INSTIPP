@@ -58,6 +58,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btn_buscarCuidador = new javax.swing.JButton();
+        btn_limpiarCuidador = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         btn_guardarCuidador = new javax.swing.JButton();
         btn_actualizarCuidador = new javax.swing.JButton();
@@ -73,6 +74,8 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txf_descripcionZona = new javax.swing.JTextArea();
         btn_buscarZona = new javax.swing.JButton();
+        btn_limpiarCuidador1 = new javax.swing.JButton();
+        btn_limpiarZona = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         btn_guardarZona = new javax.swing.JButton();
         btn_actualizarZona = new javax.swing.JButton();
@@ -95,6 +98,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         btn_buscarAnimales = new javax.swing.JButton();
+        btn_limpiarAnimales = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btn_guardarAnimales = new javax.swing.JButton();
         btn_actualizarAnimales = new javax.swing.JButton();
@@ -130,6 +134,13 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_limpiarCuidador.setText("LIMPIAR");
+        btn_limpiarCuidador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_limpiarCuidadorMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -158,8 +169,10 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(txf_apellido)
                             .addComponent(txf_telefonoUno))))
                 .addGap(35, 35, 35)
-                .addComponent(btn_buscarCuidador)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_limpiarCuidador, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(btn_buscarCuidador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,10 +182,15 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txf_codigoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buscarCuidador))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txf_nombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txf_nombreCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btn_limpiarCuidador)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -309,6 +327,15 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_limpiarCuidador1.setText("LIMPIAR");
+
+        btn_limpiarZona.setText("LIMPIAR");
+        btn_limpiarZona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_limpiarZonaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -323,23 +350,38 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(txf_codigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_buscarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addComponent(btn_buscarZona))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_limpiarZona)))
+                .addContainerGap(96, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btn_limpiarCuidador1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txf_codigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_buscarZona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(txf_codigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_limpiarZona))
                 .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btn_limpiarCuidador1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         btn_guardarZona.setText("GUARDAR");
@@ -435,7 +477,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -463,6 +505,13 @@ public class Dashboard extends javax.swing.JFrame {
         btn_buscarAnimales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_buscarAnimalesMouseClicked(evt);
+            }
+        });
+
+        btn_limpiarAnimales.setText("LIMPIAR");
+        btn_limpiarAnimales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_limpiarAnimalesMouseClicked(evt);
             }
         });
 
@@ -494,8 +543,10 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(txf_nombreAnimal)
                             .addComponent(txf_zonaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(btn_buscarAnimales)
-                .addGap(87, 87, 87))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_buscarAnimales)
+                    .addComponent(btn_limpiarAnimales))
+                .addGap(86, 86, 86))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,7 +559,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txf_especieAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
+                    .addComponent(jLabel14)
+                    .addComponent(btn_limpiarAnimales))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
@@ -1310,6 +1362,32 @@ public class Dashboard extends javax.swing.JFrame {
         conexion.cerrarConexion();
     }//GEN-LAST:event_btn_buscarAnimalesMouseClicked
 
+    private void btn_limpiarCuidadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarCuidadorMouseClicked
+        // TODO add your handling code here:
+        txf_codigoCuidador.setText("");
+        txf_nombreCuidador.setText("");
+        txf_apellido.setText("");
+        txf_telefonoUno.setText("");
+        txf_telefonoDos.setText("");
+        txf_telefonoTres.setText("");
+    }//GEN-LAST:event_btn_limpiarCuidadorMouseClicked
+
+    private void btn_limpiarZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarZonaMouseClicked
+        // TODO add your handling code here:
+        txf_codigoZona.setText("");
+        txf_descripcionZona.setText("");
+    }//GEN-LAST:event_btn_limpiarZonaMouseClicked
+
+    private void btn_limpiarAnimalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limpiarAnimalesMouseClicked
+        // TODO add your handling code here:
+        txf_codigoAnimal.setText("");
+        txf_especieAnimal.setText("");
+        txf_nombreAnimal.setText("");
+        txf_zonaUno.setText("");
+        txf_zonaDos.setText("");
+        txf_zonaTres.setText("");
+    }//GEN-LAST:event_btn_limpiarAnimalesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1366,6 +1444,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardarAnimales;
     private javax.swing.JButton btn_guardarCuidador;
     private javax.swing.JButton btn_guardarZona;
+    private javax.swing.JButton btn_limpiarAnimales;
+    private javax.swing.JButton btn_limpiarCuidador;
+    private javax.swing.JButton btn_limpiarCuidador1;
+    private javax.swing.JButton btn_limpiarZona;
     private javax.swing.JButton btn_listarAnimales;
     private javax.swing.JButton btn_listarCuidador;
     private javax.swing.JButton btn_listarrZona;
