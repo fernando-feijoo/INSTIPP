@@ -23,12 +23,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jTabbedPane1" min="-2" pref="1014" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" min="-2" pref="768" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,10 +55,18 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" min="-2" pref="840" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="77" max="32767" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -66,6 +77,8 @@
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="310" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -218,23 +231,29 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                           <Component id="btn_guardarCuidador" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_listarCuidador" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btn_actualizarCuidador" min="-2" pref="110" max="-2" attributes="0"/>
-                          <EmptySpace pref="306" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_eliminarCuidador" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace pref="118" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_guardarCuidador" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="btn_actualizarCuidador" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_listarCuidador" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_eliminarCuidador" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <EmptySpace pref="39" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -256,6 +275,43 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_actualizarCuidadorMouseClicked"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JButton" name="btn_listarCuidador">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="LISTAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_listarCuidadorMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_eliminarCuidador">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ELIMINAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_eliminarCuidadorMouseClicked"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tablaCuidador">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -272,13 +328,23 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                              <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" pref="840" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="89" max="32767" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -287,9 +353,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="310" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -301,34 +368,39 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="143" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
-                              <Component id="txf_codigoZona" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="txf_codigoZona" min="-2" pref="234" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btn_buscarZona" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                          <EmptySpace pref="71" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txf_codigoZona" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_buscarZona" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="115" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <EmptySpace pref="23" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -365,6 +437,14 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="btn_buscarZona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="BUSCAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_buscarZonaMouseClicked"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel11">
@@ -372,19 +452,30 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="268" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                           <Component id="btn_guardarZona" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="btn_listarrZona" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="btn_actualizarZona" min="-2" pref="108" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_eliminarZona" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="btn_guardarZona" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btn_guardarZona" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_actualizarZona" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_eliminarZona" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_listarrZona" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -397,6 +488,51 @@
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_guardarZonaMouseClicked"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_actualizarZona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_actualizarZonaMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_listarrZona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="LISTAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_listarrZonaMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_eliminarZona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ELIMINAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_eliminarZonaMouseClicked"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tablaZona">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -417,21 +553,29 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" min="-2" pref="840" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="77" max="32767" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" pref="310" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -443,7 +587,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="172" max="32767" attributes="0"/>
+                          <EmptySpace pref="158" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -471,7 +615,9 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_buscarAnimales" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -482,6 +628,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txf_codigoAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_buscarAnimales" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -564,6 +711,14 @@
                     <Property name="text" type="java.lang.String" value="ZONA 3:"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JButton" name="btn_buscarAnimales">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="BUSCAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_buscarAnimalesMouseClicked"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel9">
@@ -571,12 +726,16 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           <Component id="btn_guardarAnimales" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="btn_listarAnimales" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btn_actualizarAnimales" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace pref="319" max="32767" attributes="0"/>
+                          <Component id="btn_actualizarAnimales" min="-2" pref="110" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_eliminarAnimales" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace pref="73" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -587,6 +746,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_guardarAnimales" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="btn_actualizarAnimales" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_eliminarAnimales" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_listarAnimales" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="41" max="32767" attributes="0"/>
                       </Group>
@@ -609,6 +770,43 @@
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_actualizarAnimalesMouseClicked"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_listarAnimales">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="LISTAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_listarAnimalesMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_eliminarAnimales">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ELIMINAR"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_eliminarAnimalesMouseClicked"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tablaAnimales">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

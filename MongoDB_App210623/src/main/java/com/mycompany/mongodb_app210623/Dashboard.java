@@ -1,19 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.mongodb_app210623;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -29,6 +28,9 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         this.setLocationRelativeTo(null);
+        listarDatosCuidador();
+        listarDatosZona();
+        listarDatosAnimales();
     }
 
     /**
@@ -59,6 +61,10 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btn_guardarCuidador = new javax.swing.JButton();
         btn_actualizarCuidador = new javax.swing.JButton();
+        btn_listarCuidador = new javax.swing.JButton();
+        btn_eliminarCuidador = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaCuidador = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         txf_codigoZona = new javax.swing.JTextField();
@@ -66,8 +72,14 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txf_descripcionZona = new javax.swing.JTextArea();
+        btn_buscarZona = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         btn_guardarZona = new javax.swing.JButton();
+        btn_actualizarZona = new javax.swing.JButton();
+        btn_listarrZona = new javax.swing.JButton();
+        btn_eliminarZona = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaZona = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         txf_codigoAnimal = new javax.swing.JTextField();
@@ -82,9 +94,14 @@ public class Dashboard extends javax.swing.JFrame {
         txf_zonaTres = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        btn_buscarAnimales = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btn_guardarAnimales = new javax.swing.JButton();
         btn_actualizarAnimales = new javax.swing.JButton();
+        btn_listarAnimales = new javax.swing.JButton();
+        btn_eliminarAnimales = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaAnimales = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -189,26 +206,59 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_listarCuidador.setText("LISTAR");
+        btn_listarCuidador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_listarCuidadorMouseClicked(evt);
+            }
+        });
+
+        btn_eliminarCuidador.setText("ELIMINAR");
+        btn_eliminarCuidador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarCuidadorMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(114, 114, 114)
                 .addComponent(btn_guardarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btn_listarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_actualizarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_eliminarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_actualizarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(btn_actualizarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_listarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_eliminarCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
+
+        tablaCuidador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaCuidador);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -217,9 +267,15 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(87, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,6 +284,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -244,33 +302,44 @@ public class Dashboard extends javax.swing.JFrame {
         txf_descripcionZona.setRows(5);
         jScrollPane1.setViewportView(txf_descripcionZona);
 
+        btn_buscarZona.setText("BUSCAR");
+        btn_buscarZona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarZonaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
+                .addGap(149, 149, 149)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(txf_codigoZona))
-                .addGap(113, 113, 113))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(txf_codigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_buscarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txf_codigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txf_codigoZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         btn_guardarZona.setText("GUARDAR");
@@ -280,42 +349,94 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_actualizarZona.setText("ACTUALIZAR");
+        btn_actualizarZona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_actualizarZonaMouseClicked(evt);
+            }
+        });
+
+        btn_listarrZona.setText("LISTAR");
+        btn_listarrZona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_listarrZonaMouseClicked(evt);
+            }
+        });
+
+        btn_eliminarZona.setText("ELIMINAR");
+        btn_eliminarZona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarZonaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(268, Short.MAX_VALUE)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
                 .addComponent(btn_guardarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(234, 234, 234))
+                .addGap(27, 27, 27)
+                .addComponent(btn_listarrZona, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btn_actualizarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_eliminarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(btn_guardarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_guardarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_eliminarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_listarrZona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
+
+        tablaZona.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tablaZona);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(208, 208, 208))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Zona", jPanel2);
@@ -338,12 +459,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel18.setText("ZONA 3:");
 
+        btn_buscarAnimales.setText("BUSCAR");
+        btn_buscarAnimales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarAnimalesMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
+                .addContainerGap(158, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -365,7 +493,9 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(txf_zonaDos)
                             .addComponent(txf_nombreAnimal)
                             .addComponent(txf_zonaUno, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(138, 138, 138))
+                .addGap(18, 18, 18)
+                .addComponent(btn_buscarAnimales)
+                .addGap(87, 87, 87))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,7 +503,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(txf_codigoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txf_codigoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscarAnimales))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txf_especieAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,6 +542,20 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_listarAnimales.setText("LISTAR");
+        btn_listarAnimales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_listarAnimalesMouseClicked(evt);
+            }
+        });
+
+        btn_eliminarAnimales.setText("ELIMINAR");
+        btn_eliminarAnimales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarAnimalesMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -419,8 +564,12 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addComponent(btn_guardarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_actualizarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addComponent(btn_listarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_actualizarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_eliminarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,9 +577,24 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_actualizarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_actualizarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_eliminarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_listarAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        tablaAnimales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tablaAnimales);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -439,18 +603,24 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(29, 29, 29)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Animales", jPanel3);
@@ -459,11 +629,13 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1014, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -534,14 +706,17 @@ public class Dashboard extends javax.swing.JFrame {
             txf_telefonoUno.setText("");
             txf_telefonoDos.setText("");
             txf_telefonoTres.setText("");
+
+            listarDatosCuidador();
         }
     }//GEN-LAST:event_btn_guardarCuidadorMouseClicked
 
     private void btn_guardarZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarZonaMouseClicked
         // TODO add your handling code here:
-
         String codigo = txf_codigoZona.getText();
         String descripcion = txf_descripcionZona.getText();
+
+        boolean validar = false;
 
         Conexion conexion = new Conexion();
         MongoClient mongoClient = conexion.getMongoClient();
@@ -564,6 +739,7 @@ public class Dashboard extends javax.swing.JFrame {
         if (id != null) {
             System.out.println("Documento guardado correctamente en MongoDB");
             JOptionPane.showMessageDialog(null, "Documento guardado correctamente en MongoDB");
+            validar = true;
         } else {
             System.out.println("Error al guardar el documento en MongoDB");
             JOptionPane.showMessageDialog(null, "Error al guardar el documento en MongoDB");
@@ -571,6 +747,13 @@ public class Dashboard extends javax.swing.JFrame {
 
         // Cerrar la conexión cuando ya no se necesite
         conexion.cerrarConexion();
+
+        if (validar) {
+            txf_codigoZona.setText("");
+            txf_descripcionZona.setText("");
+
+            listarDatosZona();
+        }
     }//GEN-LAST:event_btn_guardarZonaMouseClicked
 
     private void btn_guardarAnimalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarAnimalesMouseClicked
@@ -582,6 +765,8 @@ public class Dashboard extends javax.swing.JFrame {
         String zonaUno = txf_zonaUno.getText();
         String zonaDos = txf_zonaDos.getText();
         String zonaTres = txf_zonaTres.getText();
+
+        boolean validar = false;
 
         // Crear una lista para almacenar los teléfonos
         List<String> zonas = new ArrayList<>();
@@ -604,7 +789,7 @@ public class Dashboard extends javax.swing.JFrame {
         MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
 
         // Obtener una colección
-        MongoCollection<Document> collection = database.getCollection("zona");
+        MongoCollection<Document> collection = database.getCollection("animales");
 
         // Crear un documento
         Document documento = new Document("codigo", codigo)
@@ -620,6 +805,7 @@ public class Dashboard extends javax.swing.JFrame {
         if (id != null) {
             System.out.println("Documento guardado correctamente en MongoDB");
             JOptionPane.showMessageDialog(null, "Documento guardado correctamente en MongoDB");
+            validar = true;
         } else {
             System.out.println("Error al guardar el documento en MongoDB");
             JOptionPane.showMessageDialog(null, "Error al guardar el documento en MongoDB");
@@ -627,10 +813,87 @@ public class Dashboard extends javax.swing.JFrame {
 
         // Cerrar la conexión cuando ya no se necesite
         conexion.cerrarConexion();
+
+        if (validar) {
+            txf_codigoAnimal.setText("");
+            txf_especieAnimal.setText("");
+            txf_nombreAnimal.setText("");
+            txf_zonaUno.setText("");
+            txf_zonaDos.setText("");
+            txf_zonaTres.setText("");
+
+            listarDatosAnimales();
+        }
     }//GEN-LAST:event_btn_guardarAnimalesMouseClicked
 
     private void btn_actualizarAnimalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizarAnimalesMouseClicked
         // TODO add your handling code here:
+        String codigo = txf_codigoAnimal.getText();
+        String especie = txf_especieAnimal.getText();
+        String nombre = txf_nombreAnimal.getText();
+        String zonaUno = txf_zonaUno.getText();
+        String zonaDos = txf_zonaDos.getText();
+        String zonaTres = txf_zonaTres.getText();
+
+        boolean validar = false;
+
+        // Crear una lista para almacenar las zonas
+        List<String> zonas = new ArrayList<>();
+
+        // Agregar las zonas a la lista si tienen valores
+        if (!zonaUno.isEmpty()) {
+            zonas.add(zonaUno);
+        }
+        if (!zonaDos.isEmpty()) {
+            zonas.add(zonaDos);
+        }
+        if (!zonaTres.isEmpty()) {
+            zonas.add(zonaTres);
+        }
+
+        Conexion conexion = new Conexion();
+        MongoClient mongoClient = conexion.getMongoClient();
+
+        // Obtener una base de datos
+        MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+        // Obtener una colección
+        MongoCollection<Document> collection = database.getCollection("animales");
+
+        // Crear un filtro para buscar el documento a actualizar
+        Bson filtro = Filters.eq("codigo", codigo);
+
+        // Crear un documento con los nuevos valores
+        Document nuevoDocumento = new Document("$set", new Document("especie", especie)
+                .append("nombre", nombre)
+                .append("zona", zonas));
+
+        // Actualizar el documento en la colección
+        UpdateResult result = collection.updateOne(filtro, nuevoDocumento);
+
+        // Validar si el documento se actualizó correctamente
+        if (result.getModifiedCount() > 0) {
+            System.out.println("Documento actualizado correctamente en MongoDB");
+            JOptionPane.showMessageDialog(null, "Documento actualizado correctamente en MongoDB");
+            validar = true;
+        } else {
+            System.out.println("Error al actualizar el documento en MongoDB");
+            JOptionPane.showMessageDialog(null, "Error al actualizar el documento en MongoDB");
+        }
+
+        // Cerrar la conexión cuando ya no se necesite
+        conexion.cerrarConexion();
+
+        if (validar) {
+            txf_codigoAnimal.setText("");
+            txf_especieAnimal.setText("");
+            txf_nombreAnimal.setText("");
+            txf_zonaUno.setText("");
+            txf_zonaDos.setText("");
+            txf_zonaTres.setText("");
+
+            listarDatosAnimales();
+        }
     }//GEN-LAST:event_btn_actualizarAnimalesMouseClicked
 
     private void btn_actualizarCuidadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizarCuidadorMouseClicked
@@ -698,6 +961,8 @@ public class Dashboard extends javax.swing.JFrame {
             txf_telefonoUno.setText("");
             txf_telefonoDos.setText("");
             txf_telefonoTres.setText("");
+
+            listarDatosCuidador();
         }
     }//GEN-LAST:event_btn_actualizarCuidadorMouseClicked
 
@@ -747,11 +1012,303 @@ public class Dashboard extends javax.swing.JFrame {
             System.out.println("Documento encontrado en MongoDB");
         } else {
             System.out.println("No se encontró el documento en MongoDB");
+            JOptionPane.showMessageDialog(null, "No se encontró el documento en MongoDB");
         }
 
         // Cerrar la conexión cuando ya no se necesite
         conexion.cerrarConexion();
     }//GEN-LAST:event_btn_buscarCuidadorMouseClicked
+
+    private void btn_listarCuidadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_listarCuidadorMouseClicked
+        // TODO add your handling code here:
+        listarDatosCuidador();
+    }//GEN-LAST:event_btn_listarCuidadorMouseClicked
+
+    private void btn_eliminarCuidadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarCuidadorMouseClicked
+        // TODO add your handling code here:
+        Conexion conexion = new Conexion();
+        MongoClient mongoClient = conexion.getMongoClient();
+
+        // Obtener una base de datos
+        MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+        // Obtener una colección
+        MongoCollection<Document> collection = database.getCollection("cuidador");
+
+        // Definir el campo y el valor del documento a eliminar
+        String codigo = txf_codigoCuidador.getText();
+
+        boolean validar = false;
+
+        // Crear un filtro para identificar el documento a eliminar
+        Document filtro = new Document("codigo", codigo);
+
+        try {
+            // Eliminar el documento que coincide con el filtro
+            collection.deleteOne(filtro);
+            System.out.println("Documento eliminado correctamente en MongoDB");
+            JOptionPane.showMessageDialog(null, "Documento eliminado correctamente en MongoDB.");
+
+            validar = true;
+        } catch (MongoException e) {
+            System.out.println("Error al eliminar el documento en MongoDB: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar el documento en MongoDB.");
+        }
+
+        // Cerrar la conexión cuando ya no se necesite
+        conexion.cerrarConexion();
+
+        if (validar) {
+            txf_codigoCuidador.setText("");
+            txf_nombreCuidador.setText("");
+            txf_apellido.setText("");
+            txf_telefonoUno.setText("");
+            txf_telefonoDos.setText("");
+            txf_telefonoTres.setText("");
+
+            listarDatosCuidador();
+        }
+    }//GEN-LAST:event_btn_eliminarCuidadorMouseClicked
+
+    private void btn_actualizarZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizarZonaMouseClicked
+        // TODO add your handling code here:
+        String codigo = txf_codigoZona.getText();
+        String descripcion = txf_descripcionZona.getText();
+
+        boolean validar = false;
+
+        Conexion conexion = new Conexion();
+        MongoClient mongoClient = conexion.getMongoClient();
+
+        // Obtener una base de datos
+        MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+        // Obtener una colección
+        MongoCollection<Document> collection = database.getCollection("zona");
+
+        // Crear un filtro para encontrar el documento correspondiente al código
+        Bson filtro = Filters.eq("codigo", codigo);
+
+        // Crear un documento con los nuevos valores a actualizar
+        Document valoresActualizados = new Document("$set", new Document("descripcion", descripcion));
+
+        // Actualizar el documento en la colección
+        UpdateResult result = collection.updateOne(filtro, valoresActualizados);
+
+        // Obtener el número de documentos modificados
+        long documentosModificados = result.getModifiedCount();
+
+        if (documentosModificados > 0) {
+            System.out.println("Documento actualizado correctamente en MongoDB");
+            JOptionPane.showMessageDialog(null, "Documento actualizado correctamente en MongoDB");
+            validar = true;
+        } else {
+            System.out.println("No se encontró el documento o no se realizó ninguna actualización");
+            JOptionPane.showMessageDialog(null, "No se encontró el documento o no se realizó ninguna actualización");
+        }
+
+        // Cerrar la conexión cuando ya no se necesite
+        conexion.cerrarConexion();
+
+        if (validar) {
+            txf_codigoZona.setText("");
+            txf_descripcionZona.setText("");
+
+            listarDatosZona();
+        }
+    }//GEN-LAST:event_btn_actualizarZonaMouseClicked
+
+    private void btn_listarrZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_listarrZonaMouseClicked
+        // TODO add your handling code here:
+        listarDatosZona();
+    }//GEN-LAST:event_btn_listarrZonaMouseClicked
+
+    private void btn_eliminarZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarZonaMouseClicked
+        // TODO add your handling code here:
+        String codigo = txf_codigoZona.getText();
+
+        boolean validar = false;
+
+        Conexion conexion = new Conexion();
+        MongoClient mongoClient = conexion.getMongoClient();
+
+        // Obtener una base de datos
+        MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+        // Obtener una colección
+        MongoCollection<Document> collection = database.getCollection("zona");
+
+        // Crear un filtro para encontrar el documento correspondiente al código
+        Bson filtro = Filters.eq("codigo", codigo);
+
+        // Eliminar el documento de la colección
+        DeleteResult result = collection.deleteOne(filtro);
+
+        // Obtener el número de documentos eliminados
+        long documentosEliminados = result.getDeletedCount();
+
+        if (documentosEliminados > 0) {
+            System.out.println("Documento eliminado correctamente de MongoDB");
+            JOptionPane.showMessageDialog(null, "Documento eliminado correctamente de MongoDB");
+            validar = true;
+        } else {
+            System.out.println("No se encontró el documento o no se realizó ninguna eliminación");
+            JOptionPane.showMessageDialog(null, "No se encontró el documento o no se realizó ninguna eliminación");
+        }
+
+        // Cerrar la conexión cuando ya no se necesite
+        conexion.cerrarConexion();
+
+        if (validar) {
+            txf_codigoZona.setText("");
+            txf_descripcionZona.setText("");
+
+            listarDatosZona();
+        }
+    }//GEN-LAST:event_btn_eliminarZonaMouseClicked
+
+    private void btn_buscarZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarZonaMouseClicked
+        // TODO add your handling code here:
+        String codigo = txf_codigoZona.getText();
+
+        Conexion conexion = new Conexion();
+        MongoClient mongoClient = conexion.getMongoClient();
+
+        // Obtener una base de datos
+        MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+        // Obtener una colección
+        MongoCollection<Document> collection = database.getCollection("zona");
+
+        // Crear un filtro para buscar documentos que coincidan con el código de la zona
+        Bson filtro = Filters.eq("codigo", codigo);
+
+        // Realizar la búsqueda y obtener el primer documento encontrado
+        Document documentoEncontrado = collection.find(filtro).first();
+
+        // Validar si se encontró un documento
+        if (documentoEncontrado != null) {
+            // Obtener los valores de los campos del documento
+            String codigoEncontrado = documentoEncontrado.getString("codigo");
+            String descripcionEncontrada = documentoEncontrado.getString("descripcion");
+
+            // Cargar los valores en los campos de texto de la interfaz
+            txf_codigoZona.setText(codigoEncontrado);
+            txf_descripcionZona.setText(descripcionEncontrada);
+
+            System.out.println("Documento encontrado en MongoDB");
+        } else {
+            System.out.println("No se encontró el documento en MongoDB");
+            JOptionPane.showMessageDialog(null, "No se encontró el documento en MongoDB");
+        }
+
+        // Cerrar la conexión cuando ya no se necesite
+        conexion.cerrarConexion();
+    }//GEN-LAST:event_btn_buscarZonaMouseClicked
+
+    private void btn_listarAnimalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_listarAnimalesMouseClicked
+        // TODO add your handling code here:
+        listarDatosAnimales();
+    }//GEN-LAST:event_btn_listarAnimalesMouseClicked
+
+    private void btn_eliminarAnimalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarAnimalesMouseClicked
+        // TODO add your handling code here:
+        Conexion conexion = new Conexion();
+        MongoClient mongoClient = conexion.getMongoClient();
+
+        // Obtener una base de datos
+        MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+        // Obtener una colección
+        MongoCollection<Document> collection = database.getCollection("animales");
+
+        // Definir el campo y el valor del documento a eliminar
+        String codigo = txf_codigoAnimal.getText();
+
+        boolean validar = false;
+
+        // Crear un filtro para identificar el documento a eliminar
+        Document filtro = new Document("codigo", codigo);
+
+        try {
+            // Eliminar el documento que coincide con el filtro
+            collection.deleteOne(filtro);
+            System.out.println("Documento eliminado correctamente en MongoDB");
+            JOptionPane.showMessageDialog(null, "Documento eliminado correctamente en MongoDB.");
+
+            validar = true;
+        } catch (MongoException e) {
+            System.out.println("Error al eliminar el documento en MongoDB: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar el documento en MongoDB.");
+        }
+
+        // Cerrar la conexión cuando ya no se necesite
+        conexion.cerrarConexion();
+
+        if (validar) {
+            txf_codigoAnimal.setText("");
+            txf_especieAnimal.setText("");
+            txf_nombreAnimal.setText("");
+            txf_zonaUno.setText("");
+            txf_zonaDos.setText("");
+            txf_zonaTres.setText("");
+
+            listarDatosAnimales();
+        }
+    }//GEN-LAST:event_btn_eliminarAnimalesMouseClicked
+
+    private void btn_buscarAnimalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarAnimalesMouseClicked
+        // TODO add your handling code here:
+        String codigo = txf_codigoAnimal.getText();
+
+        Conexion conexion = new Conexion();
+        MongoClient mongoClient = conexion.getMongoClient();
+
+        // Obtener una base de datos
+        MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+        // Obtener una colección
+        MongoCollection<Document> collection = database.getCollection("animales");
+
+        // Crear un filtro para buscar documentos que coincidan con el código del animal
+        Document filtro = new Document("codigo", codigo);
+
+        // Realizar la búsqueda y obtener el primer documento encontrado
+        Document documentoEncontrado = collection.find(filtro).first();
+
+        // Validar si se encontró un documento
+        if (documentoEncontrado != null) {
+            // Obtener los valores de los campos del documento
+            String codigoEncontrado = documentoEncontrado.getString("codigo");
+            String especieEncontrada = documentoEncontrado.getString("especie");
+            String nombreEncontrado = documentoEncontrado.getString("nombre");
+            List<String> zonasEncontradas = documentoEncontrado.getList("zona", String.class);
+
+            // Cargar los valores en los campos de texto de la interfaz
+            txf_codigoAnimal.setText(codigoEncontrado);
+            txf_especieAnimal.setText(especieEncontrada);
+            txf_nombreAnimal.setText(nombreEncontrado);
+            txf_zonaUno.setText(zonasEncontradas.get(0));
+            if (zonasEncontradas.size() > 1) {
+                txf_zonaDos.setText(zonasEncontradas.get(1));
+            } else {
+                txf_zonaDos.setText("");
+            }
+            if (zonasEncontradas.size() > 2) {
+                txf_zonaTres.setText(zonasEncontradas.get(2));
+            } else {
+                txf_zonaTres.setText("");
+            }
+
+            System.out.println("Documento encontrado en MongoDB");
+        } else {
+            System.out.println("No se encontró el documento en MongoDB");
+            JOptionPane.showMessageDialog(null, "No se encontró el documento en MongoDB");
+        }
+
+        // Cerrar la conexión cuando ya no se necesite
+        conexion.cerrarConexion();
+    }//GEN-LAST:event_btn_buscarAnimalesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -799,11 +1356,19 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_actualizarAnimales;
     private javax.swing.JButton btn_actualizarCuidador;
+    private javax.swing.JButton btn_actualizarZona;
+    private javax.swing.JButton btn_buscarAnimales;
     private javax.swing.JButton btn_buscarCuidador;
+    private javax.swing.JButton btn_buscarZona;
+    private javax.swing.JButton btn_eliminarAnimales;
+    private javax.swing.JButton btn_eliminarCuidador;
+    private javax.swing.JButton btn_eliminarZona;
     private javax.swing.JButton btn_guardarAnimales;
     private javax.swing.JButton btn_guardarCuidador;
     private javax.swing.JButton btn_guardarZona;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btn_listarAnimales;
+    private javax.swing.JButton btn_listarCuidador;
+    private javax.swing.JButton btn_listarrZona;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -819,7 +1384,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -829,7 +1393,13 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tablaAnimales;
+    private javax.swing.JTable tablaCuidador;
+    private javax.swing.JTable tablaZona;
     private javax.swing.JTextField txf_apellido;
     private javax.swing.JTextField txf_codigoAnimal;
     private javax.swing.JTextField txf_codigoCuidador;
@@ -878,6 +1448,163 @@ public class Dashboard extends javax.swing.JFrame {
                 mongoClient.close();
                 System.out.println("Conexión cerrada con éxito");
             }
+        }
+    }
+
+    public void listarDatosCuidador() {
+        try {
+            DefaultTableModel tablaModelo = (DefaultTableModel) tablaCuidador.getModel();
+            tablaModelo.setColumnCount(0);
+            tablaModelo.setRowCount(0);
+
+            tablaModelo.addColumn("Código");
+            tablaModelo.addColumn("Nombre");
+            tablaModelo.addColumn("Apellido");
+            tablaModelo.addColumn("Teléfono 1");
+            tablaModelo.addColumn("Teléfono 2");
+            tablaModelo.addColumn("Teléfono 3");
+
+            Conexion conexion = new Conexion();
+            MongoClient mongoClient = conexion.getMongoClient();
+
+            // Obtener una base de datos
+            MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+            // Obtener una colección
+            MongoCollection<Document> collection = database.getCollection("cuidador");
+
+            // Obtener todos los documentos de la colección
+            FindIterable<Document> documentos = collection.find();
+
+            for (Document documento : documentos) {
+                String codigo = documento.getString("codigo");
+                String nombre = documento.getString("nombre");
+                String apellido = documento.getString("apellido");
+
+                List<String> telefonos = (List<String>) documento.get("telefono");
+                String telefono1 = "";
+                String telefono2 = "";
+                String telefono3 = "";
+
+                if (telefonos.size() >= 1) {
+                    telefono1 = telefonos.get(0);
+                }
+                if (telefonos.size() >= 2) {
+                    telefono2 = telefonos.get(1);
+                }
+                if (telefonos.size() >= 3) {
+                    telefono3 = telefonos.get(2);
+                }
+
+                // Crear una fila con los datos
+                String[] fila = {codigo, nombre, apellido, telefono1, telefono2, telefono3};
+
+                // Agregar la fila al modelo de la tabla
+                tablaModelo.addRow(fila);
+            }
+
+            // Cerrar la conexión cuando ya no se necesite
+            conexion.cerrarConexion();
+        } catch (Exception ex) {
+            System.out.println("Error al llenar la tabla... " + ex);
+        }
+    }
+
+    public void listarDatosZona() {
+        try {
+            DefaultTableModel tablaModelo = (DefaultTableModel) tablaZona.getModel();
+            tablaModelo.setColumnCount(0);
+            tablaModelo.setRowCount(0);
+
+            tablaModelo.addColumn("Código");
+            tablaModelo.addColumn("Descripción");
+
+            Conexion conexion = new Conexion();
+            MongoClient mongoClient = conexion.getMongoClient();
+
+            // Obtener una base de datos
+            MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+            // Obtener una colección
+            MongoCollection<Document> collection = database.getCollection("zona");
+
+            // Obtener todos los documentos de la colección
+            FindIterable<Document> documentos = collection.find();
+
+            for (Document documento : documentos) {
+                String codigo = documento.getString("codigo");
+                String descripcion = documento.getString("descripcion");
+
+                // Crear una fila con los datos
+                String[] fila = {codigo, descripcion};
+
+                // Agregar la fila al modelo de la tabla
+                tablaModelo.addRow(fila);
+            }
+
+            // Cerrar la conexión cuando ya no se necesite
+            conexion.cerrarConexion();
+        } catch (Exception ex) {
+            System.out.println("Error al llenar la tabla... " + ex);
+        }
+    }
+
+    public void listarDatosAnimales() {
+        try {
+            DefaultTableModel tablaModelo = (DefaultTableModel) tablaAnimales.getModel();
+            tablaModelo.setColumnCount(0);
+            tablaModelo.setRowCount(0);
+
+            tablaModelo.addColumn("Código");
+            tablaModelo.addColumn("Especie");
+            tablaModelo.addColumn("Nombre");
+            tablaModelo.addColumn("Zona 1");
+            tablaModelo.addColumn("Zona 2");
+            tablaModelo.addColumn("Zona 3");
+
+            Conexion conexion = new Conexion();
+            MongoClient mongoClient = conexion.getMongoClient();
+
+            // Obtener una base de datos
+            MongoDatabase database = mongoClient.getDatabase("baseDatosZoo");
+
+            // Obtener una colección
+            MongoCollection<Document> collection = database.getCollection("animales");
+
+            // Obtener todos los documentos de la colección
+            FindIterable<Document> documentos = collection.find();
+
+            for (Document documento : documentos) {
+                String codigo = documento.getString("codigo");
+                String nombre = documento.getString("especie");
+                String apellido = documento.getString("nombre");
+
+                List<String> zonas = (List<String>) documento.get("zona");
+                String zonaUno = "";
+                String zonaDos = "";
+                String zonaTres = "";
+
+                if (zonas.size() >= 1) {
+                    zonaUno = zonas.get(0);
+                }
+                if (zonas.size() >= 2) {
+                    zonaDos = zonas.get(1);
+                }
+                if (zonas.size() >= 3) {
+                    zonaTres = zonas.get(2);
+                }
+
+                // Crear una fila con los datos
+                String[] fila = {codigo, nombre, apellido, zonaUno, zonaDos, zonaTres};
+
+                // Agregar la fila al modelo de la tabla
+                tablaModelo.addRow(fila);
+            }
+
+            // Cerrar la conexión cuando ya no se necesite
+            conexion.cerrarConexion();
+        } catch (Exception ex) {
+            System.out.println("Error al llenar la tabla... " + ex);
         }
     }
 }
